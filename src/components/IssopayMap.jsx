@@ -269,7 +269,7 @@ export default function IssopayMap() {
       <DeckGL
         viewState={viewState}
         onViewStateChange={({ viewState: vs }) => setViewState(vs)}
-        controller={true}
+        controller={{ dragMode: 'rotate' }}
         views={new MapView({ repeat: true })}
         layers={layers}
         getTooltip={getTooltip}
@@ -384,7 +384,7 @@ export default function IssopayMap() {
           fontSize: '10px',
           lineHeight: 1.5,
         }}>
-          Drag to rotate<br />Scroll to zoom
+          Drag to rotate<br />Right-drag to pan<br />Scroll to zoom
         </div>
       </div>
 
