@@ -124,17 +124,23 @@ export default function IssopayMap() {
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [focusedLayer, setFocusedLayer] = useState(null);
 
-  function focusLayer(lv) {
-    const isAlreadyFocused = focusedLayer === lv;
-    const target = isAlreadyFocused
-      ? INITIAL_VIEW_STATE
-      : { ...INITIAL_VIEW_STATE, ...LAYER_FOCUS[lv] };
-    setFocusedLayer(isAlreadyFocused ? null : lv);
+  function flyTo(target) {
     setViewState({
       ...target,
       transitionDuration: 1100,
       transitionInterpolator: new FlyToInterpolator({ speed: 1.4 }),
     });
+  }
+
+  function focusLayer(lv) {
+    const isAlreadyFocused = focusedLayer === lv;
+    setFocusedLayer(isAlreadyFocused ? null : lv);
+    flyTo(isAlreadyFocused ? INITIAL_VIEW_STATE : { ...INITIAL_VIEW_STATE, ...LAYER_FOCUS[lv] });
+  }
+
+  function resetView() {
+    setFocusedLayer(null);
+    flyTo(INITIAL_VIEW_STATE);
   }
 
   const layers = useMemo(() =>
@@ -156,7 +162,9 @@ export default function IssopayMap() {
         },
         getLineColor: [255, 255, 255, 30],
         lineWidthMinPixels: 1,
-        visible: visible[lv],
+        // Hide layers with higher Z than the focused one so they don't
+        // block the top-down view of the selected layer.
+        visible: visible[lv] && !(focusedLayer !== null && LIVELLO_Z[lv] > LIVELLO_Z[focusedLayer]),
         updateTriggers: { visible: visible[lv], focusedLayer },
       })
     ),
@@ -440,6 +448,37 @@ export default function IssopayMap() {
           <span>25</span>
         </div>
       </div>
+
+      {/* ── Reset / overview button ─────────────────────────────────────────── */}
+      <button
+        onClick={resetView}
+        title="Return to full stack overview"
+        style={{
+          position: 'absolute',
+          bottom: '28px',
+          right: '20px',
+          background: 'rgba(10,10,10,0.85)',
+          border: '1px solid rgba(255,255,255,0.1)',
+          borderRadius: '8px',
+          padding: '8px 14px',
+          color: '#f0ece6',
+          fontFamily: 'monospace',
+          fontSize: '11px',
+          letterSpacing: '0.06em',
+          cursor: 'pointer',
+          backdropFilter: 'blur(12px)',
+          zIndex: 1,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+        }}
+      >
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+          <path d="M13.5 8A5.5 5.5 0 1 1 8 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M13.5 2.5v3h-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        Overview
+      </button>
     </div>
   );
 }
