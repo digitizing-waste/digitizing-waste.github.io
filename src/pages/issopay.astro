@@ -1,0 +1,88 @@
+---
+import IssopayMap from '../components/IssopayMap.jsx';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Issopay — Net Pay Stratigraphy · Digitizing Waste</title>
+    <meta name="description" content="3D stratigraphic visualization of the Issopay oil field net pay zones, Ghadames Basin." />
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="back-link">← Digitizing Waste</a>
+      <span class="nav-title">Issopay / Net Pay Stratigraphy</span>
+    </nav>
+
+    <main>
+      <IssopayMap client:only="react" />
+    </main>
+  </body>
+</html>
+
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+    background: #0a0a0a;
+    color: #f0ece6;
+    font-family: monospace;
+    overflow: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 20px;
+    background: rgba(10, 10, 10, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    z-index: 10;
+  }
+
+  .back-link {
+    color: rgba(240, 236, 230, 0.55);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    transition: color 0.15s;
+    flex-shrink: 0;
+  }
+
+  .back-link:hover {
+    color: #f0ece6;
+  }
+
+  .nav-title {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  main {
+    position: fixed;
+    top: 44px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+</style>

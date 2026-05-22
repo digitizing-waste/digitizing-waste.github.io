@@ -1,17 +1,156 @@
 ---
-
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Digitizing Waste</title>
+    <meta name="description" content="A digital reconstruction of Tunisia's oil infrastructure." />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="label">Research Project</p>
+        <h1>Digitizing Waste</h1>
+        <p class="subtitle">A digital reconstruction of Tunisia's oil infrastructure</p>
+      </header>
+
+      <section class="viz-list">
+        <p class="section-label">Visualizations</p>
+
+        <a href="/issopay" class="viz-card">
+          <div class="viz-card-inner">
+            <div class="viz-meta">
+              <span class="viz-tag">3D · Stratigraphy</span>
+            </div>
+            <h2>Issopay</h2>
+            <p>Net pay zones of the Issopay oil field, Ghadames Basin — stratigraphic layers A through E rendered as an interactive 3D stack.</p>
+            <span class="viz-cta">Open visualization →</span>
+          </div>
+        </a>
+      </section>
+    </main>
+  </body>
 </html>
+
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    min-height: 100%;
+    background: #0a0a0a;
+    color: #f0ece6;
+    font-family: monospace;
+  }
+
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 24px 80px;
+  }
+
+  header {
+    margin-bottom: 64px;
+  }
+
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 14px;
+    background: linear-gradient(135deg, #f0ece6 0%, #c2a98a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    opacity: 0.5;
+    line-height: 1.6;
+    max-width: 420px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.3;
+    margin-bottom: 16px;
+  }
+
+  .viz-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+
+  .viz-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+  }
+
+  .viz-card-inner {
+    padding: 24px 28px;
+  }
+
+  .viz-meta {
+    margin-bottom: 10px;
+  }
+
+  .viz-tag {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c45c3a;
+    opacity: 0.8;
+  }
+
+  .viz-card h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .viz-card p {
+    font-size: 13px;
+    line-height: 1.65;
+    opacity: 0.45;
+    margin-bottom: 16px;
+    max-width: 480px;
+  }
+
+  .viz-cta {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: #c45c3a;
+    opacity: 0.8;
+  }
+
+  .viz-card:hover .viz-cta {
+    opacity: 1;
+  }
+</style>
