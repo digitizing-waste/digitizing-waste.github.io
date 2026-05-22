@@ -3,7 +3,7 @@ import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, ColumnLayer, BitmapLayer } from '@deck.gl/layers';
 import { TileLayer } from '@deck.gl/geo-layers';
 import { MapView, FlyToInterpolator, LinearInterpolator } from '@deck.gl/core';
-import issopayData from '../data/geojson/Issopay.geojson';
+import issopayData from '../data/geojson/Isopay.geojson';
 import pozziData from '../data/geojson/pozzi.geojson';
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -178,7 +178,7 @@ function getTooltip({ object }) {
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
-export default function IssopayMap() {
+export default function IsopayMap() {
   const [visible, setVisible] = useState({
     ...LIVELLI.reduce((acc, lv) => ({ ...acc, [lv]: true }), {}),
     wells: true,
