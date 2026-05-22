@@ -1,31 +1,50 @@
-name: Deploy to GitHub Pages
+name: Deploy exhibit to GitHub Pages
 
 on:
   push:
     branches: [main]
-  workflow_dispatch:
+  workflow_dispatch:       # lets you trigger manually from the GitHub UI
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Only one deployment at a time; cancel any in-progress run
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: exhibit   # all steps run inside the exhibit/ subfolder
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          lfs: true
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install, build, and upload
-        uses: withastro/action@v3
+          cache: npm
+          cache-dependency-path: exhibit/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build        # outputs to exhibit/dist/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: exhibit/dist      # path is relative to repo root here
 
   deploy:
     needs: build
@@ -33,6 +52,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
