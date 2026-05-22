@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, ColumnLayer } from '@deck.gl/layers';
-import { MapView, FlyToInterpolator } from '@deck.gl/core';
+import { MapView, FlyToInterpolator, LinearInterpolator } from '@deck.gl/core';
 import issopayData from '../data/geojson/Issopay.geojson';
 import pozziData from '../data/geojson/pozzi.geojson';
 
@@ -22,7 +22,7 @@ const LAYER_FOCUS = {
 
 // Z base elevation (metres) for each geological layer.
 // The field spans ~10 km; layers are spaced 5 km apart so the stack
-// is visually prominent at the 12-zoom view.
+// is visually prominent at the ~10-zoom view.
 const LIVELLO_Z = { A: 20000, B: 15000, C: 10000, D: 5000, E: 0 };
 
 // Colours assigned to each Livello for the toggle UI badges.
@@ -123,6 +123,19 @@ const TOOLTIP_STYLE = {
   pointerEvents: 'none',
 };
 
+// Shared style for nav-control buttons
+const NAV_BTN = {
+  background: 'transparent',
+  border: 'none',
+  color: '#f0ece6',
+  fontFamily: 'monospace',
+  fontSize: '13px',
+  lineHeight: 1,
+  padding: '8px 10px',
+  cursor: 'pointer',
+  opacity: 0.7,
+};
+
 function getTooltip({ object }) {
   if (!object) return null;
   const p = object.properties;
@@ -190,6 +203,26 @@ export default function IssopayMap() {
   function resetView() {
     setFocusedLayer(null);
     flyTo(INITIAL_VIEW_STATE);
+  }
+
+  function adjustView(delta) {
+    setViewState(prev => ({
+      ...prev,
+      zoom:    delta.zoom    !== undefined ? Math.min(20, Math.max(1,  prev.zoom  + delta.zoom))  : prev.zoom,
+      pitch:   delta.pitch   !== undefined ? Math.min(85, Math.max(0,  prev.pitch + delta.pitch)) : prev.pitch,
+      bearing: delta.bearing !== undefined ? prev.bearing + delta.bearing                         : prev.bearing,
+      transitionDuration: 200,
+      transitionInterpolator: new LinearInterpolator(),
+    }));
+  }
+
+  function resetNorth() {
+    setViewState(prev => ({
+      ...prev,
+      bearing: 0,
+      transitionDuration: 400,
+      transitionInterpolator: new LinearInterpolator(),
+    }));
   }
 
   const layers = useMemo(() => {
@@ -543,7 +576,7 @@ export default function IssopayMap() {
       {/* ── Thickness legend ───────────────────────────────────────────────── */}
       <div style={{
         position: 'absolute',
-        bottom: '28px',
+        bottom: '34px',
         left: '20px',
         background: 'rgba(10,10,10,0.85)',
         border: '1px solid rgba(255,255,255,0.1)',
@@ -577,36 +610,101 @@ export default function IssopayMap() {
         </div>
       </div>
 
-      {/* ── Reset / overview button ─────────────────────────────────────────── */}
-      <button
-        onClick={resetView}
-        title="Return to full stack overview"
-        style={{
-          position: 'absolute',
-          bottom: '28px',
-          right: '20px',
-          background: 'rgba(10,10,10,0.85)',
-          border: '1px solid rgba(255,255,255,0.1)',
-          borderRadius: '8px',
-          padding: '8px 14px',
-          color: '#f0ece6',
-          fontFamily: 'monospace',
-          fontSize: '11px',
-          letterSpacing: '0.06em',
-          cursor: 'pointer',
-          backdropFilter: 'blur(12px)',
-          zIndex: 1,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
-        }}
-      >
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-          <path d="M13.5 8A5.5 5.5 0 1 1 8 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M13.5 2.5v3h-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-        Overview
-      </button>
+      {/* ── Navigation control ───────────────────────────────────────────── */}
+      <div style={{
+        position: 'absolute',
+        bottom: '34px',
+        right: panelOpen ? '360px' : '20px',
+        transition: 'right 0.3s ease',
+        background: 'rgba(10,10,10,0.85)',
+        border: '1px solid rgba(255,255,255,0.1)',
+        borderRadius: '8px',
+        backdropFilter: 'blur(12px)',
+        zIndex: 1,
+        color: '#f0ece6',
+        fontFamily: 'monospace',
+        overflow: 'hidden',
+        userSelect: 'none',
+        minWidth: '114px',
+      }}>
+        {/* Bearing row: left arrow ─ compass ─ right arrow */}
+        <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <button onClick={() => adjustView({ bearing: -15 })} title="Rotate left" style={NAV_BTN}>◄</button>
+          {/* Compass: rotating needle shows where north is; click to face north */}
+          <div onClick={resetNorth} title="Click to face north"
+            style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5px 0', cursor: 'pointer' }}>
+            <svg width="38" height="38" viewBox="0 0 38 38">
+              <circle cx="19" cy="19" r="16" stroke="rgba(255,255,255,0.12)" strokeWidth="1" fill="rgba(255,255,255,0.02)"/>
+              <line x1="19" y1="3" x2="19" y2="8" stroke="rgba(255,255,255,0.22)" strokeWidth="1"/>
+              <line x1="19" y1="30" x2="19" y2="35" stroke="rgba(255,255,255,0.22)" strokeWidth="1"/>
+              <line x1="3" y1="19" x2="8" y2="19" stroke="rgba(255,255,255,0.22)" strokeWidth="1"/>
+              <line x1="30" y1="19" x2="35" y2="19" stroke="rgba(255,255,255,0.22)" strokeWidth="1"/>
+              {/* Needle group rotates so amber tip always points toward north */}
+              <g transform={`rotate(${-viewState.bearing}, 19, 19)`}>
+                <polygon points="19,5 21.5,19 16.5,19" fill="#ffc84b" opacity="0.95"/>
+                <polygon points="19,33 21.5,19 16.5,19" fill="rgba(255,255,255,0.18)"/>
+                <circle cx="19" cy="19" r="2.5" fill="rgba(8,8,8,0.9)" stroke="rgba(255,255,255,0.2)" strokeWidth="0.8"/>
+                <text x="19" y="4" textAnchor="middle" dominantBaseline="middle" fill="#ffc84b" fontSize="5.5" fontFamily="monospace" fontWeight="bold">N</text>
+              </g>
+            </svg>
+          </div>
+          <button onClick={() => adjustView({ bearing: 15 })} title="Rotate right" style={NAV_BTN}>►</button>
+        </div>
+
+        {/* Pitch row */}
+        <div style={{ display: 'flex', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <button onClick={() => adjustView({ pitch: 5 })}  title="Tilt up"   style={{ ...NAV_BTN, flex: 1 }}>▲</button>
+          <div style={{ width: '1px', background: 'rgba(255,255,255,0.07)' }}/>
+          <button onClick={() => adjustView({ pitch: -5 })} title="Tilt down" style={{ ...NAV_BTN, flex: 1 }}>▼</button>
+        </div>
+
+        {/* Zoom row */}
+        <div style={{ display: 'flex', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <button onClick={() => adjustView({ zoom:  0.5 })} title="Zoom in"  style={{ ...NAV_BTN, flex: 1, fontSize: '16px' }}>+</button>
+          <div style={{ width: '1px', background: 'rgba(255,255,255,0.07)' }}/>
+          <button onClick={() => adjustView({ zoom: -0.5 })} title="Zoom out" style={{ ...NAV_BTN, flex: 1, fontSize: '16px' }}>−</button>
+        </div>
+
+        {/* Overview / reset */}
+        <button onClick={resetView} style={{
+          ...NAV_BTN, width: '100%', fontSize: '9px', letterSpacing: '0.08em',
+          opacity: 0.5, padding: '7px',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px',
+        }}>
+          <svg width="9" height="9" viewBox="0 0 16 16" fill="none">
+            <path d="M13.5 8A5.5 5.5 0 1 1 8 2.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+            <path d="M13.5 2.5v3h-3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          OVERVIEW
+        </button>
+      </div>
+
+      {/* ── Status bar ──────────────────────────────────────────────────── */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0, left: 0, right: 0,
+        height: '26px',
+        background: 'rgba(5,5,5,0.88)',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '24px',
+        fontFamily: 'monospace',
+        fontSize: '10px',
+        color: '#f0ece6',
+        opacity: 0.65,
+        letterSpacing: '0.04em',
+        zIndex: 2,
+        pointerEvents: 'none',
+        userSelect: 'none',
+      }}>
+        <span>{viewState.latitude.toFixed(4)}° N</span>
+        <span>{viewState.longitude.toFixed(4)}° E</span>
+        <span>zoom {viewState.zoom.toFixed(2)}</span>
+        <span>pitch {Math.round(viewState.pitch)}°</span>
+        <span>bearing {Math.round(((viewState.bearing % 360) + 360) % 360)}°</span>
+      </div>
     </div>
   );
 }
