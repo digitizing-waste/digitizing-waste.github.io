@@ -14,6 +14,7 @@
   "dependencies": {
     "@astrojs/react": "^5.0.5",
     "@deck.gl/core": "^9.3.2",
+    "@deck.gl/geo-layers": "^9.3.2",
     "@deck.gl/layers": "^9.3.2",
     "@deck.gl/react": "^9.3.2",
     "astro": "^6.3.7",

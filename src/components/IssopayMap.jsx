@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import DeckGL from '@deck.gl/react';
-import { GeoJsonLayer, ColumnLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, ColumnLayer, BitmapLayer } from '@deck.gl/layers';
+import { TileLayer } from '@deck.gl/geo-layers';
 import { MapView, FlyToInterpolator, LinearInterpolator } from '@deck.gl/core';
 import issopayData from '../data/geojson/Issopay.geojson';
 import pozziData from '../data/geojson/pozzi.geojson';
@@ -181,6 +182,7 @@ export default function IssopayMap() {
   const [visible, setVisible] = useState({
     ...LIVELLI.reduce((acc, lv) => ({ ...acc, [lv]: true }), {}),
     wells: true,
+    basemap: false,
   });
   const [panelOpen, setPanelOpen] = useState(false);
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
@@ -228,6 +230,33 @@ export default function IssopayMap() {
   const layers = useMemo(() => {
     const SLAB_TOP = LIVELLO_Z['A'] + 1500; // top of the uppermost slab
     const MAX_SPESSORE = 55; // cap for radius scaling
+
+    const basemapLayer = new TileLayer({
+      id: 'basemap',
+      // ESRI World Imagery — free satellite tiles, no API key required
+      data: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      minZoom: 0,
+      maxZoom: 19,
+      tileSize: 256,
+      visible: visible.basemap,
+      renderSubLayers: props => {
+        const { bbox: { west, south, east, north } } = props.tile;
+        const z = SLAB_TOP; // top surface of Livello A = LIVELLO_Z['A'] + 1500
+        return new BitmapLayer(props, {
+          data: null,
+          image: props.data,
+          // Four corners with Z = Livello A elevation so the surface sits
+          // flush on top of the shallowest geological stratum.
+          bounds: [
+            [west,  south, z],
+            [east,  south, z],
+            [east,  north, z],
+            [west,  north, z],
+          ],
+          opacity: 0.75,
+        });
+      },
+    });
 
     const geoLayers = LIVELLI.map(lv =>
       new GeoJsonLayer({
@@ -289,7 +318,7 @@ export default function IssopayMap() {
       updateTriggers: { getFillColor: focusedLayer, visible: visible.wells },
     });
 
-    return [...geoLayers, wellLayer];
+    return [basemapLayer, ...geoLayers, wellLayer];
   }, [visible, focusedLayer]);
 
   function toggleLayer(lv) {
@@ -405,6 +434,46 @@ export default function IssopayMap() {
             />
             <span onClick={() => toggleLayer('wells')} style={{ lineHeight: 1 }}>
               Oil wells
+            </span>
+          </label>
+        </div>
+
+        {/* ── Surface map (basemap) toggle ─────────────────────────── */}
+        <div style={{
+          marginTop: '10px',
+          paddingTop: '10px',
+          borderTop: '1px solid rgba(255,255,255,0.08)',
+        }}>
+          <div style={{
+            opacity: 0.5,
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em',
+            fontSize: '10px',
+            marginBottom: '8px',
+          }}>Surface</div>
+          <label style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '9px',
+            cursor: 'pointer',
+            opacity: visible.basemap ? 1 : 0.35,
+            transition: 'opacity 0.2s',
+          }}>
+            <span
+              onClick={() => toggleLayer('basemap')}
+              style={{
+                width: '14px',
+                height: '14px',
+                borderRadius: '3px',
+                border: '2px solid #6baed6',
+                background: visible.basemap ? '#6baed6' : 'transparent',
+                display: 'inline-block',
+                flexShrink: 0,
+                transition: 'background 0.15s',
+              }}
+            />
+            <span onClick={() => toggleLayer('basemap')} style={{ lineHeight: 1 }}>
+              Satellite
             </span>
           </label>
         </div>
