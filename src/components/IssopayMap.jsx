@@ -1,8 +1,9 @@
 import { useState, useMemo } from 'react';
 import DeckGL from '@deck.gl/react';
-import { GeoJsonLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, ColumnLayer } from '@deck.gl/layers';
 import { MapView, FlyToInterpolator } from '@deck.gl/core';
 import issopayData from '../data/geojson/Issopay.geojson';
+import pozziData from '../data/geojson/pozzi.geojson';
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -44,6 +45,28 @@ const INITIAL_VIEW_STATE = {
   bearing: -20,
   minPitch: 0,
   maxPitch: 85,
+};
+
+// ─── Well constants ─────────────────────────────────────────────────────────
+
+// Which geological layer each well penetrates down to (keyed by feature id).
+// Deeper = smaller LIVELLO_Z value (E=0 is deepest, A=20000 is shallowest).
+const WELL_DEPTH = {
+  9:  'E',
+  5:  'D', 1:  'D', 14: 'D', 4:  'D', 6:  'D',  // id 6 = label "6bis"
+  8:  'C', 7:  'C',
+  13: 'B',
+  12: 'A', 10: 'A',
+};
+const WELL_DEPTH_DEFAULT = 'A'; // fallback for unassigned wells
+
+// Fill colour by operational status
+const WELL_STATUS_COLOR = {
+  'produttivo':      [255, 200, 75],
+  'sterile':         [130, 130, 130],
+  'in perforazione': [80,  185, 255],
+  'in programma':    [145, 205, 145],
+  'incidentato':     [255,  80,  80],
 };
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -89,37 +112,63 @@ const featuresByLivello = LIVELLI.reduce((acc, lv) => {
 
 // ─── Tooltip ─────────────────────────────────────────────────────────────────
 
+const TOOLTIP_STYLE = {
+  background: 'rgba(10,10,10,0.92)',
+  color: '#f0ece6',
+  borderRadius: '6px',
+  padding: '10px 14px',
+  border: '1px solid rgba(255,255,255,0.08)',
+  maxWidth: '200px',
+  backdropFilter: 'blur(8px)',
+  pointerEvents: 'none',
+};
+
 function getTooltip({ object }) {
   if (!object) return null;
-  const { Livello, Thickness } = object.properties;
+  const p = object.properties;
+
+  // Geological layer feature
+  if (p.Livello !== undefined) {
+    return {
+      html: `
+        <div style="font-family:monospace;font-size:13px;line-height:1.6">
+          <span style="opacity:.6;text-transform:uppercase;letter-spacing:.08em;font-size:11px">Geological layer</span><br/>
+          <strong style="font-size:15px">Livello ${p.Livello}</strong><br/>
+          <span style="opacity:.6;font-size:11px">Net pay</span><br/>
+          <strong>${p.Thickness} m</strong>
+        </div>`,
+      style: TOOLTIP_STYLE,
+    };
+  }
+
+  // Well feature
+  const depth = WELL_DEPTH[p.id];
+  const statusLabel = p.status.charAt(0).toUpperCase() + p.status.slice(1);
   return {
     html: `
       <div style="font-family:monospace;font-size:13px;line-height:1.6">
-        <span style="opacity:.6;text-transform:uppercase;letter-spacing:.08em;font-size:11px">Geological layer</span><br/>
-        <strong style="font-size:15px">Livello ${Livello}</strong><br/>
-        <span style="opacity:.6;font-size:11px">Net pay</span><br/>
-        <strong>${Thickness} m</strong>
-      </div>
-    `,
-    style: {
-      background: 'rgba(10,10,10,0.92)',
-      color: '#f0ece6',
-      borderRadius: '6px',
-      padding: '10px 14px',
-      border: '1px solid rgba(255,255,255,0.08)',
-      maxWidth: '180px',
-      backdropFilter: 'blur(8px)',
-      pointerEvents: 'none',
-    },
+        <span style="opacity:.6;text-transform:uppercase;letter-spacing:.08em;font-size:11px">Oil well</span><br/>
+        <strong style="font-size:15px">Well ${p.label}</strong><br/>
+        <span style="opacity:.6;font-size:11px">Status</span><br/>
+        <strong>${statusLabel}</strong>
+        ${p.Spessore_m != null
+          ? `<br/><span style="opacity:.6;font-size:11px">Net pay</span><br/><strong>${p.Spessore_m} m</strong>`
+          : ''}
+        ${depth
+          ? `<br/><span style="opacity:.6;font-size:11px">Penetrates to</span><br/><strong>Livello ${depth}</strong>`
+          : ''}
+      </div>`,
+    style: TOOLTIP_STYLE,
   };
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function IssopayMap() {
-  const [visible, setVisible] = useState(
-    LIVELLI.reduce((acc, lv) => ({ ...acc, [lv]: true }), {})
-  );
+  const [visible, setVisible] = useState({
+    ...LIVELLI.reduce((acc, lv) => ({ ...acc, [lv]: true }), {}),
+    wells: true,
+  });
   const [panelOpen, setPanelOpen] = useState(false);
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [focusedLayer, setFocusedLayer] = useState(null);
@@ -143,8 +192,11 @@ export default function IssopayMap() {
     flyTo(INITIAL_VIEW_STATE);
   }
 
-  const layers = useMemo(() =>
-    LIVELLI.map(lv =>
+  const layers = useMemo(() => {
+    const SLAB_TOP = LIVELLO_Z['A'] + 1500; // top of the uppermost slab
+    const MAX_SPESSORE = 55; // cap for radius scaling
+
+    const geoLayers = LIVELLI.map(lv =>
       new GeoJsonLayer({
         id: `livello-${lv}`,
         data: featuresByLivello[lv],
@@ -167,9 +219,45 @@ export default function IssopayMap() {
         visible: visible[lv] && !(focusedLayer !== null && LIVELLO_Z[lv] > LIVELLO_Z[focusedLayer]),
         updateTriggers: { visible: visible[lv], focusedLayer },
       })
-    ),
-    [visible, focusedLayer]
-  );
+    );
+
+    const wellLayer = new ColumnLayer({
+      id: 'wells',
+      data: pozziData.features,
+      visible: visible.wells,
+      diskResolution: 32,
+      radius: 100, // metres; ColumnLayer has no per-instance getRadius
+      // Cylinder base sits at the bottom of the target Livello; it extrudes
+      // upward to the top of Livello A — punching through the whole stack.
+      getPosition: d => {
+        const depth = LIVELLO_Z[WELL_DEPTH[d.properties.id] ?? WELL_DEPTH_DEFAULT];
+        return [d.geometry.coordinates[0], d.geometry.coordinates[1], depth];
+      },
+      getElevation: d => {
+        const depth = LIVELLO_Z[WELL_DEPTH[d.properties.id] ?? WELL_DEPTH_DEFAULT];
+        return SLAB_TOP - depth;
+      },
+      // Spessore_m encodes into alpha: higher net pay → more opaque cylinder.
+      getFillColor: d => {
+        const base = WELL_STATUS_COLOR[d.properties.status] ?? [150, 150, 150];
+        const wellDepthZ = LIVELLO_Z[WELL_DEPTH[d.properties.id] ?? WELL_DEPTH_DEFAULT];
+        // Dim wells that don't reach the currently-focused layer
+        const dimmed = focusedLayer !== null && wellDepthZ > LIVELLO_Z[focusedLayer];
+        const s = d.properties.Spessore_m;
+        // productive wells: alpha scales 140–255 with net pay; others fixed at 180
+        const alpha = dimmed ? 40 : (s != null ? Math.round(140 + (Math.min(s, 55) / 55) * 115) : 180);
+        return [...base, alpha];
+      },
+      getLineColor: [255, 255, 255, 50],
+      stroked: true,
+      lineWidthUnits: 'pixels',
+      lineWidthMinPixels: 1,
+      pickable: true,
+      updateTriggers: { getFillColor: focusedLayer, visible: visible.wells },
+    });
+
+    return [...geoLayers, wellLayer];
+  }, [visible, focusedLayer]);
 
   function toggleLayer(lv) {
     setVisible(prev => ({ ...prev, [lv]: !prev[lv] }));
@@ -247,6 +335,46 @@ export default function IssopayMap() {
             </span>
           </label>
         ))}
+
+        {/* ── Wells toggle ──────────────────────────────────────────────── */}
+        <div style={{
+          marginTop: '10px',
+          paddingTop: '10px',
+          borderTop: '1px solid rgba(255,255,255,0.08)',
+        }}>
+          <div style={{
+            opacity: 0.5,
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em',
+            fontSize: '10px',
+            marginBottom: '8px',
+          }}>Wells</div>
+          <label style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '9px',
+            cursor: 'pointer',
+            opacity: visible.wells ? 1 : 0.35,
+            transition: 'opacity 0.2s',
+          }}>
+            <span
+              onClick={() => toggleLayer('wells')}
+              style={{
+                width: '14px',
+                height: '14px',
+                borderRadius: '3px',
+                border: '2px solid #ffc84b',
+                background: visible.wells ? '#ffc84b' : 'transparent',
+                display: 'inline-block',
+                flexShrink: 0,
+                transition: 'background 0.15s',
+              }}
+            />
+            <span onClick={() => toggleLayer('wells')} style={{ lineHeight: 1 }}>
+              Oil wells
+            </span>
+          </label>
+        </div>
 
         <div style={{
           marginTop: '12px',
