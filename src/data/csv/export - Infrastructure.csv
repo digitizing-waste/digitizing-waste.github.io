@@ -1,0 +1,95 @@
+﻿id,Name,Notes,infrastructure_type,status,linked_location,linked_entities,linked_licenses,Discursive_Oil,Related_Events,Actions_Timeline,Ecosystem,URL,File,Images,Product
+30,Beni Mansour - Algiers,"Length: 145 km
+Diameter: 20 in",oil pipeline,active,"Algers,Beni Mansour",SONATRACH,,,,Beni Mansour - Algiers Operating,,https://www.gem.wiki/Beni_Mansour-Algiers_Oil_Pipeline#Background,,,
+3,El Borma,,oil field,production,El Borma,"SAIPEM,Sahara Comfort,STEG,Kilani Construction Firm","El Borma,El Borma 1960",,,"Ubication Well El Borma 1,Exploration well n.7 El Borma,Dispute El Borma SITEP/SEREPT,First cargo of Tunisian crude exported to Genoa","Water resource overexploitation for industry,Toxic sludge lake formation,Gas flaring — CO₂ and toxic emissions,Socio-environmental protest and resource extraction conflict",,,"Valutazione delle riserve al 31-3-1966,Campo di El Borma: Sezione Geologica nel Pool Petrolifero",
+4,Gabes - Refinery,,refinery,,,,,Corrispondenze sul viaggio di Bourguiba a Salsomaggiore,,,,,,,
+5,El Borma-Skhira - Pipeline,,oil pipeline,,"El Borma,Skhira",,,,,,Socio-environmental protest and resource extraction conflict,,,,
+6,Gela - Refinery,,refinery,,Gela,,,,,,,,,,
+7,Skhira - Refinery,,refinery,,Skhira,,,,,,,,,,
+8,Bizerte - Refinery,,refinery,,Bizerte,,,,,"First round negotiations refinery with ENI,Second round negotiations after American competition,Building Bizerte refinery,Bizerte refinery inauguration",Bizerte Lake Pollution,,,,
+9,Zarzaitine,not info yet. probably discovered in 1958,oil field,,Zarzaitine,,,,,,,,,,
+10,Edjeleh-Gabes,See https://journals.openedition.org/anneemaghreb/3647?hcb=1&lang=en&utm_source=chatgpt.com,oil pipeline,,"Gabes,Edjeleh",,,,,,,,,,
+11,Hassi Messaoud - field,,oil field,active,Hassi Messaoud,"SONATRACH,CFPA,SN REPAL",,,,"Deposits discovered in Haoudh El Hamra,Discovery in Hassi Messaoud,Hassi Messaoud Nationalized",,,,,
+12,Hassi R'Mel,,natural gas deposit,,Hassi R'Mel,"SAEP,S.N. REPAL,CFPA,SOTHRA",,,,"Hassi R'Mel discovery of natural gas deposit,Hassi R'Mel start of production",,,,,
+14,Oasis Military Experiments Centre,,nuclear center,,In Ekker,,,,,,,,,,
+15,AGIP Motel & Station,"Originally, the hotel was planned as a waystation on the route to El Borma",distribution point,,Médenine,"Agip Tunis,AGIP,Sahara Comfort",,,,,,,,,
+16,Methane pipeline,,oil pipeline,,"Gela,Gagliano",,,,,,,,,,
+17,Braemi 1 well,,oil well,,,SI.LI.PE,Sicilia,,,Well Braemi 1 sterile and abandoned,,,,,
+18,Djebel Douleb,30% SEREPT 70% ETAP,oil field,,Djebel Douleb,"ETAP,SEREPT",Tunisie Centre Nord 1965,,,"Exploration DST - Douleb,Production DST - Douleb,Extension DST - Douleb",,,,,
+19,Djebel Semmama,,oil field,,Djebel Semmama,"ETAP,SEREPT",Tunisie Centre Nord 1965,,,"Exploration DST - Semmama,Production DST - Semmama",,,,,
+20,Djbel Tamesmida,,oil field,,Djebel Tamesmida,"ETAP,SEREPT",Tunisie Centre Nord 1965,,,"Exploration DST - Tamesmida,Production DST - Tamesmida,Extension DST - Tamesmima",,,,,
+21,Sidi Litaiem - Skhirra Pipeline,,oil pipeline,,"Skhira,Sidi Litaiem",,Sfax-Kerkennah 1972,,,,,,,,
+22,Sidi Litaiem,,oil field,,Sidi Litaiem,CFTP,Sfax-Kerkennah 1972,,,"Production - Sidi Litaiem,Sidi Baharat & Litaiem Illicit Extension of permit",,,,,
+23,Sidi Baharat,The field is in a development stage since 1975 and production has not started to date. Also illicit extension,oil field,Development,Sidi Baharat,CFTP,Sfax-Kerkennah 1972,,,"Sidi Baharat - Exploration Started,Sidi Baharat & Litaiem Illicit Extension of permit",,,,,
+24,Arzew Gas liquefaction plant,,gas liquefaction plant,,Arzew,,,,,Gas Liquedation Plant in Arzew began operating,,,,,
+25,Hassi R'Mel gas pipeline (1),,oil pipeline,active,"Hassi R'Mel,Arzew",SOTHRA,,,,Hassi R'Mel - Arzew Transportation began in 1961,,,,,
+26,Hassi R'Mel gas pipeline (2),,oil pipeline,,"Hassi R'Mel,Skikda",SOTHRA,,,,,,,,,
+27,Hassi Messaoud - Ohanet oil pipeline,,oil pipeline,,"Hassi Messaoud,Ohanet",,,,,Construction pipeline Hassi Messaoud - Ohanet,,,,,
+28,Skikda Gas liquefaction plant,,gas liquefaction plant,active,Skikda,SONELGAZ,,,,,,,,,
+29,Pumping Station- Haoudh el Hamra,,pumping station,,Haoudh el Hamra,,,,,,,,,,
+31,Trans-Mediterranean Gas Pipeline,,gas pipeline,,,,,,,"Transmed G02 Operating,Transmed G03 Operating,Transmed (4) operating,Transmed (5) operating,Transmed (6) operating",,,,,
+33,TransMed (1) G01,"{""Current capacity"": ""32 billion cubic meters per year""
+""Length"": ""548km""
+""Diameter"": ""48 inches""}",gas pipeline,active,"Hassi R'Mel,Oued Saf Saf,Ain Naga","SONATRACH,Transmed S.p.A.,ENI,Sotugat",,,,TransMed G01 Operating,,https://www.gem.wiki/Trans-Mediterranean_Gas_Pipeline#Pipeline_1%22_Hassi_R'Mel-Oued_Saf_Saf_%22GO1%22,,,
+36,TransMed (2) G02,"Current capacity: 32.7
+ billion cubic meters per year
+Length: 548km
+Diameter: 48 inches",gas pipeline,active,"Hassi R'Mel,Oued Saf Saf,Ain Naga","SONATRACH,Transmed S.p.A.,ENI,Sotugat",,,,Transmed G02 Operating,,https://www.gem.wiki/Trans-Mediterranean_Gas_Pipeline#Pipeline_1%22_Hassi_R'Mel-Oued_Saf_Saf_%22GO1%22,,,
+37,TransMed (3) G03,"Current capacity: 32.7
+ billion cubic meters per year
+Length: 548km
+Diameter: 48 inches",gas pipeline,active,"Hassi R'Mel,Oued Saf Saf,Ain Naga","SONATRACH,Transmed S.p.A.,ENI,Sotugat",,,,Transmed G03 Operating,,https://www.gem.wiki/Trans-Mediterranean_Gas_Pipeline#Pipeline_1%22_Hassi_R'Mel-Oued_Saf_Saf_%22GO1%22,,,
+38,TransMed (4),"Current capacity: 32.7 billion cubic meters per year
+Length: 370 km",gas pipeline,active,"Feriana,Oued Saf Saf,El Haouaria,Sbeitla,Korba","SONATRACH,Transmed S.p.A.,ENI,Sotugat",,,,Transmed (4) operating,,https://www.colmaritalia.it/project/trans-mediterranean-pipeline-tmpc/,Screenshot 2025-11-04 at 10.31.07PM.png (http://localhost/media/user_files/pm4B2eBFEUw21Sn0pXvqDR4Sglz6aDQZ_9e7675523eb402791e5140ccb29335a4f4b7e373e65f970c6e615828fa6e67b3.png),,
+39,TransMed (5),"Current capacity: 32.7 billion cubic meters per year
+Length: 155 km
+Diameter: 20 Inches",gas pipeline,active,"Cap Bon,Mazzara del Vallo","Transmed S.p.A.,ENI",,,,Transmed (5) operating,,,,,
+40,TransMed (6),"Current capacity: 32.7 billion cubic meters per year
+Length: 355 km
+Diameter: 20 Inches",gas pipeline,active,"Mazzara del Vallo,Minerbio","Transmed S.p.A.,ENI",,,,Transmed (6) operating,,,,,
+41,Haoud El Hamra - Béjaïa,Lenght 688 km,oil pipeline,active,"Haoudh el Hamra,Bejaia,M'Sila",SONATRACH,,,,Haoud El Hamra - Bejàïa Beginning,,,,,
+42,In Amenas - Skhirra,,oil pipeline,active,"Skhira,In Amenas","ETAP,SONATRACH",,,Crisis of the pipeline Bourguiba/FLN,In Amenas - Skhira Pipeline,,,,,
+43,Arzew - Haoud El Hamra (OZ1),,oil pipeline,active,"Hassi Messaoud,Hassi R'Mel,Ourgla,Arzew,Tiaret",SONATRACH,,,,Haoudh El Hamra-Arzew Oil Pipeline I (OZ1) Construction,,https://www.gem.wiki/Haoudh_El_Hamra-Arzew_Oil_Pipeline,,,
+44,Arzew - Haoud El Hamra (OZ2),,oil pipeline,active,"Hassi Messaoud,Hassi R'Mel,Ourgla,Arzew,Tiaret",SONATRACH,,,,Haoudh El Hamra-Arzew Oil Pipeline (OZ2) Construction,,https://www.gem.wiki/Haoudh_El_Hamra-Arzew_Oil_Pipeline,,,
+45,Skikda - Haoud El Hamra,,oil pipeline,active,"Haoudh el Hamra,Skikda",SONATRACH,,,,Skikda-Haoud El Hamra Construction,,https://www.gem.wiki/Haoudh_El_Hamra-Skikda_Oil_Pipeline,,,
+47,Mesdar - Haoud El Hamra,,oil pipeline,active,"Haoudh el Hamra,Mesdar",SONATRACH,,,,Haoud El Hamra - Mesdar Pipeline Construction,,https://www.gem.wiki/Mesdar-Haoudh_el_Hamra_Oil_Pipeline,,,
+48,Mesdar - El Borma,El Borma Algeria part. To check,oil pipeline,active,"El Borma,Mesdar",SONATRACH,,,,Mesdar - El Borma Pipeline Construction,,https://www.gem.wiki/El_Borma-Mesdar_Oil_Pipeline,,,
+49,In Amenas - Haoud El Hamra,,oil pipeline,active,"In Amenas,Haoudh el Hamra",SONATRACH,,,,In Amenas - Haoud El Hamra Pipeline Construction,,https://www.gem.wiki/In_Amenas-Haoudh_el_Hamra_Oil_Pipeline,,,
+50,Centro Olio Val D'Agri,,refinery,,Viaggiano,,,,,,Val D'Agri Illicit Waste,,,,
+51,Djebel Grouz,,oil field,production,Djebel grouz,"ETAP,ENI Tunisia BV",'Bir Aouine 1978,,,Establishment Date - Djebel Grouz,,,,,
+52,Sanhar oil field,,oil field,production,"Tataouine,Sanhar",Winstar,'Bir Aouine 1978,,,Sanhar - Date of establishment,,,NEXUS-NWSAS Report Part B_EN_3.pdf (http://localhost/media/user_files/nzzPKMlC8zYb6WKHvR6K06jPVpjXMoNf_f15915ef36f386d7b1925eb0b45c4b6bd74277b24e2209afa070cd7b867a551f.pdf),,
+53,Makhrouga,,oil field,production,Makhrouga,"SODEPS,ETAP,ENI Tunisia BV",Permis du Sud 1960,,,"Discovery Makhrouga,Beginning of production - Makhrouga",,,,,
+54,Debbech,,oil field,production,,"SITEP,SODEPS,ENI Tunisia BV",Permis du Sud 1960,,,"Debbech Discovert,Production - Debbech",,,,,
+55,Laarich,,oil field,production,Tataouine,"SODEPS,ETAP,ENI Tunisia BV",Permis du Sud 1960,,,"Laarich Discovery,Laarich Production",,,,,
+56,Adam,ENI TUNISIA 25%  & Operator ; ETAP 50% OMV 20% MEDCO 5%,oil field,production,,"ETAP,ENI Tunisia BV,OMV,MedcoEnergi",Borj El Khadra,,,,,,,,
+57,Oued Zar,,oil & gas field,production,"Tataouine,Oued Zar","ETAP,ENI Tunisia BV",Permis du Sud 1960,,,"Discovery Oued Zar,Start of Production - Oued Zar,Oued Zar Extension",,,,,
+58,Cherouq,OMV (Tunesien) Production GmbH:  50% ETAP :50 %,oil field,,Tataouine,"ETAP,OMV",,,,"Cherouq Establishment,Cherouq Extension",Biodiversity loss — protected area overlap,,,,
+59,Jinane,,oil field,Development,Tataouine,"ETAP,OMV",Jenein Nord 1996,,,Jinane Establishment,Mercury contamination risk,,,,
+60,Chouech Essaida,Winstar acquired by Serinuns in 2013,oil field,production,"Tataouine,Choech Essaid",Winstar,Permis du Sud 1972,,,"Chouech Essaida Production under ENI,Chouech Es Saida took over by Athanor",,,,,
+61,Abir,eni Tunisia bv: 25 % OMV(Tunesien)  Production GmbH:20% ATOG Sahara Limited  :5% ETAP : 50%,oil field,production,Tataouine,"ETAP,ENI Tunisia BV,OMV,ATOG Sahara Limited",Borj El Khadra,,,Abir & Bochra Establishment,,,,,
+62,Bochra,,oil field,,Tataouine,"ETAP,ENI Tunisia BV,OMV,ATOG Sahara Limited",Borj El Khadra,,,Abir & Bochra Establishment,,,,,
+63,Nawara,,gas field,Development,Tataouine,,Jenein Sud 2004,,,"Nawara Discovery,Nawara Establishment,Nawara gas and condensate field was discovered",,,,,
+64,Benefsej Sud,,gas field,Development,Tataouine,"ETAP,OMV",Jenein Sud 2004,,,Establishment Banafsej Sud,,,,,
+65,Aziza,,gas field,Development,Tataouine,"ETAP,OMV",Jenein Sud 2004,,,Aziza Establishment,,,,,
+66,Shalbia,,gas field,Development,Tataouine,"ETAP,OMV",Jenein Sud 2004,,,Shalbia Establishment,,,,,
+67,Sabeh,No info on this,gas field,,Tataouine,ETAP,,,,,,,,,
+68,South Tunisia Gas Project Pipeline,"Capacity: 600000 cubic meters/day[3]
+Length: 94 km[3]
+Diameter: 12 in[3]",gas pipeline,construction,"Gabes,Nawara","ETAP,OMV",Jenein Nord 1996,,,Nawara gas and condensate field was discovered,,https://www.gem.wiki/South_Tunisia_Gas_Project_Pipeline,,,
+72,El Borma-Gabès,"Current capacity: 28.8 million cubic feet per day[1]
+Length: 294 kilometers
+Status: Operating
+Start Year: 1972",gas pipeline,active,"El Borma,Gabes",STEG,El Borma 1960,,,Gas Pipeline El Borma-Gabès Start Year,,https://www.gem.wiki/El_Borma-Gabes_Gas_Pipeline,multi-page.pdf (http://localhost/media/user_files/aQcFeWaLc77ikgS8M3nOtDAcM3To81VI_a697bc7a68976a4488423624bc0d9203dae1019e404885ee79789d3e80e890c8.pdf),,
+73,,,,,,,,,,,,,,,
+74,Oued Zar - El Borma,13km of 8'' pipeline,gas pipeline,active,"El Borma,Oued Zar","ENI,Bouchamaoui Industries","Permis du Sud 1960,El Borma 1960",,,Gas Pipeline Oued Zar - El Borma,,https://bouchamaoui.net/wp-content/uploads/2021/02/BI-Presentation-Eng-.pdf,,,
+75,Makhrouga - Debbech - El Borma,"Capacity:
+Length: 95 km[1]
+Diameter: 6 in[2][1]
+Status: Operating[2]
+Start year: 1983[1]",oil pipeline,active,"El Borma,Makhrouga","SODEPS,ETAP,ENI","Permis du Sud 1960,El Borma 1960",,,Makhrouga - El Borma Pipeline Start Year,,https://www.gem.wiki/Makhrouga-Debbech_Oil_Pipeline,,,
+76,Makhrouga - El Borma,,gas pipeline,,"El Borma,Makhrouga",,,,,,,,,,
+77,In Amenas - El Borma - La Skhirra,"120-kilometer, 14-inch connection",oil pipeline,active,"El Borma,Skhira","SITEP,TRAPSA",El Borma,,,Agreement signed with TRAPSA,,,,,
+78,Chouch Saida - El Borma,treated oil,oil pipeline,active,"El Borma,Choech Essaid","ENI,Serinus BV","El Borma,Permis du Sud 1972",,,,,,,,
+79,,,,,,,,,,,,,,,
+80,Nawara Central Processing Facility (CPF),,gas treatment plant,,Nawara,,,,,Nawara gas and condensate field was discovered,"Gas flaring — CO₂ and toxic emissions,Mercury contamination risk",,,,
+81,Gas Treatment Plant - Gabes,,gas treatment plant,,Gabes,,,,,,Gas flaring — CO₂ and toxic emissions,,,,

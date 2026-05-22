@@ -1,0 +1,26 @@
+{
+"type": "FeatureCollection",
+"name": "pozzi",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 13, "label": "13", "status": "produttivo", "zona": "B", "Spessore_m": 13.6 }, "geometry": { "type": "Point", "coordinates": [ 9.202652659226702, 31.69355353341588 ] } },
+{ "type": "Feature", "properties": { "id": 5, "label": "5", "status": "produttivo", "zona": "B", "Spessore_m": 41.0 }, "geometry": { "type": "Point", "coordinates": [ 9.203087394684516, 31.686631020820275 ] } },
+{ "type": "Feature", "properties": { "id": 1, "label": "1", "status": "produttivo", "zona": "A", "Spessore_m": 51.7 }, "geometry": { "type": "Point", "coordinates": [ 9.208630996109129, 31.683193987937013 ] } },
+{ "type": "Feature", "properties": { "id": 9, "label": "9", "status": "produttivo", "zona": "B", "Spessore_m": 53.7 }, "geometry": { "type": "Point", "coordinates": [ 9.209296228280081, 31.675765562028033 ] } },
+{ "type": "Feature", "properties": { "id": 2, "label": "2", "status": "produttivo", "zona": "A", "Spessore_m": 24.0 }, "geometry": { "type": "Point", "coordinates": [ 9.218942094758908, 31.678869978825816 ] } },
+{ "type": "Feature", "properties": { "id": 11, "label": "11", "status": "produttivo", "zona": "A", "Spessore_m": 25.9 }, "geometry": { "type": "Point", "coordinates": [ 9.2204943031578, 31.672882889287234 ] } },
+{ "type": "Feature", "properties": { "id": 14, "label": "14", "status": "produttivo", "zona": "A", "Spessore_m": 48.6 }, "geometry": { "type": "Point", "coordinates": [ 9.215283317818663, 31.672439401173264 ] } },
+{ "type": "Feature", "properties": { "id": 8, "label": "8", "status": "produttivo", "zona": "A", "Spessore_m": 36.5 }, "geometry": { "type": "Point", "coordinates": [ 9.222822615756138, 31.66578707946373 ] } },
+{ "type": "Feature", "properties": { "id": 6, "label": "6bis", "status": "produttivo", "zona": "B", "Spessore_m": 48.2 }, "geometry": { "type": "Point", "coordinates": [ 9.211957156963896, 31.663237022808406 ] } },
+{ "type": "Feature", "properties": { "id": 4, "label": "4", "status": "produttivo", "zona": "B", "Spessore_m": 33.5 }, "geometry": { "type": "Point", "coordinates": [ 9.205083091197377, 31.668780624233019 ] } },
+{ "type": "Feature", "properties": { "id": 7, "label": "7", "status": "produttivo", "zona": "A", "Spessore_m": 26.0 }, "geometry": { "type": "Point", "coordinates": [ 9.221603023442722, 31.648601915047429 ] } },
+{ "type": "Feature", "properties": { "id": 12, "label": "12", "status": "produttivo", "zona": "A", "Spessore_m": 6.9 }, "geometry": { "type": "Point", "coordinates": [ 9.228809705294719, 31.636405991913279 ] } },
+{ "type": "Feature", "properties": { "id": 10, "label": "10", "status": "produttivo", "zona": "A", "Spessore_m": 9.3 }, "geometry": { "type": "Point", "coordinates": [ 9.253644537694335, 31.629270184122312 ] } },
+{ "type": "Feature", "properties": { "id": 3, "label": "3", "status": "sterile", "zona": null, "Spessore_m": null }, "geometry": { "type": "Point", "coordinates": [ 9.222157383585184, 31.694946422957194 ] } },
+{ "type": "Feature", "properties": { "id": 16, "label": "16", "status": "in perforazione", "zona": "A", "Spessore_m": null }, "geometry": { "type": "Point", "coordinates": [ 9.239564292058468, 31.637403840169718 ] } },
+{ "type": "Feature", "properties": { "id": 19, "label": "6", "status": "incidentato", "zona": "B", "Spessore_m": null }, "geometry": { "type": "Point", "coordinates": [ 9.211624540878418, 31.65835865355476 ] } },
+{ "type": "Feature", "properties": { "id": 17, "label": "H-16", "status": "in programma", "zona": "A", "Spessore_m": null }, "geometry": { "type": "Point", "coordinates": [ 9.217279014331524, 31.658247781526267 ] } },
+{ "type": "Feature", "properties": { "id": 18, "label": "L-18", "status": "in programma", "zona": "A", "Spessore_m": null }, "geometry": { "type": "Point", "coordinates": [ 9.223115191229017, 31.65483066913621 ] } },
+{ "type": "Feature", "properties": { "id": 15, "label": "15", "status": "in perforazione", "zona": "A", "Spessore_m": null }, "geometry": { "type": "Point", "coordinates": [ 9.225927032553921, 31.643834417822273 ] } }
+]
+}

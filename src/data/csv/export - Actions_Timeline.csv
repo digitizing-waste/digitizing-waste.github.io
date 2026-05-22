@@ -1,0 +1,78 @@
+﻿id,Name,Notes,start_date,end_date,product,linked_people,linked_infrastructures,linked_entities,linked_transactions,linked_ecosystem,linked_sources
+3,Ubication Well El Borma 1,,1963-12-01,,crude oil,"Egidi,Girotti",El Borma,,,,
+4,Exploration well n.7 El Borma,,,,,,El Borma,,,,
+5,First concession granted in Algeria,,1952-10-16,,NOT GOOD,,,,,,Oil and Regional Development; Examples from Algeria and Tunisia
+6,Bir Aouine,,,,NOT GOOD,,,,,,Oil and Regional Development; Examples from Algeria and Tunisia
+7,First drilling in Edjéléh,,1956-01-01,,crude oil,,,,,"""Strikes in Zarzaitine, Askaréne, Tin Fouyé, Tiguentiyrune and Ohanet""",Oil and Regional Development; Examples from Algeria and Tunisia
+8,Deposits discovered in Haoudh El Hamra,,,,crude oil,,Hassi Messaoud - field,,,,Oil and Regional Development; Examples from Algeria and Tunisia
+9,Hassi R'Mel discovery of natural gas deposit,,1956-12-01,,natural gas,,Hassi R'Mel,,,,Oil and Regional Development; Examples from Algeria and Tunisia
+10,Hassi R'Mel start of production,,1961-01-01,2025-06-19,natural gas,,Hassi R'Mel,,,,Oil and Regional Development; Examples from Algeria and Tunisia
+11,Tin Fouyé‑Tabankort Concession,,,,"crude oil,natural gas",,,,,,
+12,Dispute El Borma SITEP/SEREPT,,1961-03-08,1962-01-11,crude oil,,El Borma,,,,"Lettera ENI con dettagli legali su permesso El Borma,Corrispondenze Mattei e politici sulla situazione permesso El Borma bloccato,Telespresso 10377 su rinvio concessioni El Borma,Telespresso n.48 su permesso El Borma tra SITEP e SEREPT da risolvere dopo Evian"
+13,Well Braemi 1 sterile and abandoned,,1961-02-03,1961-02-03,natural gas,,Braemi 1 well,,,,Pozzo Braemi 1 permesso Mazzarino  - Compagnia Siciliana Petroli + Racalmuto
+14,CO.SI.P. renounces to Racalmuto,,1961-02-03,1961-02-03,natural gas,,,,,,Pozzo Braemi 1 permesso Mazzarino  - Compagnia Siciliana Petroli + Racalmuto
+15,Exploration DST - Douleb,,1964-06-05,1968-12-03,crude oil,,Djebel Douleb,"ETAP,SEREPT",Decree n.51 for Douleb,,Secrets of Hydrocarbon Contracts in Tunisia
+16,Exploration DST - Semmama,,1964-06-05,1976-01-20,crude oil,,Djebel Semmama,"ETAP,SEREPT",,,
+17,Exploration DST - Tamesmida,,1964-06-05,1970-01-20,crude oil,,Djbel Tamesmida,"ETAP,SEREPT",Decree n.3 for Tamesmida,,Secrets of Hydrocarbon Contracts in Tunisia
+18,Production DST - Douleb,,1968-12-03,2018-12-02,crude oil,,Djebel Douleb,"ETAP,SEREPT",Decree n.51 for Douleb,,Secrets of Hydrocarbon Contracts in Tunisia
+19,Production DST - Semmama,,1976-03-02,2026-03-01,crude oil,,Djebel Semmama,"ETAP,SEREPT",,,Secrets of Hydrocarbon Contracts in Tunisia
+20,Production DST - Tamesmida,,1970-01-20,2020-01-19,crude oil,,Djbel Tamesmida,"ETAP,SEREPT",Decree n.3 for Tamesmida,,Secrets of Hydrocarbon Contracts in Tunisia
+21,Extension DST - Douleb,,2022-07-27,2034-12-31,crude oil,,Djebel Douleb,"ETAP,SEREPT",Djbel Douleb Décret-loi 2022-42 du 17 juin 2022,,Concessions d'exploitation d'hydrocarbures en Tunisie à fin 2022. Nombre de concessions: 56
+22,Extension DST - Tamesmima,,2022-07-27,2033-12-31,crude oil,,Djbel Tamesmida,"ETAP,SEREPT",Djbel Tamesmida Décret-loi 2022-40 du 17/06/2022,,Concessions d'exploitation d'hydrocarbures en Tunisie à fin 2022. Nombre de concessions: 56
+23,Production - Sidi Litaiem,,1972-01-01,2023-12-31,crude oil,,Sidi Litaiem,CFTP,Sidi Litaiem JORT Decree n.35,,Secrets of Hydrocarbon Contracts in Tunisia
+24,Sidi Baharat - Exploration Started,,1976-01-01,2025-12-31,crude oil,,Sidi Baharat,CFTP,Sidi Bahara JORT Decree n.35,,Secrets of Hydrocarbon Contracts in Tunisia
+25,Sidi Baharat & Litaiem Illicit Extension of permit,,2014-12-31,2041-12-31,crude oil,,"Sidi Litaiem,Sidi Baharat",CFTP,Decree 4581-2014 for illicit extension Sidi Bahara & Litaiem,,Secrets of Hydrocarbon Contracts in Tunisia
+26,Completion pipeline Haoudh el Hamra-Bejaia,,,,,,,,,,
+27,First round negotiations refinery with ENI,,1959-10-01,1960-03-31,"benzina,petrolio,gasolio,olio combustibile,GPL",Jacoboni,Bizerte - Refinery,"ANIC,Tunisian Government,AGIP,Nuovo Pignone",Convention between Tunisian Government and Agip on building a refinery in Tunisia,,"Jacoboni_Studio tecnico sulla construzione di una raffineria,Jacoboni_XI Studio tecnico sulla construzione di una raffineria,Discussioni su accordo tripartito"
+28,Second round negotiations after American competition,,1960-06-25,1961-11-01,"benzina,petrolio,gasolio,olio combustibile,GPL",Gavotti,Bizerte - Refinery,"STIR,ANIC,Tunisian Government,Nuovo Pignone",Establishment of STIR,,Lettera segreta da Mattei a Bourguiba
+29,Building Bizerte refinery,,1961-11-01,1963-12-20,"benzina,petrolio,gasolio,olio combustibile,GPL",,Bizerte - Refinery,"SNAM,Nuovo Pignone,Società Fedele Bumbalo,Impresa di Clemente,Impresa Finocchiaro,Societé Colas,Entreprise STOLL,Entreprise Moragia,Ateliers Durafour,Soc. Gen. Ind. Constructions Metalliques,Establissement Luparello,Chauffour Dumez,Etablissement Cohar,Domenico Avona,Messina A.,Ditta Sciara V. & G.,Bruccoleri,Comp. Gen. Entreprise Electrique,Ets Camilleri,Ets Constantin","Tripartite Agreement,Establishment of STIR",,"Jacoboni_Studio tecnico sulla construzione di una raffineria,Jacoboni_XI Studio tecnico sulla construzione di una raffineria,Discussioni su accordo tripartito"
+30,Bizerte refinery inauguration,,1963-12-12,1963-12-20,"benzina,petrolio,gasolio,olio combustibile,GPL",,Bizerte - Refinery,,Tripartite Agreement,,
+31,Bizerte starts activities,,1964-01-01,2025-07-11,,,,,,Bizerte Lake Pollution,
+32,Gas Liquedation Plant in Arzew began operating,,1964-01-01,2025-01-01,natural gas,,Arzew Gas liquefaction plant,,,,
+33,Hassi R'Mel - Arzew Transportation began in 1961,,1961-01-01,,natural gas,,Hassi R'Mel gas pipeline (1),SOTHRA,,,
+34,Discovery in Hassi Messaoud,,1965-01-01,,,,Hassi Messaoud - field,SN REPAL,,,
+35,Hassi Messaoud Nationalized,,1971-02-24,,,,Hassi Messaoud - field,,,,
+36,Construction pipeline Hassi Messaoud - Ohanet,,1961-01-01,,,,Hassi Messaoud - Ohanet oil pipeline,,,,Theodora_Oil&Gas_Pipelines
+37,Beni Mansour - Algiers Operating,,1971-01-01,,crude oil,,Beni Mansour - Algiers,SONATRACH,,,
+38,TransMed G01 Operating,,1983-01-01,,natural gas,,TransMed (1) G01,,,,
+39,Transmed G02 Operating,,1987-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (2) G02",,,,
+40,Transmed G03 Operating,,2010-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (3) G03",,,,
+41,Transmed (4) operating,,1983-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (4)",,,,
+42,Transmed (5) operating,,1983-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (5)",,,,
+43,Transmed (6) operating,,1983-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (6)",,,,
+44,Haoud El Hamra - Bejàïa Beginning,,1959-01-01,,crude oil,,Haoud El Hamra - Béjaïa,SONATRACH,,,
+45,In Amenas - Skhira Pipeline,,1960-01-01,,crude oil,,In Amenas - Skhirra,,,,
+46,Haoudh El Hamra-Arzew Oil Pipeline I (OZ1) Construction,,1965-01-01,,crude oil,,Arzew - Haoud El Hamra (OZ1),SONATRACH,,,
+47,Haoudh El Hamra-Arzew Oil Pipeline (OZ2) Construction,,2005-01-01,,crude oil,,Arzew - Haoud El Hamra (OZ2),"SAIPEM,SONATRACH",,,
+48,Skikda-Haoud El Hamra Construction,,1972-01-01,,crude oil,,Skikda - Haoud El Hamra,SONATRACH,,,
+49,Haoud El Hamra - Mesdar Pipeline Construction,,1972-01-01,,crude oil,,Mesdar - Haoud El Hamra,SONATRACH,,,
+50,Mesdar - El Borma Pipeline Construction,,1977-01-01,,crude oil,,Mesdar - El Borma,SONATRACH,,,
+51,In Amenas - Haoud El Hamra Pipeline Construction,,1982-01-01,,crude oil,,In Amenas - Haoud El Hamra,SONATRACH,,,
+52,Sanhar - Date of establishment,,1992-01-01,2021-12-31,crude oil,,Sanhar oil field,Winstar,Jort n.44 - Sanhar,,
+53,Establishment Date - Djebel Grouz,,1991-01-01,2037-12-31,crude oil,,Djebel Grouz,ENI Tunisia BV,Jort n.87 - Djebel Grouz,,
+54,Discovery Makhrouga,,1983-01-01,,,,Makhrouga,SITEP,,,Secrets of Hydrocarbon Contracts in Tunisia
+55,Beginning of production - Makhrouga,,1983-01-01,2031-12-31,crude oil,,Makhrouga,"SODEPS,ETAP,ENI Tunisia BV","PERMIS DU SUD Loi n° 60-12 du 26/07/1960,JORT n.6",,Secrets of Hydrocarbon Contracts in Tunisia
+56,Debbech Discovert,,1980-01-01,,crude oil,,Debbech,,,,
+57,Production - Debbech,,1980-01-01,2031-12-31,crude oil,,Debbech,SODEPS,JORT n.6,,Secrets of Hydrocarbon Contracts in Tunisia
+58,Laarich Discovery,,1979-01-01,,,,Laarich,,,,
+59,Laarich Production,,1983-01-01,2031-12-31,crude oil,,Laarich,"SODEPS,ETAP,ENI Tunisia BV",Jort n.19,,
+60,Discovery Oued Zar,,1996-01-01,,,,Oued Zar,,,,
+61,Start of Production - Oued Zar,,1996-01-01,2022-08-20,natural gas,,Oued Zar,"ETAP,ENI Tunisia BV",JORT n.55,,Secrets of Hydrocarbon Contracts in Tunisia
+62,Oued Zar Extension,,2022-11-14,2042-08-24,natural gas,,Oued Zar,"ETAP,ENI Tunisia BV",JORT n. 130 - 29/11/2022,,
+63,Cherouq Establishment,,1996-12-09,2008-04-25,crude oil,,Cherouq,,Jenein Nord  Loi n° 96-106 du 09/12/96,,
+64,Cherouq Extension,,2008-04-19,2038-04-24,,,Cherouq,"ETAP,OMV",JORT n.34 Extension Cherouq,,
+66,Jinane Establishment,,2017-01-01,2047-05-29,crude oil,,Jinane,"ETAP,OMV",,,Secrets of Hydrocarbon Contracts in Tunisia
+67,Chouech Essaida Production under ENI,,1977-01-15,2020-01-01,crude oil,,Chouech Essaida,ENI,Jort n.6 Chouech Essaida,,Concessions d'exploitation d'hydrocarbures en Tunisie à fin 2022. Nombre de concessions: 56
+68,Abir & Bochra Establishment,,2020-11-02,2050-12-03,crude oil,,"Abir,Bochra","ETAP,ENI Tunisia BV,OMV,ATOG Sahara Limited",Jort n.120 Abir & Bochra,,
+69,Nawara Discovery,,1995-01-01,,,,Nawara,,,,
+70,Nawara Establishment,,2010-01-01,2040-02-25,natural gas,,Nawara,"ETAP,OMV",Jort n.17 Nawara,,
+71,Establishment Banafsej Sud,,1028-07-11,2048-08-29,natural gas,,Benefsej Sud,"ETAP,OMV",Jort n.70 Banafsej Sud,,ETAP Concession Map
+72,Aziza Establishment,,2025-07-07,2040-07-06,natural gas,,Aziza,"ETAP,OMV",JORT n.95 Aziza,,
+74,Shalbia Establishment,,2021-08-31,2041-09-16,natural gas,,Shalbia,"ETAP,OMV",JORT n.84 Shalbia,,
+75,Gas Pipeline El Borma-Gabès Start Year,,1972-01-01,,natural gas,Girotti,El Borma-Gabès,STEG,,,
+76,Gas Pipeline Oued Zar - El Borma,,2007-01-01,,natural gas,,Oued Zar - El Borma,"ENI,Bouchamaoui Industries",,,
+77,Makhrouga - El Borma Pipeline Start Year,,1983-01-01,,natural gas,,Makhrouga - Debbech - El Borma,"SODEPS,ETAP,ENI",,,
+78,Agreement signed with TRAPSA,Pipelines manufacturer,1965-11-10,,crude oil,"Faversani,Mattei",In Amenas - El Borma - La Skhirra,ENI,,,
+79,Chouech Es Saida took over by Athanor,,2027-12-31,,,,Chouech Essaida,"Winstar,Serinus BV",,,
+80,Nawara gas and condensate field was discovered,,2006-01-01,,natural gas,,"Nawara,South Tunisia Gas Project Pipeline,Nawara Central Processing Facility (CPF)","ETAP,OMV",,Gas flaring — CO₂ and toxic emissions,
+81,First cargo of Tunisian crude exported to Genoa,,1966-07-18,,,,El Borma,"SITEP,ENI",,,

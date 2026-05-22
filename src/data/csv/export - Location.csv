@@ -1,0 +1,91 @@
+﻿id,Name,Notes,notes,latitude,longitude,admin_level_country,Infrastructure,Role,is-part-of
+3,Algeria,,,0.0000,0.0000,country,,,
+4,Algers,,,36.7538,3.0588,admin_level_3,Beni Mansour - Algiers,,
+5,El Borma,,,31.5951,9.1597,admin_level_3,"El Borma,El Borma-Skhira - Pipeline,Mesdar - El Borma,El Borma-Gabès,Oued Zar - El Borma,Makhrouga - Debbech - El Borma,Makhrouga - El Borma,In Amenas - El Borma - La Skhirra,Chouch Saida - El Borma",,Tataouine
+6,Tunisia,,,0.0000,0.0000,country,,,
+7,Tataouine,,,0.0000,0.0000,admin_level_1,"Sanhar oil field,Laarich,Oued Zar,Cherouq,Jinane,Chouech Essaida,Abir,Bochra,Nawara,Benefsej Sud,Aziza,Shalbia,Sabeh",,Tunisia
+8,Italy,,,0.0000,0.0000,country,,,
+9,Sicily,,,0.0000,0.0000,admin_level_1,,,Italy
+10,Gela,,,37.0738,14.2411,admin_level_3,"Gela - Refinery,Methane pipeline",,Sicily
+11,Skhira,,,34.2976,10.0751,admin_level_3,"El Borma-Skhira - Pipeline,Skhira - Refinery,Sidi Litaiem - Skhirra Pipeline,In Amenas - Skhirra,In Amenas - El Borma - La Skhirra",,Gabes
+12,Gabes,,,33.8881,10.0975,admin_level_1,"Edjeleh-Gabes,South Tunisia Gas Project Pipeline,Gas Treatment Plant - Gabes",,Tunisia
+13,Matmata,,,33.4552,9.7679,admin_level_3,,,Gabes
+14,Médenine,,,33.3399,10.4959,admin_level_3,,,Gabes
+15,Zarzis,Part of coastal concessions,,33.5041,11.0881,admin_level_3,,,Médenine
+16,El Hammah,,,33.8859,9.7951,admin_level_3,,,Gabes
+17,Bizerte,,,0.0000,0.0000,admin_level_1,Bizerte - Refinery,,Tunisia
+18,Bizerte,,,37.2768,9.8642,admin_level_3,,,Bizerte
+19,In Amenas,,,28.0385,9.5764,admin_level_3,"In Amenas - Skhirra,In Amenas - Haoud El Hamra",,Illizi
+20,Zarzaitine,,,28.0867,9.7855,admin_level_4,Zarzaitine,,In Amenas
+21,Edjeleh,,,27.7244,9.8810,admin_level_4,Edjeleh-Gabes,,In Amenas
+22,Mansoura,,,36.0858,11.1235,admin_level_3,,,Bordj Bou Arréridj
+23,Ourgla,,,0.0000,0.0000,admin_level_1,,,Algeria
+24,Hassi Messaoud,,,31.6997,6.0653,admin_level_3,"Hassi Messaoud - field,Hassi Messaoud - Ohanet oil pipeline,Arzew - Haoud El Hamra (OZ1),Arzew - Haoud El Hamra (OZ2)",,Hassi Messaoud District
+25,Laghouat,,,0.0000,0.0000,admin_level_1,,,Algeria
+26,Hassi R'Mel,,,32.9276,3.2713,admin_level_3,"Hassi R'Mel,Hassi R'Mel gas pipeline (1),Hassi R'Mel gas pipeline (2),TransMed (1) G01,TransMed (2) G02,TransMed (3) G03,Arzew - Haoud El Hamra (OZ1),Arzew - Haoud El Hamra (OZ2)",,Laghouat
+27,Haoudh el Hamra,,,31.8921,5.9737,admin_level_4,"Pumping Station- Haoudh el Hamra,Haoud El Hamra - Béjaïa,Skikda - Haoud El Hamra,Mesdar - Haoud El Hamra,In Amenas - Haoud El Hamra",,Hassi Messaoud
+28,Bejaia,,,0.0000,0.0000,admin_level_1,,,Algeria
+29,Bejaia,,,36.7515,5.0558,admin_level_3,Haoud El Hamra - Béjaïa,,Bejaia
+30,Médenine,,,0.0000,0.0000,admin_level_1,AGIP Motel & Station,,Tunisia
+31,Illizi,,,0.0000,0.0000,admin_level_1,,,Algeria
+32,Bordj Bou Arréridj,,,0.0000,0.0000,admin_level_1,,,Algeria
+33,Ourgla,,,31.9527,5.3335,admin_level_3,"Arzew - Haoud El Hamra (OZ1),Arzew - Haoud El Hamra (OZ2)",,Ourgla
+34,Algiers Province,,,0.0000,0.0000,admin_level_1,,,Algeria
+35,Gabes,,,33.8881,10.0975,admin_level_3,El Borma-Gabès,,Gabes
+36,Hassi Messaoud District,,,0.0000,0.0000,admin_level_2,,,Ourgla
+37,In Amenas District,,,0.0000,0.0000,admin_level_2,,,Illizi
+38,Tamanrasset,,,0.0000,0.0000,admin_level_1,,,Algeria
+39,In Amguel,,,23.6911,5.1511,admin_level_3,,,Tamanrasset
+40,In Ekker,,,24.0225,5.0813,admin_level_4,Oasis Military Experiments Centre,,In Amguel
+41,Kebili Governorate,,,0.0000,0.0000,admin_level_1,,,Tunisia
+42,Jemna,,,33.5733,9.0184,admin_level_3,,,Kebili Governorate
+43,Djebel Daouiaia,"Alternate names like ""Djebel Daouaia"" or “Jabal Dawāyah”",,33.6067,9.4597,admin_level_4,,,
+44,Gagliano,,,39.8453,18.3654,admin_level_3,Methane pipeline,,Sicily
+45,Kasserine Governorate,,,0.0000,0.0000,admin_level_1,,,Tunisia
+46,Djebel Douleb,,,35.3822,8.8992,admin_level_3,Djebel Douleb,,Kasserine Governorate
+47,Sbeitla Delegation,,,0.0000,0.0000,admin_level_2,,,Kasserine Governorate
+48,Semama Imada,,,0.0000,0.0000,admin_level_3,,,Sbeitla Delegation
+49,Djebel Semmama,,,35.3180,8.8523,admin_level_4,Djebel Semmama,,Semama Imada
+50,Feriana,,,0.0000,0.0000,admin_level_2,TransMed (4),,Kasserine Governorate
+51,Djebel Tamesmida,,,35.0999,8.3816,admin_level_4,Djbel Tamesmida,,Feriana
+52,Sfax Governorate,,,0.0000,0.0000,admin_level_1,,,Tunisia
+53,Menzel Chaker Delegation,,,0.0000,0.0000,admin_level_2,,,Sfax Governorate
+54,Sidi Litaiem,,,35.3872,9.6144,admin_level_4,"Sidi Litaiem - Skhirra Pipeline,Sidi Litaiem",,
+55,Kerkennah Delegation,,,0.0000,0.0000,admin_level_2,,,Sfax Governorate
+56,Sidi Baharat,Offshore,,0.0000,0.0000,admin_level_4,Sidi Baharat,,Kerkennah Delegation
+57,Oran Province,,,0.0000,0.0000,admin_level_1,,,Algeria
+58,Arzew District,,,0.0000,0.0000,admin_level_2,,,Oran Province
+59,Arzew,,,35.8541,0.3097,admin_level_3,"Arzew Gas liquefaction plant,Hassi R'Mel gas pipeline (1),Arzew - Haoud El Hamra (OZ1),Arzew - Haoud El Hamra (OZ2)",,Arzew District
+60,Skikda Wilaya,,,0.0000,0.0000,admin_level_1,,,Algeria
+61,Skikda District,,,0.0000,0.0000,admin_level_2,,,Skikda Wilaya
+62,Skikda,,,36.8621,6.9055,admin_level_3,"Hassi R'Mel gas pipeline (2),Skikda Gas liquefaction plant,Skikda - Haoud El Hamra",,
+63,Ohanet,,,28.6793,8.8738,admin_level_4,Hassi Messaoud - Ohanet oil pipeline,,In Amenas
+64,Boudjellil,,,,,admin_level_2,,,Bejaia
+65,Beni Mansour,,,36.3330,4.3583,admin_level_3,Beni Mansour - Algiers,,Boudjellil
+66,Béchar,,,,,admin_level_1,,,
+67,Oued Saf Saf,,,36.2596,5.5739,admin_level_3,"TransMed (1) G01,TransMed (2) G02,TransMed (3) G03,TransMed (4)",,Béchar
+68,Nabeul Governorate,,,,,admin_level_1,,,Tunisia
+69,Cap Bon,,,37.0833,11.0389,admin_level_2,TransMed (5),,Nabeul Governorate
+70,Mazzara del Vallo,,,37.6551,12.5902,admin_level_3,"TransMed (5),TransMed (6)",,
+71,El Haouaria,,,37.0498,11.0116,admin_level_3,TransMed (4),,Cap Bon
+72,Emilia-Romagna,,,,,admin_level_1,,,Italy
+73,Minerbio,,,44.6226,11.4881,admin_level_3,TransMed (6),,Emilia-Romagna
+74,Biskra,,,,,admin_level_1,,,Algeria
+75,Ain Naga,,,34.6891,6.0928,admin_level_3,"TransMed (1) G01,TransMed (2) G02,TransMed (3) G03",,Biskra
+76,Sbeitla,,,35.2283,9.1276,admin_level_3,TransMed (4),,Sbeitla Delegation
+77,Korba,,,36.5806,10.8621,admin_level_3,TransMed (4),,Nabeul Governorate
+78,M'Sila,,,,,admin_level_1,,,
+79,M'Sila,,,35.7058,4.5419,admin_level_3,Haoud El Hamra - Béjaïa,,M'Sila
+80,Tiaret,,,,,admin_level_1,,,Algeria
+81,Tiaret,,,35.3667,1.3167,admin_level_3,"Arzew - Haoud El Hamra (OZ1),Arzew - Haoud El Hamra (OZ2)",,Tiaret
+82,Mesdar,,,31.1902,6.7907,admin_level_4,"Mesdar - Haoud El Hamra,Mesdar - El Borma",,Ourgla
+83,Basilicata,,,,,admin_level_1,,,Italy
+84,Potenza,,,4038.0000,1548.0000,admin_level_2,,,Basilicata
+85,Viaggiano,,,40.3330,15.9000,admin_level_3,Centro Olio Val D'Agri,,Potenza
+87,,,,,,,,,
+88,Djebel grouz,,,32.1300,1.7700,admin_level_4,Djebel Grouz,,Tataouine
+89,Sanhar,,,,,,Sanhar oil field,,Tataouine
+90,Makhrouga,,,,,admin_level_4,"Makhrouga,Makhrouga - Debbech - El Borma,Makhrouga - El Borma",,Tataouine
+91,Nawara,,,,,admin_level_4,"South Tunisia Gas Project Pipeline,Nawara Central Processing Facility (CPF)",,Tataouine
+92,Oued Zar,,,,,admin_level_3,"Oued Zar,Oued Zar - El Borma",,Tataouine
+93,Choech Essaid,,,,,admin_level_4,"Chouech Essaida,Chouch Saida - El Borma",,Tataouine
