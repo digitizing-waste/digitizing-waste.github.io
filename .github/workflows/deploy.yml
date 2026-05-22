@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: exhibit   # all steps run inside the exhibit/ subfolder
+        working-directory: ./   # all steps run inside the main folder
 
     steps:
       - name: Checkout
@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: exhibit/package-lock.json
+          cache-dependency-path: ./package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -44,7 +44,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: exhibit/dist      # path is relative to repo root here
+          path: ./dist      # path is relative to repo root here
 
   deploy:
     needs: build
