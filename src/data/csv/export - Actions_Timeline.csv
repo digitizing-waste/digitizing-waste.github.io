@@ -1,78 +1,119 @@
-﻿id,Name,Notes,start_date,end_date,product,linked_people,linked_infrastructures,linked_entities,linked_transactions,linked_ecosystem,linked_sources
-3,Ubication Well El Borma 1,,1963-12-01,,crude oil,"Egidi,Girotti",El Borma,,,,
-4,Exploration well n.7 El Borma,,,,,,El Borma,,,,
-5,First concession granted in Algeria,,1952-10-16,,NOT GOOD,,,,,,Oil and Regional Development; Examples from Algeria and Tunisia
-6,Bir Aouine,,,,NOT GOOD,,,,,,Oil and Regional Development; Examples from Algeria and Tunisia
-7,First drilling in Edjéléh,,1956-01-01,,crude oil,,,,,"""Strikes in Zarzaitine, Askaréne, Tin Fouyé, Tiguentiyrune and Ohanet""",Oil and Regional Development; Examples from Algeria and Tunisia
-8,Deposits discovered in Haoudh El Hamra,,,,crude oil,,Hassi Messaoud - field,,,,Oil and Regional Development; Examples from Algeria and Tunisia
-9,Hassi R'Mel discovery of natural gas deposit,,1956-12-01,,natural gas,,Hassi R'Mel,,,,Oil and Regional Development; Examples from Algeria and Tunisia
-10,Hassi R'Mel start of production,,1961-01-01,2025-06-19,natural gas,,Hassi R'Mel,,,,Oil and Regional Development; Examples from Algeria and Tunisia
-11,Tin Fouyé‑Tabankort Concession,,,,"crude oil,natural gas",,,,,,
-12,Dispute El Borma SITEP/SEREPT,,1961-03-08,1962-01-11,crude oil,,El Borma,,,,"Lettera ENI con dettagli legali su permesso El Borma,Corrispondenze Mattei e politici sulla situazione permesso El Borma bloccato,Telespresso 10377 su rinvio concessioni El Borma,Telespresso n.48 su permesso El Borma tra SITEP e SEREPT da risolvere dopo Evian"
-13,Well Braemi 1 sterile and abandoned,,1961-02-03,1961-02-03,natural gas,,Braemi 1 well,,,,Pozzo Braemi 1 permesso Mazzarino  - Compagnia Siciliana Petroli + Racalmuto
-14,CO.SI.P. renounces to Racalmuto,,1961-02-03,1961-02-03,natural gas,,,,,,Pozzo Braemi 1 permesso Mazzarino  - Compagnia Siciliana Petroli + Racalmuto
-15,Exploration DST - Douleb,,1964-06-05,1968-12-03,crude oil,,Djebel Douleb,"ETAP,SEREPT",Decree n.51 for Douleb,,Secrets of Hydrocarbon Contracts in Tunisia
-16,Exploration DST - Semmama,,1964-06-05,1976-01-20,crude oil,,Djebel Semmama,"ETAP,SEREPT",,,
-17,Exploration DST - Tamesmida,,1964-06-05,1970-01-20,crude oil,,Djbel Tamesmida,"ETAP,SEREPT",Decree n.3 for Tamesmida,,Secrets of Hydrocarbon Contracts in Tunisia
-18,Production DST - Douleb,,1968-12-03,2018-12-02,crude oil,,Djebel Douleb,"ETAP,SEREPT",Decree n.51 for Douleb,,Secrets of Hydrocarbon Contracts in Tunisia
-19,Production DST - Semmama,,1976-03-02,2026-03-01,crude oil,,Djebel Semmama,"ETAP,SEREPT",,,Secrets of Hydrocarbon Contracts in Tunisia
-20,Production DST - Tamesmida,,1970-01-20,2020-01-19,crude oil,,Djbel Tamesmida,"ETAP,SEREPT",Decree n.3 for Tamesmida,,Secrets of Hydrocarbon Contracts in Tunisia
-21,Extension DST - Douleb,,2022-07-27,2034-12-31,crude oil,,Djebel Douleb,"ETAP,SEREPT",Djbel Douleb Décret-loi 2022-42 du 17 juin 2022,,Concessions d'exploitation d'hydrocarbures en Tunisie à fin 2022. Nombre de concessions: 56
-22,Extension DST - Tamesmima,,2022-07-27,2033-12-31,crude oil,,Djbel Tamesmida,"ETAP,SEREPT",Djbel Tamesmida Décret-loi 2022-40 du 17/06/2022,,Concessions d'exploitation d'hydrocarbures en Tunisie à fin 2022. Nombre de concessions: 56
-23,Production - Sidi Litaiem,,1972-01-01,2023-12-31,crude oil,,Sidi Litaiem,CFTP,Sidi Litaiem JORT Decree n.35,,Secrets of Hydrocarbon Contracts in Tunisia
-24,Sidi Baharat - Exploration Started,,1976-01-01,2025-12-31,crude oil,,Sidi Baharat,CFTP,Sidi Bahara JORT Decree n.35,,Secrets of Hydrocarbon Contracts in Tunisia
-25,Sidi Baharat & Litaiem Illicit Extension of permit,,2014-12-31,2041-12-31,crude oil,,"Sidi Litaiem,Sidi Baharat",CFTP,Decree 4581-2014 for illicit extension Sidi Bahara & Litaiem,,Secrets of Hydrocarbon Contracts in Tunisia
-26,Completion pipeline Haoudh el Hamra-Bejaia,,,,,,,,,,
-27,First round negotiations refinery with ENI,,1959-10-01,1960-03-31,"benzina,petrolio,gasolio,olio combustibile,GPL",Jacoboni,Bizerte - Refinery,"ANIC,Tunisian Government,AGIP,Nuovo Pignone",Convention between Tunisian Government and Agip on building a refinery in Tunisia,,"Jacoboni_Studio tecnico sulla construzione di una raffineria,Jacoboni_XI Studio tecnico sulla construzione di una raffineria,Discussioni su accordo tripartito"
-28,Second round negotiations after American competition,,1960-06-25,1961-11-01,"benzina,petrolio,gasolio,olio combustibile,GPL",Gavotti,Bizerte - Refinery,"STIR,ANIC,Tunisian Government,Nuovo Pignone",Establishment of STIR,,Lettera segreta da Mattei a Bourguiba
-29,Building Bizerte refinery,,1961-11-01,1963-12-20,"benzina,petrolio,gasolio,olio combustibile,GPL",,Bizerte - Refinery,"SNAM,Nuovo Pignone,Società Fedele Bumbalo,Impresa di Clemente,Impresa Finocchiaro,Societé Colas,Entreprise STOLL,Entreprise Moragia,Ateliers Durafour,Soc. Gen. Ind. Constructions Metalliques,Establissement Luparello,Chauffour Dumez,Etablissement Cohar,Domenico Avona,Messina A.,Ditta Sciara V. & G.,Bruccoleri,Comp. Gen. Entreprise Electrique,Ets Camilleri,Ets Constantin","Tripartite Agreement,Establishment of STIR",,"Jacoboni_Studio tecnico sulla construzione di una raffineria,Jacoboni_XI Studio tecnico sulla construzione di una raffineria,Discussioni su accordo tripartito"
-30,Bizerte refinery inauguration,,1963-12-12,1963-12-20,"benzina,petrolio,gasolio,olio combustibile,GPL",,Bizerte - Refinery,,Tripartite Agreement,,
-31,Bizerte starts activities,,1964-01-01,2025-07-11,,,,,,Bizerte Lake Pollution,
-32,Gas Liquedation Plant in Arzew began operating,,1964-01-01,2025-01-01,natural gas,,Arzew Gas liquefaction plant,,,,
-33,Hassi R'Mel - Arzew Transportation began in 1961,,1961-01-01,,natural gas,,Hassi R'Mel gas pipeline (1),SOTHRA,,,
-34,Discovery in Hassi Messaoud,,1965-01-01,,,,Hassi Messaoud - field,SN REPAL,,,
-35,Hassi Messaoud Nationalized,,1971-02-24,,,,Hassi Messaoud - field,,,,
-36,Construction pipeline Hassi Messaoud - Ohanet,,1961-01-01,,,,Hassi Messaoud - Ohanet oil pipeline,,,,Theodora_Oil&Gas_Pipelines
-37,Beni Mansour - Algiers Operating,,1971-01-01,,crude oil,,Beni Mansour - Algiers,SONATRACH,,,
-38,TransMed G01 Operating,,1983-01-01,,natural gas,,TransMed (1) G01,,,,
-39,Transmed G02 Operating,,1987-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (2) G02",,,,
-40,Transmed G03 Operating,,2010-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (3) G03",,,,
-41,Transmed (4) operating,,1983-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (4)",,,,
-42,Transmed (5) operating,,1983-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (5)",,,,
-43,Transmed (6) operating,,1983-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (6)",,,,
-44,Haoud El Hamra - Bejàïa Beginning,,1959-01-01,,crude oil,,Haoud El Hamra - Béjaïa,SONATRACH,,,
-45,In Amenas - Skhira Pipeline,,1960-01-01,,crude oil,,In Amenas - Skhirra,,,,
-46,Haoudh El Hamra-Arzew Oil Pipeline I (OZ1) Construction,,1965-01-01,,crude oil,,Arzew - Haoud El Hamra (OZ1),SONATRACH,,,
-47,Haoudh El Hamra-Arzew Oil Pipeline (OZ2) Construction,,2005-01-01,,crude oil,,Arzew - Haoud El Hamra (OZ2),"SAIPEM,SONATRACH",,,
-48,Skikda-Haoud El Hamra Construction,,1972-01-01,,crude oil,,Skikda - Haoud El Hamra,SONATRACH,,,
-49,Haoud El Hamra - Mesdar Pipeline Construction,,1972-01-01,,crude oil,,Mesdar - Haoud El Hamra,SONATRACH,,,
-50,Mesdar - El Borma Pipeline Construction,,1977-01-01,,crude oil,,Mesdar - El Borma,SONATRACH,,,
-51,In Amenas - Haoud El Hamra Pipeline Construction,,1982-01-01,,crude oil,,In Amenas - Haoud El Hamra,SONATRACH,,,
-52,Sanhar - Date of establishment,,1992-01-01,2021-12-31,crude oil,,Sanhar oil field,Winstar,Jort n.44 - Sanhar,,
-53,Establishment Date - Djebel Grouz,,1991-01-01,2037-12-31,crude oil,,Djebel Grouz,ENI Tunisia BV,Jort n.87 - Djebel Grouz,,
-54,Discovery Makhrouga,,1983-01-01,,,,Makhrouga,SITEP,,,Secrets of Hydrocarbon Contracts in Tunisia
-55,Beginning of production - Makhrouga,,1983-01-01,2031-12-31,crude oil,,Makhrouga,"SODEPS,ETAP,ENI Tunisia BV","PERMIS DU SUD Loi n° 60-12 du 26/07/1960,JORT n.6",,Secrets of Hydrocarbon Contracts in Tunisia
-56,Debbech Discovert,,1980-01-01,,crude oil,,Debbech,,,,
-57,Production - Debbech,,1980-01-01,2031-12-31,crude oil,,Debbech,SODEPS,JORT n.6,,Secrets of Hydrocarbon Contracts in Tunisia
-58,Laarich Discovery,,1979-01-01,,,,Laarich,,,,
-59,Laarich Production,,1983-01-01,2031-12-31,crude oil,,Laarich,"SODEPS,ETAP,ENI Tunisia BV",Jort n.19,,
-60,Discovery Oued Zar,,1996-01-01,,,,Oued Zar,,,,
-61,Start of Production - Oued Zar,,1996-01-01,2022-08-20,natural gas,,Oued Zar,"ETAP,ENI Tunisia BV",JORT n.55,,Secrets of Hydrocarbon Contracts in Tunisia
-62,Oued Zar Extension,,2022-11-14,2042-08-24,natural gas,,Oued Zar,"ETAP,ENI Tunisia BV",JORT n. 130 - 29/11/2022,,
-63,Cherouq Establishment,,1996-12-09,2008-04-25,crude oil,,Cherouq,,Jenein Nord  Loi n° 96-106 du 09/12/96,,
-64,Cherouq Extension,,2008-04-19,2038-04-24,,,Cherouq,"ETAP,OMV",JORT n.34 Extension Cherouq,,
-66,Jinane Establishment,,2017-01-01,2047-05-29,crude oil,,Jinane,"ETAP,OMV",,,Secrets of Hydrocarbon Contracts in Tunisia
-67,Chouech Essaida Production under ENI,,1977-01-15,2020-01-01,crude oil,,Chouech Essaida,ENI,Jort n.6 Chouech Essaida,,Concessions d'exploitation d'hydrocarbures en Tunisie à fin 2022. Nombre de concessions: 56
-68,Abir & Bochra Establishment,,2020-11-02,2050-12-03,crude oil,,"Abir,Bochra","ETAP,ENI Tunisia BV,OMV,ATOG Sahara Limited",Jort n.120 Abir & Bochra,,
-69,Nawara Discovery,,1995-01-01,,,,Nawara,,,,
-70,Nawara Establishment,,2010-01-01,2040-02-25,natural gas,,Nawara,"ETAP,OMV",Jort n.17 Nawara,,
-71,Establishment Banafsej Sud,,1028-07-11,2048-08-29,natural gas,,Benefsej Sud,"ETAP,OMV",Jort n.70 Banafsej Sud,,ETAP Concession Map
-72,Aziza Establishment,,2025-07-07,2040-07-06,natural gas,,Aziza,"ETAP,OMV",JORT n.95 Aziza,,
-74,Shalbia Establishment,,2021-08-31,2041-09-16,natural gas,,Shalbia,"ETAP,OMV",JORT n.84 Shalbia,,
-75,Gas Pipeline El Borma-Gabès Start Year,,1972-01-01,,natural gas,Girotti,El Borma-Gabès,STEG,,,
-76,Gas Pipeline Oued Zar - El Borma,,2007-01-01,,natural gas,,Oued Zar - El Borma,"ENI,Bouchamaoui Industries",,,
-77,Makhrouga - El Borma Pipeline Start Year,,1983-01-01,,natural gas,,Makhrouga - Debbech - El Borma,"SODEPS,ETAP,ENI",,,
-78,Agreement signed with TRAPSA,Pipelines manufacturer,1965-11-10,,crude oil,"Faversani,Mattei",In Amenas - El Borma - La Skhirra,ENI,,,
-79,Chouech Es Saida took over by Athanor,,2027-12-31,,,,Chouech Essaida,"Winstar,Serinus BV",,,
-80,Nawara gas and condensate field was discovered,,2006-01-01,,natural gas,,"Nawara,South Tunisia Gas Project Pipeline,Nawara Central Processing Facility (CPF)","ETAP,OMV",,Gas flaring — CO₂ and toxic emissions,
-81,First cargo of Tunisian crude exported to Genoa,,1966-07-18,,,,El Borma,"SITEP,ENI",,,
+﻿id,Name,Notes,start_date,end_date,product,linked_people,linked_infrastructures,linked_entities,linked_transactions,linked_ecosystem,linked_sources,Images,image-file
+3,Exploration - drilling El Borma 1,"2,459 meters and confirmed a layer of light oil. The well was drilled with a larger rig, the Ideco Pignone Super 7/11. It was initially used to complete El Borma-1 and soon scheduled to work in tandem with a third rig that ENI planned to deploy to accelerate production",1963-12-01,1964-01-01,crude oil,"Egidi,Girotti",El Borma,"SITEP,SNAM,SNAM Montaggi,SAIPEM,Nuovo Pignone",,,1963_Appunti a mano su attività esplorativa della SITEP 1961-1963,"Drilling of Well n.1,Drilling of Well n.1 (2)","ENI_AF_D4_A1_16.jpeg(http://localhost/media/user_files/gl0d1WQEaB6LzCD4xs7JLWtkDgDgTmdD_3a6dc6ca9859f9ae21f9fc50f7f1db91d7667756b8f422096e6c3e8c445d77f2.jpeg),ENI_AF_D4_A1_15.jpeg(http://localhost/media/user_files/CgGvRgLnHVOYUX87WbjokXdmsdT2HDU6_c962708e5a9e54e7db4fa2e54d1214e5426a3fb570539389fa8217b1c3dc8537.jpeg)"
+5,First concession granted in Algeria,,1952-10-16,,NOT GOOD,,,,,,Oil and Regional Development; Examples from Algeria and Tunisia,,
+6,Bir Aouine,,,,NOT GOOD,,,,,,Oil and Regional Development; Examples from Algeria and Tunisia,,
+7,First drilling in Edjéléh,,1956-01-01,,crude oil,,,,,"""Strikes in Zarzaitine, Askaréne, Tin Fouyé, Tiguentiyrune and Ohanet""",Oil and Regional Development; Examples from Algeria and Tunisia,,
+8,Deposits discovered in Haoudh El Hamra,,,,crude oil,,Hassi Messaoud - field,,,,Oil and Regional Development; Examples from Algeria and Tunisia,,
+9,Hassi R'Mel discovery of natural gas deposit,,1956-12-01,,natural gas,,Hassi R'Mel,,,,Oil and Regional Development; Examples from Algeria and Tunisia,,
+10,Hassi R'Mel start of production,,1961-01-01,2025-06-19,natural gas,,Hassi R'Mel,,,,Oil and Regional Development; Examples from Algeria and Tunisia,,
+11,Tin Fouyé‑Tabankort Concession,,,,"crude oil,natural gas",,,,,,,,
+12,Exploration - dispute El Borma SITEP/SEREPT,,1961-03-08,1962-01-11,crude oil,,El Borma,,,,"Lettera ENI con dettagli legali su permesso El Borma,Corrispondenze Mattei e politici sulla situazione permesso El Borma bloccato,Telespresso 10377 su rinvio concessioni El Borma,Telespresso n.48 su permesso El Borma tra SITEP e SEREPT da risolvere dopo Evian",,
+13,Well Braemi 1 sterile and abandoned,,1961-02-03,1961-02-03,natural gas,,Braemi 1 well,,,,Pozzo Braemi 1 permesso Mazzarino  - Compagnia Siciliana Petroli + Racalmuto,,
+14,CO.SI.P. renounces to Racalmuto,,1961-02-03,1961-02-03,natural gas,,,,,,Pozzo Braemi 1 permesso Mazzarino  - Compagnia Siciliana Petroli + Racalmuto,,
+15,Exploration DST - Douleb,,1964-06-05,1968-12-03,crude oil,,Djebel Douleb,"ETAP,SEREPT",Decree n.51 for Douleb,,Secrets of Hydrocarbon Contracts in Tunisia,,
+16,Exploration DST - Semmama,,1964-06-05,1976-01-20,crude oil,,Djebel Semmama,"ETAP,SEREPT",,,,,
+17,Exploration DST - Tamesmida,,1964-06-05,1970-01-20,crude oil,,Djbel Tamesmida,"ETAP,SEREPT",Decree n.3 for Tamesmida,,Secrets of Hydrocarbon Contracts in Tunisia,,
+18,Production DST - Douleb,,1968-12-03,2018-12-02,crude oil,,Djebel Douleb,"ETAP,SEREPT",Decree n.51 for Douleb,,Secrets of Hydrocarbon Contracts in Tunisia,,
+19,Production DST - Semmama,,1976-03-02,2026-03-01,crude oil,,Djebel Semmama,"ETAP,SEREPT",,,Secrets of Hydrocarbon Contracts in Tunisia,,
+20,Production DST - Tamesmida,,1970-01-20,2020-01-19,crude oil,,Djbel Tamesmida,"ETAP,SEREPT",Decree n.3 for Tamesmida,,Secrets of Hydrocarbon Contracts in Tunisia,,
+21,Extension DST - Douleb,,2022-07-27,2034-12-31,crude oil,,Djebel Douleb,"ETAP,SEREPT",Djbel Douleb Décret-loi 2022-42 du 17 juin 2022,,Concessions d'exploitation d'hydrocarbures en Tunisie à fin 2022. Nombre de concessions: 56,,
+22,Extension DST - Tamesmima,,2022-07-27,2033-12-31,crude oil,,Djbel Tamesmida,"ETAP,SEREPT",Djbel Tamesmida Décret-loi 2022-40 du 17/06/2022,,Concessions d'exploitation d'hydrocarbures en Tunisie à fin 2022. Nombre de concessions: 56,,
+23,Production - Sidi Litaiem,,1972-01-01,2023-12-31,crude oil,,Sidi Litaiem,CFTP,Sidi Litaiem JORT Decree n.35,,Secrets of Hydrocarbon Contracts in Tunisia,,
+24,Sidi Baharat - Exploration Started,,1976-01-01,2025-12-31,crude oil,,Sidi Baharat,CFTP,Sidi Bahara JORT Decree n.35,,Secrets of Hydrocarbon Contracts in Tunisia,,
+25,Sidi Baharat & Litaiem Illicit Extension of permit,,2014-12-31,2041-12-31,crude oil,,"Sidi Litaiem,Sidi Baharat",CFTP,Decree 4581-2014 for illicit extension Sidi Bahara & Litaiem,,Secrets of Hydrocarbon Contracts in Tunisia,,
+26,Completion pipeline Haoudh el Hamra-Bejaia,,,,,,,,,,,,
+27,First round negotiations refinery with ENI,,1959-10-01,1960-03-31,"benzina,petrolio,gasolio,olio combustibile,GPL",Jacoboni,Bizerte - Refinery,"ANIC,Tunisian Government,AGIP,Nuovo Pignone",Convention between Tunisian Government and Agip on building a refinery in Tunisia,,"Jacoboni_Studio tecnico sulla construzione di una raffineria,Jacoboni_XI Studio tecnico sulla construzione di una raffineria,Discussioni su accordo tripartito",,
+28,Second round negotiations after American competition,,1960-06-25,1961-11-01,"benzina,petrolio,gasolio,olio combustibile,GPL",Gavotti,Bizerte - Refinery,"STIR,ANIC,Tunisian Government,Nuovo Pignone",Establishment of STIR,,Lettera segreta da Mattei a Bourguiba,,
+29,Building Bizerte refinery,,1961-11-01,1963-12-20,"benzina,petrolio,gasolio,olio combustibile,GPL",,Bizerte - Refinery,"SNAM,Nuovo Pignone,Società Fedele Bumbalo,Impresa di Clemente,Impresa Finocchiaro,Societé Colas,Entreprise STOLL,Entreprise Moragia,Ateliers Durafour,Soc. Gen. Ind. Constructions Metalliques,Establissement Luparello,Chauffour Dumez,Etablissement Cohar,Domenico Avona,Messina A.,Ditta Sciara V. & G.,Bruccoleri,Comp. Gen. Entreprise Electrique,Ets Camilleri,Ets Constantin","Tripartite Agreement,Establishment of STIR",,"Jacoboni_Studio tecnico sulla construzione di una raffineria,Jacoboni_XI Studio tecnico sulla construzione di una raffineria,Discussioni su accordo tripartito",,
+30,Bizerte refinery inauguration,,1963-12-12,1963-12-20,"benzina,petrolio,gasolio,olio combustibile,GPL",,Bizerte - Refinery,,Tripartite Agreement,,,,
+31,Bizerte starts activities,,1964-01-01,2025-07-11,,,,,,Bizerte Lake Pollution,,,
+32,Gas Liquedation Plant in Arzew began operating,,1964-01-01,2025-01-01,natural gas,,Arzew Gas liquefaction plant,,,,,,
+33,Hassi R'Mel - Arzew Transportation began in 1961,,1961-01-01,,natural gas,,Hassi R'Mel gas pipeline (1),SOTHRA,,,,,
+34,Discovery in Hassi Messaoud,,1965-01-01,,,,Hassi Messaoud - field,SN REPAL,,,,,
+35,Hassi Messaoud Nationalized,,1971-02-24,,,,Hassi Messaoud - field,,,,,,
+36,Construction pipeline Hassi Messaoud - Ohanet,,1961-01-01,,,,Hassi Messaoud - Ohanet oil pipeline,,,,Theodora_Oil&Gas_Pipelines,,
+37,Beni Mansour - Algiers Operating,,1971-01-01,,crude oil,,Beni Mansour - Algiers,SONATRACH,,,,,
+38,TransMed G01 Operating,,1983-01-01,,natural gas,,TransMed (1) G01,,,,,,
+39,Transmed G02 Operating,,1987-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (2) G02",,,,,,
+40,Transmed G03 Operating,,2010-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (3) G03",,,,,,
+41,Transmed (4) operating,,1983-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (4)",,,,,,
+42,Transmed (5) operating,,1983-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (5)",,,,,,
+43,Transmed (6) operating,,1983-01-01,,natural gas,,"Trans-Mediterranean Gas Pipeline,TransMed (6)",,,,,,
+44,Haoud El Hamra - Bejàïa Beginning,,1959-01-01,,crude oil,,Haoud El Hamra - Béjaïa,SONATRACH,,,,,
+45,In Amenas - Skhira Pipeline,,1960-01-01,,crude oil,,In Amenas - Skhirra,,,,,,
+46,Haoudh El Hamra-Arzew Oil Pipeline I (OZ1) Construction,,1965-01-01,,crude oil,,Arzew - Haoud El Hamra (OZ1),SONATRACH,,,,,
+47,Haoudh El Hamra-Arzew Oil Pipeline (OZ2) Construction,,2005-01-01,,crude oil,,Arzew - Haoud El Hamra (OZ2),"SAIPEM,SONATRACH",,,,,
+48,Skikda-Haoud El Hamra Construction,,1972-01-01,,crude oil,,Skikda - Haoud El Hamra,SONATRACH,,,,,
+49,Haoud El Hamra - Mesdar Pipeline Construction,,1972-01-01,,crude oil,,Mesdar - Haoud El Hamra,SONATRACH,,,,,
+50,Mesdar - El Borma Pipeline Construction,,1977-01-01,,crude oil,,Mesdar - El Borma,SONATRACH,,,,,
+51,In Amenas - Haoud El Hamra Pipeline Construction,,1982-01-01,,crude oil,,In Amenas - Haoud El Hamra,SONATRACH,,,,,
+52,Sanhar - Date of establishment,,1992-01-01,2021-12-31,crude oil,,Sanhar oil field,Winstar,Jort n.44 - Sanhar,,,,
+53,Establishment Date - Djebel Grouz,,1991-01-01,2037-12-31,crude oil,,Djebel Grouz,ENI Tunisia BV,Jort n.87 - Djebel Grouz,,,,
+54,Discovery Makhrouga,,1983-01-01,,,,Makhrouga,SITEP,,,Secrets of Hydrocarbon Contracts in Tunisia,,
+55,Beginning of production - Makhrouga,,1983-01-01,2031-12-31,crude oil,,Makhrouga,"SODEPS,ETAP,ENI Tunisia BV","PERMIS DU SUD Loi n° 60-12 du 26/07/1960,JORT n.6",,Secrets of Hydrocarbon Contracts in Tunisia,,
+56,Debbech Discovert,,1980-01-01,,crude oil,,Debbech,,,,,,
+57,Production - Debbech,,1980-01-01,2031-12-31,crude oil,,Debbech,SODEPS,JORT n.6,,Secrets of Hydrocarbon Contracts in Tunisia,,
+58,Laarich Discovery,,1979-01-01,,,,Laarich,,,,,,
+59,Laarich Production,,1983-01-01,2031-12-31,crude oil,,Laarich,"SODEPS,ETAP,ENI Tunisia BV",Jort n.19,,,,
+60,Discovery Oued Zar,,1996-01-01,,,,Oued Zar,,,,,,
+61,Start of Production - Oued Zar,,1996-01-01,2022-08-20,natural gas,,Oued Zar,"ETAP,ENI Tunisia BV",JORT n.55,,Secrets of Hydrocarbon Contracts in Tunisia,,
+62,Oued Zar Extension,,2022-11-14,2042-08-24,natural gas,,Oued Zar,"ETAP,ENI Tunisia BV",JORT n. 130 - 29/11/2022,,,,
+63,Cherouq Establishment,,1996-12-09,2008-04-25,crude oil,,Cherouq,,Jenein Nord  Loi n° 96-106 du 09/12/96,,,,
+64,Cherouq Extension,,2008-04-19,2038-04-24,,,Cherouq,"ETAP,OMV",JORT n.34 Extension Cherouq,,,,
+66,Jinane Establishment,,2017-01-01,2047-05-29,crude oil,,Jinane,"ETAP,OMV",,,Secrets of Hydrocarbon Contracts in Tunisia,,
+67,Chouech Essaida Production under ENI,,1977-01-15,2020-01-01,crude oil,,Chouech Essaida,ENI,Jort n.6 Chouech Essaida,,Concessions d'exploitation d'hydrocarbures en Tunisie à fin 2022. Nombre de concessions: 56,,
+68,Abir & Bochra Establishment,,2020-11-02,2050-12-03,crude oil,,"Abir,Bochra","ETAP,ENI Tunisia BV,OMV,ATOG Sahara Limited",Jort n.120 Abir & Bochra,,,,
+69,Nawara Discovery,,1995-01-01,,,,Nawara,,,,,,
+70,Nawara Establishment,,2010-01-01,2040-02-25,natural gas,,Nawara,"ETAP,OMV",Jort n.17 Nawara,,,,
+71,Establishment Banafsej Sud,,1028-07-11,2048-08-29,natural gas,,Benefsej Sud,"ETAP,OMV",Jort n.70 Banafsej Sud,,ETAP Concession Map,,
+72,Aziza Establishment,,2025-07-07,2040-07-06,natural gas,,Aziza,"ETAP,OMV",JORT n.95 Aziza,,,,
+74,Shalbia Establishment,,2021-08-31,2041-09-16,natural gas,,Shalbia,"ETAP,OMV",JORT n.84 Shalbia,,,,
+75,Gas Pipeline El Borma-Gabès Start Year,,1972-01-01,,natural gas,Girotti,El Borma-Gabès,STEG,,,,,
+76,Gas Pipeline Oued Zar - El Borma,,2007-01-01,,natural gas,,Oued Zar - El Borma,"ENI,Bouchamaoui Industries",,,,,
+77,Makhrouga - El Borma Pipeline Start Year,,1983-01-01,,natural gas,,Makhrouga - Debbech - El Borma,"SODEPS,ETAP,ENI",,,,,
+78,Agreement signed with TRAPSA,Pipelines manufacturer,1965-11-10,,crude oil,"Faversani,Mattei",El Borma - Pump Station SP4 (Amenas - Skhira),ENI,,,Appunto su SITEP-TRAPSA del Ing. Faversani,,
+79,Chouech Es Saida took over by Athanor,,2027-12-31,,,,Chouech Essaida,"Winstar,Serinus BV",,,,,
+80,Nawara gas and condensate field was discovered,,2006-01-01,,natural gas,,"Nawara,South Tunisia Gas Project Pipeline,Nawara Central Processing Facility (CPF)","ETAP,OMV",,Gas flaring — CO₂ and toxic emissions,,,
+81,Distribution - First cargo of Tunisian crude exported to Genoa,,1966-07-18,,,,El Borma,"SITEP,ENI",,,,,
+85,Infrastructure - access road and airstrip,,1962-01-01,1962-09-01,crude oil,,El Borma,"SITEP,Kilani Construction Firm",,Linear Infrastructures alter desert ecology,Oil and Regional Development; Examples from Algeria and Tunisia,"Access road construction,Access road construction (2),Access road construction (3),Access road construction (4),Access road construction (5)","ENI_AF_B4_F301_09.jpeg(http://localhost/media/user_files/0RhYIUm7JDsX20z98i4DYHb9r2Xi0RJB_3e40d6c996f028ec7a8da4e95a9b89cfd193f3e7325460a8acd651db8e870794.jpeg),ENI_AF_B4_F301_022.jpeg(http://localhost/media/user_files/IVD747uKTG5GGDfch5JbgiPQq643PlyC_09749b6d1a7af44f035d9efe64a57361a71034c6178189cd87304209430eb2a0.jpeg),ENI_AF_B4_F301_026.jpeg(http://localhost/media/user_files/zvKo5woKTOaskYINeFP01PdVqIwOmlDN_f35dd7d0fa2af8f5047bcf114653d81438f4c184a4fa8e20f24c69fe4bc04734.jpeg),ENI_AF_B4_F301_027.jpeg(http://localhost/media/user_files/zr3Gv6eC1p2scHH8nGiEivfUvV3710uw_545730b709fedd7177eab3d34089485bbba8a67299bc004df787a68ebaedcb1b.jpeg),ENI_AF_B4_F301_028.jpeg(http://localhost/media/user_files/caBd9kbybI8Yh37zuL8WdPZIR8YQwXbY_beab9ca3825eab2d201f5132f520ef5075dc330dbcb8e02773d7cd2e0bfa6143.jpeg)"
+86,Exploration - geological survey,"Geological and topographic mapping of El Borma and surrounding areas; 5,300 km² coverage; 2 geological teams + 1 topographic team; 2 helicopters; 1,105 flight hours
+
+SITEP invested 3.1 billion (lira) in this first phase 1961-1963",1962-01-01,1963-02-01,crude oil,,El Borma,SITEP,,,1963_Appunti a mano su attività esplorativa della SITEP 1961-1963,DC-3 supply aircraft and Bell 47 helicopter on desert airstrip,ENI_AF_D4_A1_23.jpeg(http://localhost/media/user_files/UMni4SV50A8Mna03XQ58TVOm5Vv7k7Qk_8de238ac80d26ddb68b3884a2acd0af9a3c6b8e82a820828ef0485c10f846c76.jpeg)
+87,Production - Incident with well drilling & borders,,1964-01-01,,,,El Borma,"SITEP,Standard",,,Staffetta Quotidiana su El Borma e confini,"Border Signaling after Incident with Standard,Border Signaling after Incident with Standard,Border Signaling after Incident with Standard","ENI_AF_D4_A1_81.jpeg(http://localhost/media/user_files/FFbzcnaTWDNOUy4zjXmDInTe9J8wAGDJ_0d1b974f5e5b5d18600e780b4bf5df1c96519da2226aad2acd165bde23e92e7e.jpeg),ENI_AF_D4_A1_83.jpeg(http://localhost/media/user_files/445V3MJCBFBzbWmKFjd16BRS1mnEJ0Te_cfe2c9ba2e6ece5441426774e289adffcf94eeb95f935af7d82929c2f9998beb.jpeg),ENI_AF_D4_A1_80.jpeg(http://localhost/media/user_files/wmyKymFdQATrAGLtq1VWUimyaanR0drE_faa544a9b6ff80d09ba745400841ef6f5d90edcedbf2d8ae33ef5c566ca59e38.jpeg)"
+88,Exploration - preliminary geological reconnaissance,,1961-01-01,1962-01-01,,,El Borma,SITEP,,,1963_Appunti a mano su attività esplorativa della SITEP 1961-1963,"Aerial view of temporary geological field camp (polaroid),Aerial view of temporary geological field (2)","ENI_AF_D4_A1_14.jpeg(http://localhost/media/user_files/kYmjK4fCpTpbZPcPvFjQU3GIy2l3xBIa_bd6136af36c6738f73bdc1d428a5fb0d8b12dd52fa02e9d0e9c4391ec088c27e.jpeg),ENI_AF_D4_A1_13.jpeg(http://localhost/media/user_files/6Sbmk2dSuP34nTWWEoJLoSmAWxTSNpMF_d031be20e56dddb975cf316737e8f04a5f7c0c330bc58f138e97ad5d76dd34ed.jpeg)"
+89,,,,,,,,,,,,,
+90,Seismic,,,,,,,,,,,,
+91,Exploration - seismic & topographic survey,SITEP invested 3.1 billion (lira) in this first phase 1961-1963 (1962_Attività del gruppo ENI in Tunisia_ENI_E_APRP_B157_092),1962-01-01,1964-01-01,crude oil,,El Borma,SITEP,,,1963_Appunti a mano su attività esplorativa della SITEP 1961-1963,"Controlled explosion for seismic surveys at El Borma,View from the top of seismic surveys at El Borma,View from the top of seismic surveys at El Borma (2)","ENI_AF_D4_A1_21.jpeg(http://localhost/media/user_files/JDDOhLgnyBoVzkC7C5kzqEHhTJr12RUZ_bda4daa60d5103082fd6517a128b7b61acd168a178ce0b2bba5d37dd8e15826b.jpeg),ENI_AF_D4_A1_20.jpeg(http://localhost/media/user_files/sT3i3cZuVIgqynZhXDmmTHaiYJDxIUhL_601e6d0759ead965914f0d168fb8aad11a6e7de1815311bf6e60ddfd8c4ff725.jpeg),ENI_AF_D4_A1_19.jpeg(http://localhost/media/user_files/NEzDD3bvuSw3zF2fEzht6WXs1Jtd9QhZ_85c325f5b0ef5a00be9d60f6341bdcdbda75d3f9e39974010b5313bac05053bd.jpeg)"
+92,,,,,,,,,,,,,
+93,,,,,,,,,,,,,
+94,,,,,,,,,,,,,
+95,,,,,,,,,,,,,
+96,,,,,,,,,,,,,
+97,Infrastructure - water drilling,"A Cardwell 223 right was brought to El Borma by SITEP to drill water wells necessary to sustain the drilling operation. Once sufficient water was secured, the rig was re-used to drill seven stratigraphic test wells to determine optimal drilling zones.",1963-01-01,1963-01-01,water,,El Borma,SITEP,,,M.700170_Prot. n.24987 - Ricerche Petrolifere in Tunisia - Richiesta aumento plafond,Picture of Rig Cardwell 223 brought on site,ENI_AF_B4_F301_033.jpeg(http://localhost/media/user_files/1OAjX909zrGoEwNbKH9FvyN1rMeCV7ju_a0e747707cd948674bddda60b9feaa430c0c9f124ef7def371ccbf1b1e440e50.jpeg)
+98,,,,,,,,,,,,,
+99,,,,,,,,,,,,,
+100,,,,,,,,,,,,,
+101,Infrastructure - topographic survey for field construction,,1965-01-01,1966-01-01,,,El Borma,SITEP,,,,"Survey for the construction of oil processing facility (polaroid),Survey for the construction of oil processing facility (2),Survey for construction of oil tanks at El Borma","ENI_AF_D4_A1_46.jpeg(http://localhost/media/user_files/Z2DelXeU4dzBiQwe2F54tKfln4vd0oqf_723955344dfbaf4b140241f2edff2e643b8a392f1c0102cc2326ebab4d1150ce.jpeg),ENI_AF_D4_A1_45.jpeg(http://localhost/media/user_files/eM3ASgh07pWZGuEPxQHYmQSTLlhOV7O8_a09015f70419a6b23ae15b3151fa816742b94cdbe5e3d01887c89f17637f42c6.jpeg),ENI_AF_D4_A1_49.jpeg(http://localhost/media/user_files/sTKpeScCjmtuCnbEgDuxrBjQBI8ay7vu_cd00963f562d666099c8524de28905c705a6238e927f693311074619ebd44109.jpeg)"
+102,,,,,,,,,,,,,
+103,,,,,,,,,,,,,
+105,,,,,,,,,,,,,
+106,Exploration - extension survey,,1965-01-01,1970-01-01,,,El Borma,SITEP,,,,"Theodolite survey observations from elevated dune summit to locate wells,Elicopter incident for topographic surveys,Surveyor operating tellurometer with theodolite and gravimeter on desert dune","ENI_AF_D4_A1_60.jpeg(http://localhost/media/user_files/Td1IhKWHkKpRZvzNIMYrVt9YzVwjUfAB_fc5342c3cc3e36000576ec27e461bfd490a25d901ca231f533175a709127f532.jpeg),ENI_AF_D4_A1_58.jpeg(http://localhost/media/user_files/n0sDkqeaUaoa5EMK1NMsMJJ5VXQo3dBg_13effd387a4d5fdbf7d4e80a19f6cc71c595264c9a2187894f727c45627d173e.jpeg),ENI_AF_D4_A1_66.jpeg(http://localhost/media/user_files/ZylKFYBMn7V0cyfTY1bAQueyLlURZWH3_e1b403c5b098d0603f8219bd1f56ce998eb68c54d36123cfae73d54c627975f6.jpeg)"
+107,,,,,,,,,,,,,
+108,,,,,,,,,,,,,
+109,,,,,,,,,,,,,
+110,,,,,,,,,,,,,
+111,,,,,,,,,,,,,
+112,Infrastructure - Central Processing Facility (CPF) construction,,1966-01-01,1966-12-01,,,El Borma,SITEP,,,,"Construction of Central Processing Facility,Row of horizontal pressure vessels with valve assemblies and flow lines partially installed,Large diameter pipeline sections staged for installation with crane and operational building under construction in background,Two early storage tanks partially buried by sand with pipeline visible,Two oil storage tanks under construction with spiral external staircases and pipeline manifold at right,""Construction of circular oil storage tank foundation: ground preparation, compaction with bulldozers, and completed rebar ring"",Workers and bulldozer excavating and laying reinforced concrete foundations with rebar framework,Close-up aerial view of drilling rig mud system,Workers laying foundations and pipeline infrastructure for the worker settlement,Two cranes (Bay City and Link-Belt) installing SITEP El Borma labelled oil/gas/water separator onto concrete foundations,View of the oil pumping station with offices building in foreground,Workers laying flowlines in trench with gas flare burning in background,""View of the completed central processing facility showing flow line manifold, pipeline header, safety signage in Arabic and French, control cabin and storage tank S4"",""Oil pumping station building with electrical transformer and street lighting; black smoke from the """"Burning Pit"""" visible in background"",Preparation flowlines,Construction of foundations for oil storage tanks,Manifold of flowlines (Entry of the flowlines from different wells to the CPF),Aerial view of CPF in 1968","ENI_AF_D4_A1_86.jpeg(http://localhost/media/user_files/CsLpMidAnbKp1pO50xkS3W6Z20M9m4A2_209053386178e8eebb686f91c3050280091fddc6b077825e2a90d4b69139dd45.jpeg),ENI_AF_D4_A1_88.jpeg(http://localhost/media/user_files/7jjYjk8A5Y5iYm9PRpkn1MU7qb9ajA0o_98fd9002f964e078c3f93e2a2aec5984099a0af5a02831f52a61d84f0ac71710.jpeg),ENI_AF_D4_A1_105.jpeg(http://localhost/media/user_files/1JbnIVqQM5gqCdjEeaVeOtiJ6YTK4TYo_6c9f9ae4d1891d583cefce2277713e1651a965d9b53cea2cc58368b4d8a80f9d.jpeg),ENI_AF_D4_A1_140.jpeg(http://localhost/media/user_files/u9ijhFrrBBc6cIe6AhH6OoLwEntBzV39_1f23be1a98f77727c0359af0cdd6e76c591a6cb74487a2b398ed422f4e281d33.jpeg),ENI_AF_D4_A1_87.jpeg(http://localhost/media/user_files/ADEya89ZukrzvOV5EOnsq9Z6InOmOAem_abd0e559393a149c66ceda5a5cf7fa4a5f54f529809e0fb4f6ce595b929b9774.jpeg),ENI_AF_D4_A1_90.jpeg(http://localhost/media/user_files/8tCvzXmNP4FVuXZbTghOEEAUPw7SHOpG_7cbbd640d387393dcaf751f9dc9155a599eae939757257c161d8b1a6b68077b0.jpeg),ENI_AF_D4_A1_89.jpeg(http://localhost/media/user_files/P1E63fETtQSEIDcpEViAWFL7wGPigs1d_fe80f88c2aedc3377cb77a305fa4f7257fea26c17b4f0151f9936e2d7f6c8d86.jpeg),ENI_AF_D4_A1_103.jpeg(http://localhost/media/user_files/1nk6BVOTTeV0VpgrXUNbzW5FhzSFuCbq_824bb740c0424a38db733b95c822993c2fe9ce52d6d6ae30037caa4445aa6fc7.jpeg),ENI_AF_D4_A1_93.jpeg(http://localhost/media/user_files/YlqyOwZW361y48XND7F8Z0htPlF5lqVW_5ee8290594d8981af5bc4d1e78377b46e2ca01acdf97cecd0e373a9a38337788.jpeg),ENI_AF_D4_A1_112.jpeg(http://localhost/media/user_files/1UYfc75YqSgtcbvXexgzyAeNcnXAenil_abce1693218abf4943b6ca66a24a5687ce1fe0a770efe183e2a5a1a8d6414137.jpeg),ENI_AF_D4_A1_128.jpeg(http://localhost/media/user_files/jVoZDUsbYUBpiYybpxKGoXgTFbcy0JEC_16d4219c177c38b5e2033aabc52d5a9b32bea65258f719ddc7f1ebeea173aa3f.jpeg),ENI_AF_D4_A1_131.jpeg(http://localhost/media/user_files/cpROO7pY2ID98jYZFx6CsiJtUu5LTeXn_b2ad60a0a7bd60e1e95de2ef1fa24563a1f6cd6a130489f4b5c60c6316388f40.jpeg),ENI_AF_D4_A1_134.jpeg(http://localhost/media/user_files/81DviGTMWwD33p3lNd61k5wzIBc4IgpM_606fcbca6b8b6f90918c9402b3fa8886e1d5cb7ee5c5c3cdc0938ecb5ad40599.jpeg),ENI_AF_D4_A1_141.jpeg(http://localhost/media/user_files/9AjN3bQParfvG2UDGRJoC6y2VkO8Gpp9_1462ec98034caa19b430b544b918dd8ff8bb90bc7f016c463eaced65d45fb1ce.jpeg),ENI_AF_D4_A1_150.jpeg(http://localhost/media/user_files/Dg4OMRYCgnNcz0Z9b838KDCmG38uVaF9_de7e58c49b3e0076b1e8b97b97bf141bd0c4c1d8aa11abff5b7deca968690d99.jpeg),ENI_AF_D4_A1_157.jpeg(http://localhost/media/user_files/snpbHeqceehoVOhKlR3iCRjOVvkh0XRI_32fd906e846d34f6bb55297e83c14b3be6f6d93e0161726398856a4e87d6a4d0.jpeg),ENI_AF_D4_A1_132.jpeg(http://localhost/media/user_files/0vcWzioJurB0ruqcTJs114eLwVWcOmBW_386fe63761b56263e3359054783d0581389f53d5e58b118e456672862d6e32ae.jpeg),ENI_AF_D4_A6_163.jpeg(http://localhost/media/user_files/RBBpJeDcQynbM60O8rC0ttjzvkvQBryH_1a7e825785af81c370a8de374dba9ff255a108f6d223664d78556374ef5376fd.jpeg)"
+113,,,,,,,,,,,,,
+114,,,,,,,,,,,,,
+115,Bourguiba allows CREPS to build In Amenas - Skhira pipeline amid Algerian War,,,,,,In Amenas - La Skhirra,CREPS,,,La crise de l’oléoduc Edjeleh-Gabès: Au cœur des enjeux de souveraineté du Maghreb (1954-1962)”,,
+116,Infrastructure - Construction Pipeline El Borma - SP4 Pumping Station,,1968-01-01,,,,"El Borma,El Borma - Pump Station SP4 (Amenas - Skhira)","SITEP,TRAPSA",Agreement TRAPSA - SITEP for pipeline El Borma - SP4 Pumping Station,Linear Infrastructures alter desert ecology,Appunto su SITEP-TRAPSA del Ing. Faversani,"Construction pipeline El Borma - TRAPSA SP4 Pumping Station,Camels around pipeline El Borma - SP4 Pumping Station","ENI_AF_D4_A6_154.jpeg(http://localhost/media/user_files/H4ig6GcoRn93JUaJjg8vUCa2qnnfsMXE_845bebfdd1ad2e7116188f4610f9cb433bd75c464050ee902b2d7cbdcb4e5a6e.jpeg),ENI_AF_D4_A1_199.jpeg(http://localhost/media/user_files/C6shfncG9nvZJVszCHYjkEK2vD41hA3Z_5417962e9398cbcea15e4f10e03a69bc392f4ad6d576785dadb9250fc97471ed.jpeg)"
+117,,,,,,,,,,,,,
+118,Infrastructure - doubling pipeline El Borma - SP4,,1970-01-01,,,,"El Borma,El Borma - Pump Station SP4 (Amenas - Skhira)","SITEP,TRAPSA",,Linear Infrastructures alter desert ecology,,"Doubling pipeline El Borma - SP4 Pumping Station,Workers on doubling pipeline El Borma - SP4,Workers working on doubling pipeline El Borma - SP4 (3),Camels around pipeline El Borma - SP4 Pumping Station,Camels & Herders around pipeline construction El Borma - SP4,Camels and Herders around the pipeline,Herders and camels around El Borma pipeline","ENI_AF_D4_A1_161.jpeg(http://localhost/media/user_files/YpW2D8imasRb7TX2HgNGyvQ4K4PZIHhC_8181ffd1f0d4480885479fb128e20b7b478ad979a5f7f5b47f177cb29a873640.jpeg),ENI_AF_D4_A1_185.jpeg(http://localhost/media/user_files/yPxuTfYixO9K1jirCDG9eGHBRgsxGGQQ_d0a4eeabfb2302322f4ecea87b21cab2c637eb5c5d1f5ee389977b16d68ad832.jpeg),ENI_AF_D4_A1_177.jpeg(http://localhost/media/user_files/GB2jVxqdiMCGXQ3EIwXFvIRQSWh4F4ze_b75e6bc6d072d47e59813aabf082c826daaadeedd4954912531c23e5faa2c6e2.jpeg),ENI_AF_D4_A1_197.jpeg(http://localhost/media/user_files/VGKotNAJZQoBlBbZO0ytPGhovDWYJsMY_c44bf043ec863f372be4ef254255620ce5e3da1586ef6ec4187cdb212c21662c.jpeg),ENI_AF_D4_A1_199.jpeg(http://localhost/media/user_files/C6shfncG9nvZJVszCHYjkEK2vD41hA3Z_5417962e9398cbcea15e4f10e03a69bc392f4ad6d576785dadb9250fc97471ed.jpeg),ENI_AF_D4_A1_148.jpeg(http://localhost/media/user_files/ZiO20bUNneosR81UMCVg9cdjv0cG0t4e_6390b52895865ebb02c6aeac076806b923f3dd5a9e94056bcf43337dfa04847b.jpeg),ENI_AF_D4_A1_159.jpeg(http://localhost/media/user_files/MswUH7neOmaFEzLLirO7rXn8ACAYrfc3_9ae49d025a4602a51430d47c99e43a414efdcf28e04f9fcebcd56a8164e9857f.jpeg)"
+119,,,,,,,,,,,,,
+120,,,,,,,,,,,,,
+121,,,,,,,,,,,,,
+122,Production - further wells drilling,,1978-01-01,1980-01-01,,,El Borma,"SITEP,SAIPEM",,,,"Workers and derrick at El Borma,Workers and a derrick at El Borma (2),SITEP Workers and derrick at El Borma (3),Derrick among the dunes,Burning waste pits at El Borma,Burning waste at  El Borma (3),Waste Pits at El Borma,Waste Pits at El Borma (2)","ENI_AF_2003_1DB_3.jpeg(http://localhost/media/user_files/FTumGcIEXMQOa2Gteqd7wdE9fseUC9oh_8183c09345fa49559a86b79998f0f5d40b91a9ba10363cae049beec355c67029.jpeg),ENI_AF_2003_1DB_1.jpeg(http://localhost/media/user_files/1y4aDfFEHdm3Zk4xoYQiiAvf5RxDPqSX_d40e69421ed9dff499bde096a30ae4302b4a7916a6d8f16d2335023ba387cd66.jpeg),ENI_AF_2003_1DB_8.jpeg(http://localhost/media/user_files/sfU9QI1qGf2r6j3mM8HxKGqw7RO8ZIXC_ba8066b7a8b8a748ea4c806fd20da2ca9ce1e16d01110fadc528af5b7537bfe4.jpeg),ENI_AF_2003_1DB_15.jpeg(http://localhost/media/user_files/rZxtwLPSWVlCPy1mA5jHRCZRz89e0fQG_7ed2c747c72be73cfc6ea5a742438066dd4bd5ec9e6f349a09c89529be3e9bda.jpeg),ENI_AF_2003_1DB_13.jpeg(http://localhost/media/user_files/PXnmUmlUzGwkSbQvVEDn6oHbjSrMv7XV_043a94cfe12fc64e2f43a394f80ad60bad7bb669f63047b57e6684c5d934d54c.jpeg),ENI_AF_2003_1DB_2.jpeg(http://localhost/media/user_files/q015LRHNzdKNx5PjSc8BUIKFVm7lJsN7_cb066f39360d0e904df49393cdb6c9f8ef18e6632c3187eddf1925b028aa3c7a.jpeg),ENI_AF_2003_1DB_10.jpeg(http://localhost/media/user_files/U3ffL8RBoA3K0mXW56e0iCgZXmQHTpRb_718dcb540f85fe84f36fae05d716db9e92fb81055a829f33a71d56066f1fe39e.jpeg),ENI_AF_D4_A1_142.jpeg(http://localhost/media/user_files/qjewl3CWlUL7yrj7mc4BrneTtfJ1ayuH_50c37c7deff4cdd277931bee393a8e24f1641cd6a1e06a2bef4b0ec3b32dd65d.jpeg)"
+123,Production - burning waste,,,,,,,,,,,,
+124,,,,,,,,,,,,,
+125,,,,,,,,,,,,,

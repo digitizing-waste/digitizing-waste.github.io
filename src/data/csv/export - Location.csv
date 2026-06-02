@@ -1,13 +1,13 @@
 ﻿id,Name,Notes,notes,latitude,longitude,admin_level_country,Infrastructure,Role,is-part-of
 3,Algeria,,,0.0000,0.0000,country,,,
 4,Algers,,,36.7538,3.0588,admin_level_3,Beni Mansour - Algiers,,
-5,El Borma,,,31.5951,9.1597,admin_level_3,"El Borma,El Borma-Skhira - Pipeline,Mesdar - El Borma,El Borma-Gabès,Oued Zar - El Borma,Makhrouga - Debbech - El Borma,Makhrouga - El Borma,In Amenas - El Borma - La Skhirra,Chouch Saida - El Borma",,Tataouine
+5,El Borma,,,31.5951,9.1597,admin_level_3,"El Borma,Mesdar - El Borma,El Borma-Gabès,Oued Zar - El Borma,Makhrouga - Debbech - El Borma,Makhrouga - El Borma,Chouch Saida - El Borma,El Borma - Pump Station SP4 (Amenas - Skhira)",,Tataouine
 6,Tunisia,,,0.0000,0.0000,country,,,
 7,Tataouine,,,0.0000,0.0000,admin_level_1,"Sanhar oil field,Laarich,Oued Zar,Cherouq,Jinane,Chouech Essaida,Abir,Bochra,Nawara,Benefsej Sud,Aziza,Shalbia,Sabeh",,Tunisia
 8,Italy,,,0.0000,0.0000,country,,,
 9,Sicily,,,0.0000,0.0000,admin_level_1,,,Italy
 10,Gela,,,37.0738,14.2411,admin_level_3,"Gela - Refinery,Methane pipeline",,Sicily
-11,Skhira,,,34.2976,10.0751,admin_level_3,"El Borma-Skhira - Pipeline,Skhira - Refinery,Sidi Litaiem - Skhirra Pipeline,In Amenas - Skhirra,In Amenas - El Borma - La Skhirra",,Gabes
+11,Skhira,,,34.2976,10.0751,admin_level_3,"Skhira - Refinery,Sidi Litaiem - Skhirra Pipeline,In Amenas - Skhirra,In Amenas - La Skhirra,El Borma - Pump Station SP4 (Amenas - Skhira)",,Gabes
 12,Gabes,,,33.8881,10.0975,admin_level_1,"Edjeleh-Gabes,South Tunisia Gas Project Pipeline,Gas Treatment Plant - Gabes",,Tunisia
 13,Matmata,,,33.4552,9.7679,admin_level_3,,,Gabes
 14,Médenine,,,33.3399,10.4959,admin_level_3,,,Gabes
@@ -15,7 +15,7 @@
 16,El Hammah,,,33.8859,9.7951,admin_level_3,,,Gabes
 17,Bizerte,,,0.0000,0.0000,admin_level_1,Bizerte - Refinery,,Tunisia
 18,Bizerte,,,37.2768,9.8642,admin_level_3,,,Bizerte
-19,In Amenas,,,28.0385,9.5764,admin_level_3,"In Amenas - Skhirra,In Amenas - Haoud El Hamra",,Illizi
+19,In Amenas,,,28.0385,9.5764,admin_level_3,"In Amenas - Skhirra,In Amenas - Haoud El Hamra,In Amenas - La Skhirra",,Illizi
 20,Zarzaitine,,,28.0867,9.7855,admin_level_4,Zarzaitine,,In Amenas
 21,Edjeleh,,,27.7244,9.8810,admin_level_4,Edjeleh-Gabes,,In Amenas
 22,Mansoura,,,36.0858,11.1235,admin_level_3,,,Bordj Bou Arréridj
