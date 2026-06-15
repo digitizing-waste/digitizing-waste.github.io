@@ -43,6 +43,16 @@ const BASEMAPS = {
   },
 };
 
+const EL_BORMA_FINDINGS = [
+  'Liquid surface elevation: 215.0 m',
+  'Mean spillover elevation: 238.3 m',
+  'Mean depth: 23.9 m',
+  'Approximate planform area: 1.08 km2',
+  'Estimated volume: 21.2 Mm3',
+  'Profile spacing: 200 m across 9 cross-sections',
+  'DEM source: Copernicus GLO-30 / TanDEM-X',
+];
+
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
@@ -217,6 +227,7 @@ export default function LakesHistoricalMap() {
   const [speed, setSpeed] = useState(0.35); // years per second
   const [yearFloat, setYearFloat] = useState(minYear);
   const [basemap, setBasemap] = useState('satellite');
+  const [showElBormaInfo, setShowElBormaInfo] = useState(false);
   const rafRef = useRef(null);
   const lastRef = useRef(0);
 
@@ -471,8 +482,35 @@ export default function LakesHistoricalMap() {
           return (
             <section key={roi.id} className="map-card">
               <header>
-                <h3>{roi.title}</h3>
-                <p>{roi.subtitle}</p>
+                <div className="card-heading-row">
+                  <div>
+                    <h3>{roi.title}</h3>
+                    <p>{roi.subtitle}</p>
+                  </div>
+                  {roi.id === 'elborma' && (
+                    <div className="info-wrap">
+                      <button
+                        type="button"
+                        className="info-button"
+                        aria-label="Show El Borma findings"
+                        aria-expanded={showElBormaInfo}
+                        onClick={() => setShowElBormaInfo((prev) => !prev)}
+                      >
+                        i
+                      </button>
+                      {showElBormaInfo && (
+                        <div className="info-tooltip" role="dialog" aria-label="El Borma findings">
+                          <div className="info-tooltip-title">El Borma findings</div>
+                          <ul>
+                            {EL_BORMA_FINDINGS.map((finding) => (
+                              <li key={finding}>{finding}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </header>
               <div className="map-stage">
                 <DeckGL
@@ -669,6 +707,13 @@ export default function LakesHistoricalMap() {
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+        .card-heading-row {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 10px;
+        }
+
         .map-card h3 {
           margin: 0;
           font-size: 14px;
@@ -679,6 +724,62 @@ export default function LakesHistoricalMap() {
           margin: 2px 0 0;
           font-size: 11px;
           opacity: 0.65;
+        }
+
+        .info-wrap {
+          position: relative;
+          flex-shrink: 0;
+        }
+
+        .info-button {
+          width: 22px;
+          height: 22px;
+          border: 1px solid rgba(255, 255, 255, 0.22);
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.08);
+          color: rgba(243, 236, 223, 0.92);
+          font: inherit;
+          font-size: 12px;
+          line-height: 1;
+          cursor: pointer;
+        }
+
+        .info-button:hover {
+          background: rgba(255, 255, 255, 0.14);
+        }
+
+        .info-tooltip {
+          position: absolute;
+          top: calc(100% + 8px);
+          right: 0;
+          width: min(300px, 60vw);
+          padding: 10px 12px;
+          border-radius: 8px;
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          background: rgba(8, 8, 8, 0.95);
+          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
+          backdrop-filter: blur(8px);
+        }
+
+        .info-tooltip-title {
+          margin: 0 0 8px;
+          font-size: 10px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          opacity: 0.7;
+        }
+
+        .info-tooltip ul {
+          margin: 0;
+          padding-left: 16px;
+          display: grid;
+          gap: 6px;
+        }
+
+        .info-tooltip li {
+          font-size: 11px;
+          line-height: 1.45;
+          color: rgba(243, 236, 223, 0.92);
         }
 
         .narrative {
