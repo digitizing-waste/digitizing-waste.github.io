@@ -1,0 +1,26 @@
+parameter,value
+liquid_surface_elev_m,215.0
+mean_spillover_elev_m,238.3
+std_spillover_elev_m,4.15
+min_spillover_elev_m,231.33
+max_spillover_elev_m,244.3
+mean_depth_m,23.93
+std_depth_m,4.32
+min_depth_m,15.56
+max_depth_m,29.3
+mean_basin_width_m,773.5
+std_basin_width_m,114.3
+basin_long_axis_m,1777.0
+aspect_ratio,2.3
+approx_planform_area_m2,1079481.0
+volume_best_estimate_Mm3,21.213
+volume_low_Mm3,15.91
+volume_high_Mm3,26.516
+profile_spacing_m,200
+n_cross_sections,9
+dem_source,Copernicus GLO-30 / TanDEM-X
+dem_resolution_m,30
+location,"El Borma, Tataouine, Tunisia"
+coordinate_tile,N31_00_E009_00
+note_basin_floor,"DEM floor = liquid surface artifact, true floor unknown"
+note_volume,Volume above liquid surface to spillover elevation
