@@ -502,6 +502,17 @@ export default function LakesHistoricalMap() {
         })}
       </div>
 
+      <section className="narrative" aria-label="Visualization narrative">
+        <h3>Narrative</h3>
+        <p>
+          El Borma is only one of several deep oil lakes in the desert. From satellite imagery,
+          many dark spots appear to indicate oil reservoirs; however, many are persistent
+          superficial stains left by temporary spills. The two lakes shown here are material
+          manifestations of upstream oil-production externalities, resembling the behavior of a
+          natural lake.
+        </p>
+      </section>
+
       <style>{`
         .lakes-root {
           position: absolute;
@@ -513,6 +524,7 @@ export default function LakesHistoricalMap() {
           flex-direction: column;
           gap: 12px;
           padding: 14px;
+          overflow: auto;
         }
 
         .hud {
@@ -668,7 +680,33 @@ export default function LakesHistoricalMap() {
           font-size: 11px;
           opacity: 0.65;
         }
-.scale-bar {
+
+        .narrative {
+          position: relative;
+          z-index: 2;
+          border: 1px solid rgba(255, 255, 255, 0.13);
+          border-radius: 12px;
+          background: linear-gradient(145deg, rgba(14, 12, 11, 0.9), rgba(20, 16, 13, 0.86));
+          padding: 14px 16px;
+        }
+
+        .narrative h3 {
+          margin: 0 0 8px;
+          font-size: 12px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          opacity: 0.76;
+        }
+
+        .narrative p {
+          margin: 0;
+          font-size: 13px;
+          line-height: 1.65;
+          color: rgba(243, 236, 223, 0.9);
+          max-width: 110ch;
+        }
+
+        .scale-bar {
           position: absolute;
           bottom: 16px;
           left: 16px;
