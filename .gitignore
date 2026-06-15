@@ -24,3 +24,4 @@ pnpm-debug.log*
 .idea/
 
 tmp/
+public/sources/hydrocarbon_mask.tif
