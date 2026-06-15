@@ -4,12 +4,13 @@ import { GeoJsonLayer, BitmapLayer, ScatterplotLayer } from '@deck.gl/layers';
 import { TileLayer } from '@deck.gl/geo-layers';
 import { MapView } from '@deck.gl/core';
 import lakesData from '../data/geojson/lakes-historical.geojson';
+import elBormaFindingsCsv from '../data/csv/el_borma_findings.csv?raw';
 
 const ROIS = [
   {
     id: 'elborma',
     title: 'El Borma',
-    subtitle: 'Main lake dynamic',
+    subtitle: '',
     center: [9.183, 31.716],
     zoom: 12.2,
     color: [233, 121, 47],
@@ -19,7 +20,7 @@ const ROIS = [
   {
     id: 'zenaiga',
     title: 'Near Zenaiga',
-    subtitle: 'Secondary lake dynamic',
+    subtitle: '',
     center: [9.168, 31.6548],
     zoom: 13.2,
     color: [78, 170, 121],
@@ -43,14 +44,35 @@ const BASEMAPS = {
   },
 };
 
-const EL_BORMA_FINDINGS = [
-  'Liquid surface elevation: 215.0 m',
-  'Mean spillover elevation: 238.3 m',
-  'Mean depth: 23.9 m',
-  'Approximate planform area: 1.08 km2',
-  'Estimated volume: 21.2 Mm3',
-  'Profile spacing: 200 m across 9 cross-sections',
-  'DEM source: Copernicus GLO-30 / TanDEM-X',
+const EL_BORMA_FINDING_FIELDS = [
+  {
+    parameter: 'liquid_surface_elev_m',
+    format: value => `Liquid surface elevation: ${Number(value).toFixed(1)} m`,
+  },
+  {
+    parameter: 'mean_spillover_elev_m',
+    format: value => `Mean spillover elevation: ${Number(value).toFixed(1)} m`,
+  },
+  {
+    parameter: 'mean_depth_m',
+    format: value => `Mean depth: ${Number(value).toFixed(1)} m`,
+  },
+  {
+    parameter: 'approx_planform_area_m2',
+    format: value => `Approximate planform area: ${(Number(value) / 1_000_000).toFixed(2)} km2`,
+  },
+  {
+    parameter: 'volume_best_estimate_Mm3',
+    format: value => `Estimated volume: ${Number(value).toFixed(1)} Mm3`,
+  },
+  {
+    parameter: 'profile_spacing_m',
+    format: (value, entries) => `Profile spacing: ${Number(value).toFixed(0)} m across ${entries.n_cross_sections} cross-sections`,
+  },
+  {
+    parameter: 'dem_source',
+    format: value => `DEM source: ${value}`,
+  },
 ];
 
 function clamp(value, min, max) {
@@ -192,6 +214,30 @@ function calculateScale(zoom, latitude) {
   };
 }
 
+function parseSimpleCsv(csvText) {
+  const lines = csvText.trim().split('\n');
+  const entries = {};
+
+  for (const line of lines.slice(1)) {
+    const commaIndex = line.indexOf(',');
+    if (commaIndex === -1) continue;
+
+    const parameter = line.slice(0, commaIndex).trim();
+    const rawValue = line.slice(commaIndex + 1).trim();
+    entries[parameter] = rawValue.replace(/^"|"$/g, '');
+  }
+
+  return entries;
+}
+
+function buildElBormaFindings(csvText) {
+  const entries = parseSimpleCsv(csvText);
+
+  return EL_BORMA_FINDING_FIELDS
+    .filter(({ parameter }) => entries[parameter] != null)
+    .map(({ parameter, format }) => format(entries[parameter], entries));
+}
+
 function buildRoiDataset() {
   const allFeatures = lakesData.features.map((feature) => {
     const year = Number(feature.properties.year);
@@ -220,6 +266,7 @@ function buildRoiDataset() {
 
 export default function LakesHistoricalMap() {
   const { years, byRoi } = useMemo(buildRoiDataset, []);
+  const elBormaFindings = useMemo(() => buildElBormaFindings(elBormaFindingsCsv), []);
   const minYear = years[0];
   const maxYear = years[years.length - 1];
 
@@ -502,7 +549,7 @@ export default function LakesHistoricalMap() {
                         <div className="info-tooltip" role="dialog" aria-label="El Borma findings">
                           <div className="info-tooltip-title">El Borma findings</div>
                           <ul>
-                            {EL_BORMA_FINDINGS.map((finding) => (
+                            {elBormaFindings.map((finding) => (
                               <li key={finding}>{finding}</li>
                             ))}
                           </ul>
