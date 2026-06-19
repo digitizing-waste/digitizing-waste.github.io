@@ -312,6 +312,8 @@ export default function ArchiveNetwork() {
           x="50%" y={17}
           textAnchor="middle" fill="#4aaa7a" fontSize="10"
           fontFamily="monospace" letterSpacing="0.12em"
+          role="link"
+          aria-label="Go to Oil Lakes Surface visualization"
           style={{ cursor: 'pointer', userSelect: 'none' }}
           onClick={() => { window.location.href = '/lakes'; }}
         >
@@ -324,6 +326,8 @@ export default function ArchiveNetwork() {
             x="50%" y={dims.h - 8}
             textAnchor="middle" fill="#c45c3a" fontSize="10"
             fontFamily="monospace" letterSpacing="0.12em"
+            role="link"
+            aria-label="Go to Subsurface Stratigraphy visualization"
             style={{ cursor: 'pointer', userSelect: 'none' }}
             onClick={() => { window.location.href = '/isopay'; }}
           >
@@ -362,8 +366,13 @@ export default function ArchiveNetwork() {
               >
                 <g
                   ref={el => { nodeScaleGroupsRef.current[img.image_path] = el; }}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isSeed}
+                  aria-label={`${img.extractive_phase} photograph${isSeed ? ', selected as seed' : ''}`}
                   style={{ cursor: 'pointer' }}
                   onClick={() => handleNodeClick(img.image_path)}
+                  onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleNodeClick(img.image_path)}
                   onMouseEnter={e => handleMouseEnter(img, e)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -405,34 +414,43 @@ export default function ArchiveNetwork() {
 
       {/* Control bar */}
       {seedId && (
-        <div style={{ position: 'absolute', top: 8, right: 8, display: 'flex', gap: 6, zIndex: 20 }}>
+        <div
+          role="toolbar"
+          aria-label="Visualization controls"
+          aria-live="polite"
+          style={{ position: 'absolute', top: 8, right: 8, display: 'flex', gap: 6, zIndex: 20 }}
+        >
           <button
             style={splitActive ? BTN_ACTIVE : BTN}
+            aria-pressed={splitActive}
             onClick={() => setSplitActive(v => !v)}
           >
             {splitActive ? '▲▼ Collapse Split' : '▲▼ Split by Material'}
           </button>
-          <button style={BTN} onClick={handleReset}>
+          <button style={BTN} aria-label="Reset graph to default layout" onClick={handleReset}>
             Reset
           </button>
         </div>
       )}
 
       {/* Instruction panel — bottom left */}
-      <div style={{
-        position: 'absolute', bottom: 20, left: 16,
-        width: infoOpen ? 230 : 'auto',
-        background: 'rgba(8,8,8,0.88)',
-        border: '1px solid rgba(255,255,255,0.1)',
-        borderRadius: 4,
-        fontFamily: 'monospace',
-        zIndex: 25,
-        backdropFilter: 'blur(10px)',
-        overflow: 'hidden',
-        transition: 'width 0.2s',
-      }}>
-        {/* Header row */}
+      <aside
+        aria-label="How to interact with the visualization"
+        style={{
+          position: 'absolute', bottom: 20, left: 16,
+          width: 238,
+          background: 'rgba(8,8,8,0.88)',
+          border: '1px solid rgba(255,255,255,0.1)',
+          borderRadius: 4,
+          fontFamily: 'monospace',
+          zIndex: 25,
+          backdropFilter: 'blur(10px)',
+        }}
+      >
+        {/* Toggle button */}
         <button
+          aria-expanded={infoOpen}
+          aria-controls="archive-instructions"
           onClick={() => setInfoOpen(v => !v)}
           style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -444,72 +462,97 @@ export default function ArchiveNetwork() {
           }}
         >
           <span>How to read</span>
-          <span style={{ marginLeft: 8, opacity: 0.5 }}>{infoOpen ? '▾' : '▸'}</span>
+          <span aria-hidden="true" style={{ marginLeft: 8, opacity: 0.5 }}>
+            {infoOpen ? '▾' : '▸'}
+          </span>
         </button>
 
-        {infoOpen && (
-          <div style={{ padding: '0 10px 10px' }}>
-            {/* Phase legend */}
-            <div style={{ marginBottom: 10 }}>
-              {Object.entries(PHASE_COLORS).map(([phase, color]) => (
-                <div key={phase} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-                  <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 1, background: color, flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.5)', letterSpacing: '0.04em' }}>
-                    {PHASE_SHORT[phase]}
-                  </span>
-                </div>
-              ))}
-            </div>
+        <div
+          id="archive-instructions"
+          hidden={!infoOpen}
+          style={{ padding: '0 10px 10px' }}
+        >
+          {/* Phase legend */}
+          <dl style={{ margin: 0, marginBottom: 10 }}>
+            <dt style={{ fontSize: 8, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(240,236,230,0.3)', marginBottom: 5 }}>
+              Card color — extractive phase
+            </dt>
+            {Object.entries(PHASE_COLORS).map(([phase, color]) => (
+              <dd key={phase} style={{ display: 'flex', alignItems: 'center', gap: 6, margin: '0 0 4px' }}>
+                <span
+                  aria-hidden="true"
+                  style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 1, background: color, flexShrink: 0 }}
+                />
+                <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.5)', letterSpacing: '0.04em' }}>
+                  {PHASE_SHORT[phase]}
+                </span>
+              </dd>
+            ))}
+          </dl>
 
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 9 }}>
-              {/* Step 1 */}
-              <div style={{
+          <ol
+            aria-label="Interaction steps"
+            style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 9, margin: 0, listStyle: 'none', padding: 0, paddingTop: 9 }}
+          >
+            {/* Step 1 */}
+            <li
+              aria-current={!seedId ? 'step' : undefined}
+              style={{
                 display: 'flex', gap: 7, marginBottom: 8,
                 opacity: !seedId ? 1 : 0.38,
                 transition: 'opacity 0.3s',
-              }}>
-                <span style={{ fontSize: 9, color: !seedId ? '#f0ece6' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>1</span>
-                <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.65)', lineHeight: 1.5 }}>
-                  Click any photograph to set it as a <em style={{ color: '#f0ece6', fontStyle: 'normal' }}>seed</em>. The 15 most materially similar images cluster around it.
-                </span>
-              </div>
-              {/* Step 2 */}
-              <div style={{
+              }}
+            >
+              <span aria-hidden="true" style={{ fontSize: 9, color: !seedId ? '#f0ece6' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>1</span>
+              <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.65)', lineHeight: 1.5 }}>
+                Click any photograph to set it as a <strong style={{ color: '#f0ece6', fontWeight: 'normal' }}>seed</strong>. The 15 most materially similar images cluster around it.
+              </span>
+            </li>
+            {/* Step 2 */}
+            <li
+              aria-current={seedId && !splitActive ? 'step' : undefined}
+              style={{
                 display: 'flex', gap: 7, marginBottom: 8,
                 opacity: seedId && !splitActive ? 1 : 0.38,
                 transition: 'opacity 0.3s',
-              }}>
-                <span style={{ fontSize: 9, color: seedId && !splitActive ? '#f0ece6' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>2</span>
-                <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.65)', lineHeight: 1.5 }}>
-                  Press <em style={{ color: '#f0ece6', fontStyle: 'normal' }}>Split by Material</em> to separate images by substance type.
-                </span>
-              </div>
-              {/* Step 3 */}
-              <div style={{
+              }}
+            >
+              <span aria-hidden="true" style={{ fontSize: 9, color: seedId && !splitActive ? '#f0ece6' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>2</span>
+              <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.65)', lineHeight: 1.5 }}>
+                Press <strong style={{ color: '#f0ece6', fontWeight: 'normal' }}>Split by Material</strong> to separate the cluster by substance type.
+              </span>
+            </li>
+            {/* Step 3 */}
+            <li
+              aria-current={splitActive ? 'step' : undefined}
+              style={{
                 display: 'flex', gap: 7, marginBottom: 8,
                 opacity: splitActive ? 1 : 0.38,
                 transition: 'opacity 0.3s',
-              }}>
-                <span style={{ fontSize: 9, color: splitActive ? '#4aaa7a' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>3</span>
-                <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.65)', lineHeight: 1.5 }}>
-                  <em style={{ color: '#c45c3a', fontStyle: 'normal' }}>Heavy residues</em> (drilling mud, waste) sink. <em style={{ color: '#4aaa7a', fontStyle: 'normal' }}>Volatile matter</em> (smoke, flames) rises.
-                </span>
-              </div>
-              {/* Hover tip */}
-              <div style={{ display: 'flex', gap: 7 }}>
-                <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.25)', flexShrink: 0 }}>→</span>
-                <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.35)', lineHeight: 1.5 }}>
-                  Hover any image for a field description.
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+              }}
+            >
+              <span aria-hidden="true" style={{ fontSize: 9, color: splitActive ? '#4aaa7a' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>3</span>
+              <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.65)', lineHeight: 1.5 }}>
+                <strong style={{ color: '#c45c3a', fontWeight: 'normal' }}>Heavy residues</strong> (drilling mud, wastewater) sink.{' '}
+                <strong style={{ color: '#4aaa7a', fontWeight: 'normal' }}>Volatile matter</strong> (smoke, flames) rises.
+              </span>
+            </li>
+            {/* Hover tip */}
+            <li style={{ display: 'flex', gap: 7 }}>
+              <span aria-hidden="true" style={{ fontSize: 9, color: 'rgba(240,236,230,0.25)', flexShrink: 0 }}>→</span>
+              <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.35)', lineHeight: 1.5 }}>
+                Hover any image to read its field description.
+              </span>
+            </li>
+          </ol>
+        </div>
+      </aside>
 
       {/* Hover tooltip */}
       <div
         ref={tooltipRef}
+        role="tooltip"
+        aria-live="polite"
         style={{
           position: 'absolute',
           left: tx, top: ty,
