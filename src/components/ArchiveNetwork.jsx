@@ -67,6 +67,47 @@ const BTN_ACTIVE = {
   borderColor: 'rgba(58,125,92,0.8)',
 };
 
+// ── Sidebar helper components ────────────────────────────────────────────────
+
+function SidebarRow({ label, value, valueColor }) {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 6, alignItems: 'baseline' }}>
+      <span style={{ fontSize: 9, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(240,236,230,0.3)', flexShrink: 0 }}>
+        {label}
+      </span>
+      <span style={{ fontSize: 11, color: valueColor || 'rgba(240,236,230,0.7)', textAlign: 'right', lineHeight: 1.4 }}>
+        {value}
+      </span>
+    </div>
+  );
+}
+
+function SidebarTagRow({ label, tags, color }) {
+  if (!tags || tags.length === 0) return null;
+  return (
+    <div style={{ marginBottom: 8 }}>
+      <p style={{ fontSize: 9, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(240,236,230,0.3)', marginBottom: 5 }}>
+        {label}
+      </p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+        {tags.map(tag => (
+          <span
+            key={tag}
+            style={{
+              fontSize: 9, color, letterSpacing: '0.03em',
+              border: `1px solid ${color}55`,
+              borderRadius: 2, padding: '2px 5px',
+              background: `${color}12`,
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function ArchiveNetwork() {
   const containerRef       = useRef(null);
   const svgRef             = useRef(null);
@@ -85,6 +126,8 @@ export default function ArchiveNetwork() {
   const [hoveredNode, setHoveredNode] = useState(null);
   const [mousePos, setMousePos]     = useState({ x: 0, y: 0 });
   const [infoOpen, setInfoOpen]     = useState(true);
+  const [selectedNode, setSelectedNode] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   // ── Init simulation ──────────────────────────────────────────────────
   useEffect(() => {
@@ -215,6 +258,9 @@ export default function ArchiveNetwork() {
 
   // ── Event handlers ───────────────────────────────────────────────────
   const handleNodeClick = useCallback((id) => {
+    const img = DATA.find(d => d.image_path === id);
+    setSelectedNode(img ?? null);
+    setLightboxOpen(false);
     setSeedId(prev => {
       if (prev && prev !== id) {
         const prevInner = nodeScaleGroupsRef.current[prev];
@@ -233,9 +279,12 @@ export default function ArchiveNetwork() {
     });
     setSeedId(null);
     setSplitActive(false);
+    setSelectedNode(null);
+    setLightboxOpen(false);
   }, []);
 
   const handleMouseEnter = useCallback((img, e) => {
+    if (selectedNode) return;   // sidebar open — skip hover tooltip
     setHoveredNode(img);
     const rect = containerRef.current?.getBoundingClientRect();
     if (rect) setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
@@ -243,7 +292,7 @@ export default function ArchiveNetwork() {
       gsap.killTweensOf(tooltipRef.current);
       gsap.fromTo(tooltipRef.current, { opacity: 0, y: -5 }, { opacity: 1, y: 0, duration: 0.18 });
     }
-  }, []);
+  }, [selectedNode]);
 
   const handleMouseLeave = useCallback(() => {
     if (tooltipRef.current) {
@@ -605,6 +654,192 @@ export default function ArchiveNetwork() {
           </>
         )}
       </div>
+
+      {/* ── Right detail sidebar ───────────────────────────────────────── */}
+      <aside
+        aria-label="Image detail panel"
+        style={{
+          position: 'absolute', top: 0, right: 0, bottom: 0,
+          width: 310,
+          background: 'rgba(8,8,8,0.96)',
+          borderLeft: `1px solid ${selectedNode ? (PHASE_COLORS[selectedNode.extractive_phase] || 'rgba(255,255,255,0.1)') : 'transparent'}`,
+          transform: selectedNode ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.28s cubic-bezier(0.4,0,0.2,1), border-color 0.2s',
+          zIndex: 40,
+          display: 'flex', flexDirection: 'column',
+          fontFamily: 'monospace',
+          backdropFilter: 'blur(14px)',
+          overflowY: 'auto',
+        }}
+      >
+        {selectedNode && (() => {
+          const phaseColor = PHASE_COLORS[selectedNode.extractive_phase] || '#888';
+          const neighbors = links
+            .filter(l => l.source === selectedNode.image_path || l.target === selectedNode.image_path)
+            .map(l => {
+              const neighborId = l.source === selectedNode.image_path ? l.target : l.source;
+              return { img: DATA.find(d => d.image_path === neighborId), score: l.score };
+            })
+            .filter(n => n.img)
+            .sort((a, b) => b.score - a.score);
+          const maxNeighborScore = neighbors[0]?.score || 1;
+
+          return (
+            <>
+              {/* Sidebar header */}
+              <div style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                padding: '10px 12px 8px',
+                borderBottom: `1px solid ${phaseColor}44`,
+                flexShrink: 0,
+              }}>
+                <span style={{ fontSize: 10, color: phaseColor, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                  {selectedNode.extractive_phase}
+                </span>
+                <button
+                  aria-label="Close detail panel"
+                  onClick={() => { setSelectedNode(null); setLightboxOpen(false); }}
+                  style={{ background: 'none', border: 'none', color: 'rgba(240,236,230,0.4)', fontSize: 16, cursor: 'pointer', lineHeight: 1, padding: '0 2px' }}
+                >
+                  ×
+                </button>
+              </div>
+
+              {/* Image preview */}
+              <div style={{ position: 'relative', flexShrink: 0 }}>
+                <img
+                  src={`/sources/eni/${selectedNode.image_path}`}
+                  alt={`Archival photograph: ${selectedNode.extractive_phase}`}
+                  style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
+                />
+                {/* Magnify button */}
+                <button
+                  aria-label="View full image"
+                  onClick={() => setLightboxOpen(true)}
+                  style={{
+                    position: 'absolute', bottom: 8, right: 8,
+                    background: 'rgba(0,0,0,0.72)', border: '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: 3, color: '#f0ece6', fontSize: 14,
+                    width: 30, height: 30, cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    backdropFilter: 'blur(4px)',
+                  }}
+                >
+                  🔍
+                </button>
+              </div>
+
+              {/* Metadata */}
+              <div style={{ padding: '12px 14px', borderBottom: `1px solid rgba(255,255,255,0.06)`, flexShrink: 0 }}>
+                <SidebarRow label="Date" value={selectedNode.date_estimate || '—'} />
+                <SidebarRow label="Location" value={selectedNode.location || '—'} />
+                <SidebarRow
+                  label="People present"
+                  value={selectedNode.people_present ? 'Yes' : 'No'}
+                  valueColor={selectedNode.people_present ? '#a07040' : 'rgba(240,236,230,0.35)'}
+                />
+                <SidebarTagRow label="Equipment" tags={selectedNode.equipment_and_infrastructure} color={phaseColor} />
+                <SidebarTagRow label="Substances" tags={selectedNode.substances_and_residues} color="#c45c3a" />
+                <SidebarTagRow label="Ecology" tags={selectedNode.ecology_and_landscape} color="#3a7d5c" />
+              </div>
+
+              {/* Relational description */}
+              <div style={{ padding: '12px 14px', borderBottom: `1px solid rgba(255,255,255,0.06)`, flexShrink: 0 }}>
+                <p style={{ fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(240,236,230,0.3)', marginBottom: 7 }}>
+                  Field description
+                </p>
+                <p style={{ fontSize: 11, color: 'rgba(240,236,230,0.72)', lineHeight: 1.65 }}>
+                  {selectedNode.relational_description}
+                </p>
+              </div>
+
+              {/* Affinity neighbors */}
+              <div style={{ padding: '12px 14px', flexShrink: 0 }}>
+                <p style={{ fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(240,236,230,0.3)', marginBottom: 10 }}>
+                  {neighbors.length > 0 ? `Affinity neighbors (${neighbors.length})` : 'No neighbors — click a node to set it as seed first'}
+                </p>
+                {neighbors.map(({ img: n, score }) => {
+                  const nc = PHASE_COLORS[n.extractive_phase] || '#888';
+                  return (
+                    <button
+                      key={n.image_path}
+                      aria-label={`View ${n.extractive_phase} neighbor`}
+                      onClick={() => handleNodeClick(n.image_path)}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 8, width: '100%',
+                        background: 'none', border: 'none', cursor: 'pointer',
+                        padding: '5px 0', borderBottom: '1px solid rgba(255,255,255,0.04)',
+                        textAlign: 'left',
+                      }}
+                    >
+                      <img
+                        src={`/sources/eni/${n.image_path}`}
+                        alt=""
+                        aria-hidden="true"
+                        style={{ width: 44, height: 33, objectFit: 'cover', borderRadius: 2, flexShrink: 0, borderTop: `3px solid ${nc}` }}
+                      />
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 9, color: nc, letterSpacing: '0.04em', marginBottom: 3 }}>
+                          {PHASE_SHORT[n.extractive_phase]}
+                        </div>
+                        {/* Score bar */}
+                        <div style={{ height: 3, background: 'rgba(255,255,255,0.08)', borderRadius: 2 }}>
+                          <div style={{ height: '100%', width: `${(score / maxNeighborScore) * 100}%`, background: nc, borderRadius: 2, opacity: 0.7 }} />
+                        </div>
+                      </div>
+                      <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.3)', flexShrink: 0 }}>{score}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          );
+        })()}
+      </aside>
+
+      {/* ── Lightbox ─────────────────────────────────────────────────── */}
+      {lightboxOpen && selectedNode && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Full image: ${selectedNode.extractive_phase}`}
+          onClick={() => setLightboxOpen(false)}
+          style={{
+            position: 'fixed', inset: 0,
+            background: 'rgba(0,0,0,0.88)',
+            zIndex: 100,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            cursor: 'zoom-out',
+          }}
+        >
+          <img
+            src={`/sources/eni/${selectedNode.image_path}`}
+            alt={`Full view: ${selectedNode.extractive_phase}`}
+            onClick={e => e.stopPropagation()}
+            style={{
+              maxWidth: '90vw', maxHeight: '88vh',
+              objectFit: 'contain',
+              borderRadius: 3,
+              border: `2px solid ${PHASE_COLORS[selectedNode.extractive_phase] || 'rgba(255,255,255,0.2)'}`,
+              cursor: 'default',
+              boxShadow: '0 8px 60px rgba(0,0,0,0.8)',
+            }}
+          />
+          <button
+            aria-label="Close full image view"
+            onClick={() => setLightboxOpen(false)}
+            style={{
+              position: 'absolute', top: 20, right: 24,
+              background: 'rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.2)',
+              borderRadius: 3, color: '#f0ece6', fontSize: 20,
+              width: 36, height: 36, cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >
+            ×
+          </button>
+        </div>
+      )}
     </div>
   );
 }
