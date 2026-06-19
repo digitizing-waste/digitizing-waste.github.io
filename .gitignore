@@ -26,3 +26,4 @@ pnpm-debug.log*
 tmp/
 public/sources/hydrocarbon*
 public/sources/temp*
+src/data/csv/el_borma_profiles.csv
