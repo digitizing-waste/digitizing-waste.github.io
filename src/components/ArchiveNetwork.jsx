@@ -119,6 +119,12 @@ export default function ArchiveNetwork() {
   const mountedRef         = useRef(false);
   const tooltipRef         = useRef(null);
 
+  const panGroupRef        = useRef(null);
+  const panOffsetRef       = useRef({ x: 0, y: 0 });
+  const isPanningRef       = useRef(false);
+  const panStartRef        = useRef({ mx: 0, my: 0, ox: 0, oy: 0 });
+  const [grabbing, setGrabbing] = useState(false);
+
   const [dims, setDims]             = useState({ w: 0, h: 0 });
   const [seedId, setSeedId]         = useState(null);
   const [splitActive, setSplitActive] = useState(false);
@@ -281,6 +287,8 @@ export default function ArchiveNetwork() {
     setSplitActive(false);
     setSelectedNode(null);
     setLightboxOpen(false);
+    panOffsetRef.current = { x: 0, y: 0 };
+    if (panGroupRef.current) panGroupRef.current.setAttribute('transform', 'translate(0,0)');
   }, []);
 
   const handleMouseEnter = useCallback((img, e) => {
@@ -315,11 +323,22 @@ export default function ArchiveNetwork() {
       ref={containerRef}
       style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', background: '#0a0e0d' }}
       onMouseMove={(e) => {
+        if (isPanningRef.current && panGroupRef.current) {
+          const dx = e.clientX - panStartRef.current.mx;
+          const dy = e.clientY - panStartRef.current.my;
+          const nx = panStartRef.current.ox + dx;
+          const ny = panStartRef.current.oy + dy;
+          panOffsetRef.current = { x: nx, y: ny };
+          panGroupRef.current.setAttribute('transform', `translate(${nx.toFixed(1)},${ny.toFixed(1)})`);
+          return;
+        }
         if (!hoveredNode) return;
         const rect = containerRef.current?.getBoundingClientRect();
         if (!rect) return;
         setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
       }}
+      onMouseUp={() => { isPanningRef.current = false; setGrabbing(false); }}
+      onMouseLeave={() => { isPanningRef.current = false; setGrabbing(false); }}
     >
       {/* Zone overlays when Split is active */}
       {splitActive && (
@@ -335,7 +354,7 @@ export default function ArchiveNetwork() {
         </>
       )}
 
-      <svg ref={svgRef} style={{ width: '100%', height: '100%', display: 'block' }}>
+      <svg ref={svgRef} style={{ width: '100%', height: '100%', display: 'block', cursor: grabbing ? 'grabbing' : 'grab' }}>
         <defs>
           <linearGradient id="archive-bg" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%"   stopColor="#081512" />
@@ -346,7 +365,20 @@ export default function ArchiveNetwork() {
           </clipPath>
         </defs>
 
-        <rect width="100%" height="100%" fill="url(#archive-bg)" />
+        <rect
+          width="100%" height="100%" fill="url(#archive-bg)"
+          style={{ cursor: grabbing ? 'grabbing' : 'grab' }}
+          onMouseDown={e => {
+            isPanningRef.current = true;
+            panStartRef.current = {
+              mx: e.clientX, my: e.clientY,
+              ox: panOffsetRef.current.x, oy: panOffsetRef.current.y,
+            };
+            setGrabbing(true);
+            e.preventDefault();
+          }}
+        />
+        <g ref={panGroupRef}>
 
         {/* Dashed midline */}
         {dims.h > 0 && (
@@ -474,6 +506,8 @@ export default function ArchiveNetwork() {
             );
           })}
         </g>
+
+        </g>{/* end panGroup */}
       </svg>
 
       {/* Control bar */}
