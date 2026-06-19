@@ -293,7 +293,7 @@ export default function ArchiveNetwork() {
             <stop offset="100%" stopColor="#150a05" />
           </linearGradient>
           <clipPath id="node-img-clip">
-            <rect x={-HALF_W} y={-HALF_H} width={NODE_W} height={NODE_H - 18} />
+            <rect x={-HALF_W} y={-HALF_H + 4} width={NODE_W} height={NODE_H - 22} />
           </clipPath>
         </defs>
 
@@ -376,24 +376,39 @@ export default function ArchiveNetwork() {
                   onMouseEnter={e => handleMouseEnter(img, e)}
                   onMouseLeave={handleMouseLeave}
                 >
+                  {/* Card background */}
                   <rect
                     x={-HALF_W} y={-HALF_H} width={NODE_W} height={NODE_H} rx={3}
                     fill="#0c0c0c"
                     stroke={isSeed ? '#ffffff' : phaseColor}
-                    strokeWidth={isSeed ? 2 : 1}
-                    strokeOpacity={isSeed ? 1 : 0.55}
+                    strokeWidth={isSeed ? 2.5 : 2}
+                    strokeOpacity={isSeed ? 1 : 0.85}
                   />
+                  {/* Photo thumbnail */}
                   <image
                     href={`/sources/eni/${img.image_path}`}
-                    x={-HALF_W} y={-HALF_H}
-                    width={NODE_W} height={NODE_H - 18}
+                    x={-HALF_W} y={-HALF_H + 4}
+                    width={NODE_W} height={NODE_H - 22}
                     preserveAspectRatio="xMidYMid slice"
                     clipPath="url(#node-img-clip)"
+                  />
+                  {/* Top accent strip */}
+                  <rect
+                    x={-HALF_W} y={-HALF_H} width={NODE_W} height={4} rx={3}
+                    fill={phaseColor}
+                    fillOpacity={isSeed ? 1 : 0.9}
+                  />
+                  {/* Label band — phase-tinted */}
+                  <rect
+                    x={-HALF_W} y={HALF_H - 18}
+                    width={NODE_W} height={18}
+                    fill={phaseColor}
+                    fillOpacity={0.22}
                   />
                   <rect
                     x={-HALF_W} y={HALF_H - 18}
                     width={NODE_W} height={18}
-                    fill="rgba(0,0,0,0.82)"
+                    fill="rgba(0,0,0,0.55)"
                   />
                   <text
                     y={HALF_H - 6}
