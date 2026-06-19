@@ -438,7 +438,7 @@ export default function ArchiveNetwork() {
         aria-label="How to interact with the visualization"
         style={{
           position: 'absolute', bottom: 20, left: 16,
-          width: 238,
+          width: 276,
           background: 'rgba(8,8,8,0.88)',
           border: '1px solid rgba(255,255,255,0.1)',
           borderRadius: 4,
@@ -455,9 +455,9 @@ export default function ArchiveNetwork() {
           style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             width: '100%', background: 'none', border: 'none',
-            color: 'rgba(240,236,230,0.55)', fontSize: 9,
+            color: 'rgba(240,236,230,0.55)', fontSize: 11,
             letterSpacing: '0.12em', textTransform: 'uppercase',
-            padding: '7px 10px', cursor: 'pointer',
+            padding: '8px 12px', cursor: 'pointer',
             whiteSpace: 'nowrap',
           }}
         >
@@ -474,7 +474,7 @@ export default function ArchiveNetwork() {
         >
           {/* Phase legend */}
           <dl style={{ margin: 0, marginBottom: 10 }}>
-            <dt style={{ fontSize: 8, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(240,236,230,0.3)', marginBottom: 5 }}>
+            <dt style={{ fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(240,236,230,0.3)', marginBottom: 5 }}>
               Card color — extractive phase
             </dt>
             {Object.entries(PHASE_COLORS).map(([phase, color]) => (
@@ -483,7 +483,7 @@ export default function ArchiveNetwork() {
                   aria-hidden="true"
                   style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 1, background: color, flexShrink: 0 }}
                 />
-                <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.5)', letterSpacing: '0.04em' }}>
+                <span style={{ fontSize: 12, color: 'rgba(240,236,230,0.5)', letterSpacing: '0.04em' }}>
                   {PHASE_SHORT[phase]}
                 </span>
               </dd>
@@ -503,8 +503,8 @@ export default function ArchiveNetwork() {
                 transition: 'opacity 0.3s',
               }}
             >
-              <span aria-hidden="true" style={{ fontSize: 9, color: !seedId ? '#f0ece6' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>1</span>
-              <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.65)', lineHeight: 1.5 }}>
+              <span aria-hidden="true" style={{ fontSize: 12, color: !seedId ? '#f0ece6' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>1</span>
+              <span style={{ fontSize: 12, color: 'rgba(240,236,230,0.65)', lineHeight: 1.6 }}>
                 Click any photograph to set it as a <strong style={{ color: '#f0ece6', fontWeight: 'normal' }}>seed</strong>. The 15 most materially similar images cluster around it.
               </span>
             </li>
@@ -517,8 +517,8 @@ export default function ArchiveNetwork() {
                 transition: 'opacity 0.3s',
               }}
             >
-              <span aria-hidden="true" style={{ fontSize: 9, color: seedId && !splitActive ? '#f0ece6' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>2</span>
-              <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.65)', lineHeight: 1.5 }}>
+              <span aria-hidden="true" style={{ fontSize: 12, color: seedId && !splitActive ? '#f0ece6' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>2</span>
+              <span style={{ fontSize: 12, color: 'rgba(240,236,230,0.65)', lineHeight: 1.6 }}>
                 Press <strong style={{ color: '#f0ece6', fontWeight: 'normal' }}>Split by Material</strong> to separate the cluster by substance type.
               </span>
             </li>
@@ -531,16 +531,16 @@ export default function ArchiveNetwork() {
                 transition: 'opacity 0.3s',
               }}
             >
-              <span aria-hidden="true" style={{ fontSize: 9, color: splitActive ? '#4aaa7a' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>3</span>
-              <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.65)', lineHeight: 1.5 }}>
+              <span aria-hidden="true" style={{ fontSize: 12, color: splitActive ? '#4aaa7a' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>3</span>
+              <span style={{ fontSize: 12, color: 'rgba(240,236,230,0.65)', lineHeight: 1.6 }}>
                 <strong style={{ color: '#c45c3a', fontWeight: 'normal' }}>Heavy residues</strong> (drilling mud, wastewater) sink.{' '}
                 <strong style={{ color: '#4aaa7a', fontWeight: 'normal' }}>Volatile matter</strong> (smoke, flames) rises.
               </span>
             </li>
             {/* Hover tip */}
             <li style={{ display: 'flex', gap: 7 }}>
-              <span aria-hidden="true" style={{ fontSize: 9, color: 'rgba(240,236,230,0.25)', flexShrink: 0 }}>→</span>
-              <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.35)', lineHeight: 1.5 }}>
+              <span aria-hidden="true" style={{ fontSize: 12, color: 'rgba(240,236,230,0.25)', flexShrink: 0 }}>→</span>
+              <span style={{ fontSize: 12, color: 'rgba(240,236,230,0.35)', lineHeight: 1.6 }}>
                 Hover any image to read its field description.
               </span>
             </li>
