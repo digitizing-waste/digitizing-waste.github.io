@@ -13,7 +13,7 @@ import {
   getPhaseZone,
   getVerticalBias,
 } from '../utils/archiveAffinity.js';
-import archiveData from '../data/json/20260618180331.json';
+import archiveData from '../data/json/20260622094447.json';
 
 const DATA = archiveData.results;
 

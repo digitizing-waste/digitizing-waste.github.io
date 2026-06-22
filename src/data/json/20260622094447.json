@@ -1,0 +1,1311 @@
+{
+    "project_id": "20260622094447",
+    "service_url": "https://litellm.dreamlab.ucsb.edu/",
+    "model": "gemini-3.5-flash",
+    "source_folder": "/Users/jmeloflorez-local/Research/Digitizing-waste/public/sources/eni",
+    "prompt": "prompt/oil-extraction-data-ext.txt",
+    "start": "2026-06-22 09:44:47",
+    "usage_data": {
+        "completion_tokens": 77473,
+        "prompt_tokens": 113057,
+        "total_tokens": 190530
+    },
+    "results": [
+        {
+            "image_path": "ENI_AF_D4_A1_16.jpeg",
+            "date_estimate": "1964",
+            "location": "El Borma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "derrick",
+                "drilling rig",
+                "temporary housing structures",
+                "support vehicles"
+            ],
+            "substances_and_residues": [
+                "sand"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert",
+                "modified terrain"
+            ],
+            "people_present": false,
+            "text_transcription": "TUNISIA 5\nTunisia\n1964- Perforazione\nBorma",
+            "relational_description": "A tall drilling derrick is positioned at the base of expansive, undulating sand dunes in the Tunisian Sahara, marking a stark industrial intervention in the arid ecosystem. The flattened desert floor around the rig serves as an operational platform to organize support machinery and vehicles necessary for drilling. This setup creates the initial physical conduit connecting the deep subsurface oil reserves to the surface infrastructure.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_2003_1DB_8.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "derrick",
+                "drilling rig",
+                "storage tank",
+                "drill pipes",
+                "utility shack",
+                "substructure platform"
+            ],
+            "substances_and_residues": [
+                "sand"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert vegetation",
+                "arid landscape"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A massive steel drilling derrick dominates the landscape, establishing a vertical axis of mechanical power targeting the subsurface reserves. In the foreground, a solitary worker manually shovels sand, illustrating the ongoing struggle to keep the shifting desert terrain from reclaiming the industrial footprint of the extraction site.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_B4_F301_028.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "all-terrain vehicle",
+                "utility truck"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert vegetation",
+                "tire tracks"
+            ],
+            "people_present": true,
+            "text_transcription": "2381 تونس 14",
+            "relational_description": "An all-terrain utility vehicle navigates a rudimentary path cut through the sand dunes of the Tunisian desert. The tire tracks in the foreground illustrate the physical imposition of motorized transport onto the arid landscape, establishing the logistical connectivity needed to support remote exploration camps.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_159.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert shrubs",
+                "camels"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "Two local pastoralists stand on a sand dune, observing camels grazing in the distance. This scene captures the pre-extractive baseline of the El Burma landscape, showcasing the traditional nomadic coexistence with the Saharan environment before its transformation by oil exploration and infrastructure.",
+            "confidence_score": "medium"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_20.jpeg",
+            "date_estimate": "1963",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "seismic exploration vehicles",
+                "trucks",
+                "tracks"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert",
+                "modified terrain"
+            ],
+            "people_present": false,
+            "text_transcription": "TUNISIA 7 / Tunisia 1963 - Rilievi Sismici / Borma",
+            "relational_description": "An aerial perspective shows heavy seismic exploration vehicles carving tracks through the soft, undulating sand dunes of the Tunisian desert. This pattern of tracks documents the systematic movement of surface machinery deployed to map the subterranean geology of the El Burma field.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_134.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "pipelines",
+                "flowlines",
+                "manifold connection"
+            ],
+            "substances_and_residues": [
+                "black smoke",
+                "flames"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "arid desert terrain",
+                "modified terrain"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "Workers manually align and construct a manifold of parallel flowlines resting on excavated desert sand, creating the infrastructure to channel fluid extracted from the subsurface. In the background, a massive column of black smoke rises from a gas flare or burn pit, illustrating the simultaneous release of waste gases during initial processing or testing phases.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_2003_1DB_13.jpeg",
+            "date_estimate": "1970s",
+            "location": "El Borma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "drilling rig",
+                "derrick",
+                "drilling mud pit",
+                "prefabs",
+                "vehicles",
+                "unpaved road",
+                "pipelines"
+            ],
+            "substances_and_residues": [
+                "drilling mud",
+                "crude oil",
+                "wastewater pool",
+                "rock cuttings",
+                "dust"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "modified terrain",
+                "desert vegetation"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "A tall drilling derrick stands at the center of an excavated desert pad, acting as the primary point of penetration into the subsurface. Adjacent to the rig, a dark waste pit accumulates drilling fluids and wastewater, displaying the direct discharge of industrial residues onto the desert floor. A single unpaved road snakes through the vast sand dunes, connecting this remote extraction site to logistical support.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_60.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "theodolite",
+                "tripod",
+                "field bag"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert",
+                "arid horizon"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A surveyor positioned on the crest of a high sand dune uses a tripod-mounted theodolite to map the surrounding desert terrain. This acts as the initial phase of spatial control, laying the groundwork for future drilling roads and pipeline corridors by translating the undulating desert landscape into precise grid coordinates. A second worker stands nearby, illustrating the early labor force deployed to organize and claim the subsurface of the Sahara.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_21.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "seismic exploder box",
+                "blasting machine",
+                "hard hat",
+                "tarp-covered equipment box"
+            ],
+            "substances_and_residues": [
+                "sand plume",
+                "dust cloud",
+                "smoke"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "rippled sand",
+                "desert landscape"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A worker detonates a seismic charge in the Tunisian Sahara, launching a massive cloud of sand and dust into the sky to map subterranean geological layers. The human actors on the dune ridge orchestrate the artificial shockwave, using specialized triggering equipment to send vibrations into the subsurface for oil exploration.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_197.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "pipeline",
+                "flowline"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert plain",
+                "dromedary camel"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "A single camel stands beside a large oil pipeline running parallel to a desert track. The image captures the stark juxtaposition between the organic presence of desert wildlife and the rigid, linear infrastructure designed to transport hydrocarbons across the Tunisian Sahara.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_83.jpeg",
+            "date_estimate": "March 1970",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "border marker",
+                "boundary post",
+                "airplane",
+                "utility vehicle",
+                "tracks"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert",
+                "arid landscape",
+                "sparse vegetation"
+            ],
+            "people_present": true,
+            "text_transcription": "pag. 19\nMarzo 1970. Uno dei segnali permanenti che materializzano il confine tra Tunisia e Algeria nella zona di El Borma dopo la contestazione.\nMarzo 1970 - Terminata la missione si riparte dell'aeroporto di El Borma per Tunisi con un aereo delle linee Tunisine.",
+            "relational_description": "The images document the geopolitical demarcation and physical surveying of the El Borma extraction zone, showcasing permanent border posts defining the Tunisian-Algerian boundary. Logistical infrastructure, including an off-road utility vehicle and a Tunis-bound airliner on a desert airstrip, demonstrates how remote territorial reaches are connected back to urban centers of governance and administration.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_142.jpeg",
+            "date_estimate": "1966",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "pumping station",
+                "pipelines",
+                "storage tank",
+                "power line poles",
+                "control cabin",
+                "road signs",
+                "streetlights"
+            ],
+            "substances_and_residues": [
+                "black smoke"
+            ],
+            "ecology_and_landscape": [
+                "modified terrain",
+                "desert floor"
+            ],
+            "people_present": false,
+            "text_transcription": "TUNISIA 1966 - EL Borma\nStazione di pompaggio olio - Sullo sfondo il 'nero' del Burning-Pit\nS4\nVeduta del Centro Olio.",
+            "relational_description": "The top image shows an oil pumping station with a heavy plume of black smoke rising from a burning pit in the background, signaling the combustion of waste gas or residue. The bottom image displays the 'Centro Olio' (Oil Center), featuring a complex network of parallel pipelines that organize the landscape and transport fluids to and from storage tanks. Together, these elements illustrate the transformation of the desert environment into a highly technical, industrial node for processing and moving crude oil.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_103.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "seismic cables",
+                "geophones",
+                "support frames",
+                "portable generator",
+                "surveying pegs"
+            ],
+            "substances_and_residues": [
+                "disturbed soil",
+                "excavated dirt"
+            ],
+            "ecology_and_landscape": [
+                "arid plains",
+                "sand dunes",
+                "excavated soil mound",
+                "sparse desert vegetation"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A crew of workers is laying out a grid of cables and geophones across the desert surface to conduct a seismic survey of the subsurface. This technical infrastructure divides the natural landscape into a coordinate-like network of measurements, aiming to locate underground oil reservoirs.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_88.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "pipeline",
+                "mobile crane",
+                "separator tank",
+                "industrial shed",
+                "utility trailer",
+                "pipe stacks"
+            ],
+            "substances_and_residues": [
+                "excavated earth",
+                "rock fragments"
+            ],
+            "ecology_and_landscape": [
+                "stony desert",
+                "levelled terrain",
+                "arid landscape"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "Large pipelines dominate the foreground, resting on low supports and cutting across a heavily graded, rocky desert floor. In the background, a mobile crane and storage shed assist in organizing and assembling this logistical corridor, linking the subsurface extraction zone to surface processing and separation infrastructures.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_2003_1DB_2.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "derrick",
+                "drilling rig",
+                "support infrastructure"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert",
+                "wind-swept ridges"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "A single industrial drilling derrick rises from a flat desert depression, surrounded by massive, shifting sand dunes. The image captures the stark scale mismatch between the temporary vertical infrastructure designed to penetrate the subsurface and the vast, hyper-arid Saharan landscape that envelops it.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_132.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "wellheads",
+                "valves",
+                "manifold",
+                "pipelines",
+                "oil drums",
+                "vehicles"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert floor",
+                "arid terrain"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "A series of manifold valves and wellheads are aligned in the desert, acting as conduits that organize the flow of oil from the subsurface into the surface pipeline network. Striped oil drums mark the boundaries of the extraction zone, while heavy transport vehicles parked on the periphery indicate active monitoring and maintenance of this remote node.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_B4_F301_022.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "bulldozer",
+                "crawler tractor",
+                "canopy",
+                "tracks"
+            ],
+            "substances_and_residues": [
+                "sand"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "modified terrain",
+                "desert vegetation"
+            ],
+            "people_present": true,
+            "text_transcription": "ALIS",
+            "relational_description": "A crawler tractor or bulldozer clears and flattens a pathway through the shifting sand dunes of the Tunisian desert. This mechanical modification of the topography creates a stabilized corridor to allow the transportation of heavy drilling and exploration machinery. The visible tread marks demonstrate the direct, heavy imprint of extractive logistics on the fragile desert ecosystem.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_112.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "prefabricated building panels",
+                "wooden planks",
+                "hoses",
+                "excavation trenches",
+                "barracks foundations"
+            ],
+            "substances_and_residues": [
+                "excavated earth",
+                "rock fragments",
+                "stony debris"
+            ],
+            "ecology_and_landscape": [
+                "stony desert",
+                "arid plain",
+                "excavated terrain",
+                "distant horizon"
+            ],
+            "people_present": true,
+            "text_transcription": "Zona baracche Morteo",
+            "relational_description": "The two photographs depict workers clearing and excavating the stony desert ground to build 'Morteo' prefabricated barracks. Stacked building materials and dug-out trenches organize the flat landscape, showing the transition of the arid surface into a structured logistical camp to support drilling operations.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_B4_F301_09.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "trucks",
+                "all-terrain vehicles",
+                "trailers",
+                "exploration tracks"
+            ],
+            "substances_and_residues": [
+                "sand",
+                "dust"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert terrain",
+                "undulating topography"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "An aerial view shows a convoy of heavy vehicles and exploration equipment cutting a linear path through the shifting sand dunes of the Sahara. This mechanical line imposes a temporary geometric order on the natural topography to conduct seismic exploration or transport materials. Tiny figures of workers on the sand emphasize the immense scale of the desert environment being surveyed for subsurface resources.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_128.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "lattice boom crane",
+                "pressure vessel",
+                "separator tank",
+                "heavy transport truck",
+                "rigging cables"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "flat desert terrain",
+                "arid landscape"
+            ],
+            "people_present": true,
+            "text_transcription": "SITEP EL BORMA\nBAY CITY\nLINK-BELT",
+            "relational_description": "Two large lattice-boom cranes, branded 'Bay City' and 'Link-Belt', work in tandem to lift a massive cylindrical separator tank painted with 'SITEP EL BORMA' from the bed of a heavy-duty transport truck. A group of ground workers stands nearby, supervising the complex maneuvers required to position this key processing infrastructure on the desert floor, where it will eventually separate crude mixtures from the subsurface.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A6_154.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "pipeline",
+                "sideboom tractor",
+                "crawler tractor",
+                "truck",
+                "welding equipment",
+                "cables",
+                "wooden support blocks"
+            ],
+            "substances_and_residues": [
+                "dust"
+            ],
+            "ecology_and_landscape": [
+                "desert",
+                "stony soil",
+                "arid terrain",
+                "flat horizon"
+            ],
+            "people_present": true,
+            "text_transcription": "799",
+            "relational_description": "A team of workers and heavy sideboom crawler tractors align and assemble a massive flowline pipeline segment across the arid Tunisian Sahara. The infrastructure establishes a direct physical channel to transport extracted hydrocarbons from the wells to processing centers, permanently carving a path through the remote desert. The scene captures the labor-intensive mechanical process required to integrate the desert subsurface into a global logistical network.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_46.jpeg",
+            "date_estimate": "1965",
+            "location": "El Borma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "geodetic signal",
+                "stone cairn",
+                "surveying clipboard"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "stony desert",
+                "desert shrub",
+                "arid plains"
+            ],
+            "people_present": true,
+            "text_transcription": "pag. 8\n15\n4-2-1965. Il segnale che materializza il trig. \"El Altaba\"\n16\n5-2-65 El Borma - Rilievi top. per la costruzione del Centro Olio.",
+            "relational_description": "The photographs document the preliminary geodetic and topographic surveying of the El Borma area prior to industrial construction. The top photo shows a stone triangulation marker ('El Altaba') erected in the desert to map the terrain, while the bottom photo shows a survey crew standing alongside a desert shrub, capturing coordinates and measurements on the surface to plan the layout of the future 'Centro Olio' oil processing facility.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_105.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "tank foundations",
+                "bulldozers",
+                "graders",
+                "earthmovers",
+                "tractors",
+                "compactors"
+            ],
+            "substances_and_residues": [
+                "excavated earth",
+                "gravel",
+                "soil"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert hills",
+                "sparse desert vegetation",
+                "leveled terrain"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "This panoramic triptych documents the mechanical leveling of the Saharan desert landscape to construct circular foundations for large-scale crude oil storage tanks. Heavy earthmoving equipment and small teams of workers are shown transforming the undulating sand dunes and natural terrain into highly organized, flat circular industrial platforms designed to hold liquid hydrocarbon assets.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_93.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "mud tanks",
+                "shale shaker",
+                "piping",
+                "storage tank",
+                "valves",
+                "hoses",
+                "sacks of drilling additives",
+                "catwalks",
+                "truck"
+            ],
+            "substances_and_residues": [
+                "drilling mud",
+                "drill cuttings"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "sparse vegetation",
+                "arid landscape"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "An intricate network of mud processing tanks, piping, and valves is positioned in the desert to circulate drilling fluids. This surface infrastructure manages the material exchange between the deep subsurface and the surface, filtering drill cuttings from mud to reuse the fluids. The surrounding sandy terrain is flattened and occupied by storage tanks and stacks of chemical additive sacks.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_2003_1DB_15.jpeg",
+            "date_estimate": "1970s",
+            "location": "El Borma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "derrick",
+                "drilling rig",
+                "drill pipes",
+                "trucks",
+                "prefabricated cabins",
+                "vehicles"
+            ],
+            "substances_and_residues": [
+                "wastewater pools",
+                "drilling mud",
+                "disturbed sand"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "natural depressions",
+                "modified terrain"
+            ],
+            "people_present": true,
+            "text_transcription": "SITEP",
+            "relational_description": "A towering drilling derrick anchors the industrial site, serving as the central point of contact between the deep subsurface and the desert floor. Surrounding infrastructure, including pipe racks and prefabricated cabins, organizes the workspace, while a prominent wastewater channel cuts through the adjacent sand dunes, illustrating the redistribution of liquid waste in the desert landscape.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_2003_1DB_3.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "derrick",
+                "drill pipes",
+                "drilling platform",
+                "guy-wires"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "desert terrain",
+                "flat plains"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A worker is positioned in the foreground walking across the arid ground, framed by a vehicle's interior components. In the background, a towering drilling derrick and racks of drill pipes puncture the horizon, illustrating the technological apparatus used to establish a connection with the deep subsurface. This composition contrasts human mobility with stationary heavy industrial infrastructure in the Tunisian desert.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_66.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "theodolite",
+                "tripod",
+                "seismic recording equipment",
+                "cables",
+                "power source",
+                "carrying case"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A surveyor stands amidst sand dunes, documenting measurements next to tripod-mounted topographic and seismic monitoring equipment. This configuration illustrates the initial technological mapping of the desert, where scientific instruments are deployed on the moving sands to identify subsurface structures prior to any drilling.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_89.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "storage tank",
+                "flowline",
+                "pipeline",
+                "ladder"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "modified terrain",
+                "desert vegetation"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "Two massive cylindrical storage tanks are situated atop a desert sand dune, anchoring the industrial presence in the landscape. Pipelines and flowlines are visible laid across the sandy terrain, linking the storage structures with other parts of the extraction system. The contrast between the heavy metallic infrastructure and the shifting, barren desert floor highlights the physical imposition of oil storage on the natural topography.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_148.jpeg",
+            "date_estimate": "1965",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "pipeline"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert vegetation",
+                "scrub",
+                "plateau"
+            ],
+            "people_present": true,
+            "text_transcription": "TUNISIA 1965\nil cammelliere",
+            "relational_description": "The compilation of photographs captures the coexistence of traditional nomadic life and modern industrial infrastructure in the Tunisian desert in 1965. The top frame shows a long pipeline cutting horizontally across the arid landscape, while the lower frames depict a traditional camel driver (cammelliere) and his herd navigating the same sands, highlighting the stark intersection of indigenous desert mobility with newly introduced extraction networks.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A6_163.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "storage tanks",
+                "flare stacks",
+                "residential and administrative compound",
+                "access roads",
+                "pipelines",
+                "sports courts"
+            ],
+            "substances_and_residues": [
+                "black smoke",
+                "flames"
+            ],
+            "ecology_and_landscape": [
+                "desert terrain",
+                "arid landscape",
+                "natural drainage channels",
+                "sandy plains"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "This aerial view captures the layout of an extraction and housing outpost in the desert, where a paved roadway connects a modern, structured administrative compound in the foreground with an industrial storage and processing area in the background. Three large storage tanks hold separated crude oil, while active flare stacks on either side release thick plumes of black smoke into the desert sky, marking the continuous separation and waste-burning processes of the subsurface resource.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_49.jpeg",
+            "date_estimate": "1965",
+            "location": "El Borma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "surveying staff",
+                "field notebook",
+                "measuring equipment case"
+            ],
+            "substances_and_residues": [
+                "excavated earth",
+                "sand"
+            ],
+            "ecology_and_landscape": [
+                "desert",
+                "sand dunes",
+                "sparse scrub vegetation",
+                "flat terrain",
+                "excavated pits"
+            ],
+            "people_present": true,
+            "text_transcription": "pag. 9\n15-2-1965 - Sondaggio fatto nella zona dove sorgeranno i serbatoi di raccolta olio del nuovo Centro Olio di El Borma\n15-2-65. Sondaggio fatto sul pianoro interessato ai rilievi topografici per la costruzione del C.O. di El Borma.",
+            "relational_description": "The photographs depict early site exploration and surveying for the construction of the Centro Olio in El Borma. Workers interact with the desert landscape by performing soil tests and topographic surveys, marking and measuring the terrain where oil storage tanks and processing facilities will soon be built.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_45.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "clipboard",
+                "pen"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert shrub",
+                "undulating dunes"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "Three individuals, likely local guides and a surveyor or geologist, stand beside a desert shrub amidst the vast sandy terrain of El Burma. The central figure writes on a clipboard, marking a moment of physical exploration and documentation of the desert surface prior to deep subsurface exploitation. This interaction captures the initial human translation of the natural landscape into industrial-geological data.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_86.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "horizontal separator tanks",
+                "pipelines",
+                "flowlines",
+                "valves",
+                "manifolds",
+                "vertical separation column",
+                "wheeled trailer"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "modified terrain",
+                "stony ground",
+                "desert flat"
+            ],
+            "people_present": true,
+            "text_transcription": "SITEP EL BORMA, 9935, CO-30",
+            "relational_description": "A network of surface pipelines and flowlines converges on a series of horizontal separator vessels, transforming the raw desert landscape into an organized industrial hub. These vessels facilitate the physical separation of extracted crude oil, gas, and water mixtures transported from nearby wells. Scattered pipes in the foreground highlight the ongoing construction and expansion of this transport infrastructure.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_90.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "storage tanks",
+                "spiral staircases",
+                "flowlines",
+                "manifold",
+                "valves",
+                "loose pipes",
+                "utility vehicles"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sandy terrain",
+                "desert"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "Two massive cylindrical storage tanks with spiral staircases dominate the desert floor, acting as central collection points for extracted hydrocarbons. In the foreground and to the right, a network of flowlines, manifolds, and loose piping demonstrates the horizontal layout of infrastructure designed to transport and manage fluid flow across the arid landscape. A lone worker walks in the foreground, highlighting the scale of the industrial intrusion into the Tunisian Sahara.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_150.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "flowline",
+                "pipeline",
+                "reflector dish",
+                "support vehicle"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert",
+                "arid landscape"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "Workers are captured laying a flowline across the desert dunes, manually aligning and stabilizing the pipe on the shifting sand. A worker holds a circular reflector dish used for field communications or surveying, while others work on the pipeline joints, illustrating the labor-intensive assembly of transport infrastructure over the desert surface.",
+            "confidence_score": "medium"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_87.jpeg",
+            "date_estimate": "1966",
+            "location": "El Borma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "separator vessels",
+                "pipelines",
+                "storage tanks",
+                "prefabricated buildings",
+                "flowlines",
+                "valves"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert vegetation",
+                "stony ground",
+                "arid plateau"
+            ],
+            "people_present": false,
+            "text_transcription": "24-3-66 Costruzione del Centro Olio per la messa in produzione del giacimento di El Borma",
+            "relational_description": "The photograph sequence documents the spatial organization of the Centro Olio processing hub during its construction phase in the Tunisian Sahara. Industrial processing units, including horizontal separator vessels and complex pipeline networks, are systematically laid out on cleared, stony desert ground, demonstrating the physical intervention required to channel and separate crude fluid mixtures emerging from the subsurface.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_13.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "tents",
+                "utility hangar tent",
+                "off-road vehicles",
+                "tracks"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert scrub",
+                "natural depression",
+                "arid terrain"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "An aerial view captures a temporary mobile base camp pitched directly onto the sandy terrain of the Tunisian Sahara. Multiple small A-frame tents and a larger utility hangar organize the living and working space for exploration crews, while off-road vehicles and deep tire tracks trace the daily movement across the fragile desert ecology. This layout establishes a temporary logistics hub designed to support seismic or topographic surveys before drilling operations begin.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_185.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "pipeline",
+                "welding equipment",
+                "wooden support blocks",
+                "cables"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "flat desert terrain",
+                "sand dunes",
+                "arid landscape"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "Workers are seen assembling and welding parallel pipelines that stretch across the flat Tunisian desert, representing the construction of flowline infrastructure. The pipeline sections are raised slightly on wooden support blocks, carving a linear industrial pathway through the natural arid landscape to connect subsurface wells to distant processing units.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_2003_1DB_1.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "derrick",
+                "utility truck",
+                "off-road vehicle"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert terrain",
+                "wind ripples"
+            ],
+            "people_present": true,
+            "text_transcription": "SITEP",
+            "relational_description": "An off-road utility vehicle branded with the SITEP logo navigates the shifting sand dunes of El Burma, while a towering drilling derrick stands in the background. The image captures how mobile transport infrastructure connects workers and machinery to stationary vertical drilling sites, organizing and penetrating the remote desert landscape to access subsurface resources.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_131.jpeg",
+            "date_estimate": "1970s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Testing",
+            "equipment_and_infrastructure": [
+                "prefabricated industrial buildings",
+                "canopy structure",
+                "streetlights",
+                "utility poles",
+                "barrier fencing",
+                "air conditioning units"
+            ],
+            "substances_and_residues": [
+                "black smoke"
+            ],
+            "ecology_and_landscape": [
+                "desert sand",
+                "flat terrain"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A thick, dark plume of black smoke rises high into the sky behind prefabricated base station buildings, demonstrating the combustion of hydrocarbons or waste on the periphery of the station. In the center, small silhouettes of personnel stand near a checkpoint barrier, observing or supervising the area, highlighting the interface between administrative/processing infrastructure and the active combustion zone in the desert.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_14.jpeg",
+            "date_estimate": "1961",
+            "location": "Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "geological camp",
+                "tents",
+                "hangar",
+                "vehicles",
+                "storage barrels"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "desert terrain",
+                "sand",
+                "sparse vegetation",
+                "dirt tracks"
+            ],
+            "people_present": false,
+            "text_transcription": "TUNISIA 4\nTunisia\n1961- Campo Geologico",
+            "relational_description": "An aerial view shows a remote geological survey camp established in the Tunisian desert in 1961. The camp is organized systematically with a row of small living tents, centralized utility structures, and a large hangar aligned on the arid, sandy surface, illustrating how early-stage exploration infrastructure temporary overlays and organizes the desert landscape.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_80.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "survey marker",
+                "triangular beacon",
+                "marker pole"
+            ],
+            "substances_and_residues": [
+                "sand"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert vegetation",
+                "footprints",
+                "arid terrain"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A surveyor traverses the undulating sand dunes, leaving deep footprints that index the physical labor of early exploration. In the distance, a triangular survey beacon is planted atop a dune ridge, establishing a geometric reference point to map the desert subsurface. This scene captures the preliminary phase of territorial mapping where human movement and basic markers begin to organize the natural landscape for extraction.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_141.jpeg",
+            "date_estimate": "1970s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "pipelines",
+                "flowlines",
+                "storage tank",
+                "control cabin",
+                "manifold",
+                "valves",
+                "street lamps",
+                "warning signs",
+                "barrier"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sandy terrain",
+                "cleared ground",
+                "flat desert"
+            ],
+            "people_present": false,
+            "text_transcription": "S4, ممنوع التدخين, DEFENSE DE FUMER",
+            "relational_description": "A dense group of parallel flowlines and pipelines channel extracted fluids across the desert floor toward a processing area and a storage tank marked S4. A prefabricated control cabin sits adjacent to the piping network, supervising the flow, while street lamps and bilingual warning signs ('Defense de Fumer') organize and securitize the industrial footprint in the Sahara.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_177.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "sideboom crawler tractor",
+                "pipelayer",
+                "steel pipeline sections",
+                "crane",
+                "dirt road"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "stony desert",
+                "arid hills",
+                "modified terrain"
+            ],
+            "people_present": true,
+            "text_transcription": "ENTREPOSE\n270 156 208",
+            "relational_description": "A crew of workers utilizes a heavy tracked sideboom tractor to position and align large steel pipeline segments along a cleared desert road. The pipeline serves as a critical transport link, bisecting the arid, rolling terrain to connect remote extraction wells to centralized gathering and processing facilities.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_B4_F301_026.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "truck-mounted drilling rig",
+                "transport truck",
+                "graded desert track"
+            ],
+            "substances_and_residues": [
+                "disturbed sand"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "modified terrain",
+                "desert landscape"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "Three oil exploration workers walk along a freshly carved track through the Tunisian Sahara towards a mobile truck-mounted drilling rig in the distance. To the right, a heavy transport truck is positioned on a raised, modified sand ridge, illustrating how mechanical infrastructure cuts through and reshapes the native dune topography to establish supply routes and conduct subsurface testing.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_2003_1DB_10.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Testing",
+            "equipment_and_infrastructure": [
+                "derrick",
+                "drilling rig",
+                "flare pit"
+            ],
+            "substances_and_residues": [
+                "black smoke",
+                "flames",
+                "crude oil"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert terrain",
+                "modified terrain"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "A massive plume of black smoke and turbulent flames billows from a ground-level burn pit on the left, representing the atmospheric release and combustion of extracted hydrocarbons. To the right, a tall steel derrick stands as the mechanical conduit that connects the deep subsurface reservoir to the desert surface. The arid Sahara landscape is transformed by this intense release of energy and residue, organizing the space around the infrastructure of extraction.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_161.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "pipeline",
+                "flowline",
+                "truck",
+                "vent cap",
+                "joint sleeve"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "desert terrain",
+                "arid plain",
+                "sparse vegetation"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "Workers are seen assembling and adjusting a pair of large pipelines traversing the Tunisian desert. This linear infrastructure organizes the vast arid landscape, establishing a physical conduit designed to transport crude mixtures from the wells to processing and separation centers. The presence of technicians and supporting transport vehicles underscores the human labor required to construct and maintain these transport networks across the Sahara.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_23.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "Douglas DC-3 aircraft",
+                "Bell 47J Ranger helicopter",
+                "utility truck",
+                "unpaved landing strip"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "desert plain",
+                "flat arid terrain"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A transport aircraft and a helicopter are positioned on a flat, unpaved desert landing strip, showcasing the reliance on aerial logistics to bridge remote Saharan exploration sites with external supply chains. Personnel are gathered between a utility truck and the plane, indicating the transfer of equipment and personnel necessary for early-stage exploration and field operations.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_19.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "truck-mounted drill rig",
+                "desert transport trucks",
+                "off-road utility vehicles",
+                "temporary access tracks"
+            ],
+            "substances_and_residues": [
+                "displaced sand",
+                "dust"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "undulating desert terrain",
+                "flattened workspace",
+                "vehicle tracks"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "An aerial perspective captures a seismic exploration convoy carving tracks and temporary workspaces into the undulating sand dunes of the Tunisian Sahara. A mobile drill rig is positioned on a flattened dune area to drill shot holes, demonstrating the mechanical adaptation and physical reshaping of the desert surface to probe the subsurface. Small worker figures are visible coordinating operations around the trucks, highlighting the scale of industrial intrusion into the natural landscape.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_58.jpeg",
+            "date_estimate": "1965",
+            "location": "South-East of El Borma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "helicopter wreckage"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert"
+            ],
+            "people_present": false,
+            "text_transcription": "pag. 12\n\n21-3-1965. Deserto di dune a Sud-Est di El Borma.\n15h30 foto fatta dopo la caduta con l'elicottero in fase\ndi atterraggio per ragioni di rilievi topografici\nTutti salvi nessun ferito - U.B\n\n25-3-1965. Veduta aerea della duna sulla quale è\ncaduto l'elicottero con i topografi - U.B.",
+            "relational_description": "These two photographs document the aftermath of a helicopter crash during a landing attempt in the dunes south-east of El Borma, where a team was conducting preparatory topographical surveys for oil exploration. The top close-up shows the disabled aircraft resting sideways in the shifting desert sand, while the bottom aerial view contextualizes the crash site within the vast, undulating, and challenging sand dune landscape of the Tunisian Sahara.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_B4_F301_027.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "bulldozer",
+                "crawler tractor",
+                "desert transport truck",
+                "utility vehicle"
+            ],
+            "substances_and_residues": [
+                "displaced sand"
+            ],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert scrub",
+                "arid terrain",
+                "levelled terrain"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A heavy-duty crawler bulldozer is positioned on the left, prepared to level the shifting sands and clear pathways through the desert. On the right, transport vehicles and workers stand nearby, highlighting the initial civil engineering phase where machinery actively reshapes the rugged Saharan landscape to accommodate industrial drilling operations.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_140.jpeg",
+            "date_estimate": "1970s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Processing & Separation",
+            "equipment_and_infrastructure": [
+                "industrial building",
+                "electrical power lines",
+                "utility poles",
+                "transformer",
+                "fence",
+                "street lamps",
+                "road barriers",
+                "pipelines"
+            ],
+            "substances_and_residues": [
+                "black smoke",
+                "combustion emissions"
+            ],
+            "ecology_and_landscape": [
+                "flat terrain",
+                "arid soil"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "An industrial facility, likely a processing or pumping station with electrical transmission infrastructure, dominates the foreground of the desert landscape. In the background, a dense column of black smoke billows into the sky, representing the combustion of excess gas or waste products from the hydrocarbon separation process. This interaction highlights how localized processing infrastructure organizes the immediate surface while continuously venting industrial residues into the surrounding atmosphere.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_81.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Topographic/Seismic Exploration",
+            "equipment_and_infrastructure": [
+                "survey beacon",
+                "geodetic marker",
+                "wooden beacon structure"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert shrubs",
+                "barren landscape"
+            ],
+            "people_present": true,
+            "text_transcription": null,
+            "relational_description": "A surveyor sits at the base of a tall wooden topographic beacon erected in the desert sands, likely recording measurements or coordinate data. This infrastructure serves as a crucial reference point, mapping the shifting surface of the Sahara to coordinate subsurface seismic surveys. The interaction depicts the early human and technical marking of the landscape prior to heavy drilling machinery arrival.",
+            "confidence_score": "high"
+        },
+        {
+            "image_path": "ENI_AF_D4_A1_15.jpeg",
+            "date_estimate": "1960s",
+            "location": "El Burma, Tunisia",
+            "extractive_phase": "Drilling & Well Creation",
+            "equipment_and_infrastructure": [
+                "derrick",
+                "drilling rig",
+                "support trailers",
+                "storage tank",
+                "drilling platform",
+                "machinery"
+            ],
+            "substances_and_residues": [],
+            "ecology_and_landscape": [
+                "sand dunes",
+                "desert vegetation",
+                "modified terrain",
+                "cleared pad"
+            ],
+            "people_present": false,
+            "text_transcription": null,
+            "relational_description": "An aerial high-angle view shows a tall, skeletal drilling derrick erected on a flattened, cleared pad amidst a vast sea of undulating sand dunes. The rigid, vertical geometry of the industrial infrastructure contrasts sharply with the fluid, organic curves of the surrounding desert landscape, marking a direct puncture into the subsurface to access oil reserves. Tracks and support structures spread out from the base of the rig, illustrating the logistical footprint required to sustain drilling operations in an isolated arid environment.",
+            "confidence_score": "high"
+        }
+    ],
+    "end": "2026-06-22 09:53:38"
+}
