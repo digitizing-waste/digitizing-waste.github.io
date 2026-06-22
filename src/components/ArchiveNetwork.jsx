@@ -82,7 +82,7 @@ function SidebarRow({ label, value, valueColor }) {
   );
 }
 
-function SidebarTagRow({ label, tags, color }) {
+function SidebarTagRow({ label, tags, color, field, activeFilters, onToggleFilter }) {
   if (!tags || tags.length === 0) return null;
   return (
     <div style={{ marginBottom: 8 }}>
@@ -90,19 +90,28 @@ function SidebarTagRow({ label, tags, color }) {
         {label}
       </p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-        {tags.map(tag => (
-          <span
-            key={tag}
-            style={{
-              fontSize: 9, color, letterSpacing: '0.03em',
-              border: `1px solid ${color}55`,
-              borderRadius: 2, padding: '2px 5px',
-              background: `${color}12`,
-            }}
-          >
-            {tag}
-          </span>
-        ))}
+        {tags.map(tag => {
+          const isActive = activeFilters?.some(f => f.field === field && f.value === tag);
+          return (
+            <button
+              key={tag}
+              onClick={() => onToggleFilter?.(field, tag)}
+              title={isActive ? `Remove filter: ${tag}` : `Filter network by "${tag}"`}
+              aria-pressed={isActive}
+              style={{
+                fontSize: 9, color: isActive ? '#0a0e0d' : color, letterSpacing: '0.03em',
+                border: `1px solid ${color}${isActive ? 'ff' : '55'}`,
+                borderRadius: 2, padding: '2px 5px',
+                background: isActive ? color : `${color}12`,
+                cursor: 'pointer',
+                fontFamily: 'monospace',
+                transition: 'background 0.15s, color 0.15s',
+              }}
+            >
+              {tag}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -127,6 +136,7 @@ export default function ArchiveNetwork() {
   const [dims, setDims]               = useState({ w: 0, h: 0 });
   const [splitActive, setSplitActive] = useState(true);
   const [edgeWeights, setEdgeWeights] = useState({ substances: 3, ecology: 2, equipment: 2 });
+  const [activeFilters, setActiveFilters] = useState([]);
   const [links, setLinks]             = useState([]);
   const [hoveredNode, setHoveredNode] = useState(null);
   const [mousePos, setMousePos]       = useState({ x: 0, y: 0 });
@@ -200,6 +210,27 @@ export default function ArchiveNetwork() {
     sim.alpha(0.4).restart();
   }, [splitActive]);
 
+  // ── Fade nodes that do not match active filters ──────────────────────
+  useEffect(() => {
+    if (activeFilters.length === 0) {
+      DATA.forEach(img => {
+        const el = nodeGroupsRef.current[img.image_path];
+        if (el) gsap.to(el, { opacity: 1, duration: 0.3 });
+      });
+      return;
+    }
+    DATA.forEach(img => {
+      const el = nodeGroupsRef.current[img.image_path];
+      if (!el) return;
+      const matches = activeFilters.some(f => {
+        if (f.field === 'people_present') return Boolean(img.people_present) === (f.value === 'true');
+        const arr = img[f.field] || [];
+        return arr.some(v => v.toLowerCase() === f.value.toLowerCase());
+      });
+      gsap.to(el, { opacity: matches ? 1 : 0.10, duration: 0.3 });
+    });
+  }, [activeFilters]);
+
   // ── Recompute all edges when weights change ─────────────────────────
   useEffect(() => {
     const sim = simRef.current;
@@ -231,10 +262,20 @@ export default function ArchiveNetwork() {
 
   const handleReset = useCallback(() => {
     setEdgeWeights({ substances: 3, ecology: 2, equipment: 2 });
+    setActiveFilters([]);
     setSelectedNode(null);
     setLightboxOpen(false);
     panOffsetRef.current = { x: 0, y: 0 };
     if (panGroupRef.current) panGroupRef.current.setAttribute('transform', 'translate(0,0)');
+  }, []);
+
+  const toggleFilter = useCallback((field, value) => {
+    setActiveFilters(prev => {
+      const exists = prev.some(f => f.field === field && f.value === value);
+      return exists
+        ? prev.filter(f => !(f.field === field && f.value === value))
+        : [...prev, { field, value }];
+    });
   }, []);
 
   const handleMouseEnter = useCallback((img, e) => {
@@ -721,9 +762,25 @@ export default function ArchiveNetwork() {
                 borderBottom: `1px solid ${phaseColor}44`,
                 flexShrink: 0,
               }}>
-                <span style={{ fontSize: 10, color: phaseColor, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                  {selectedNode.extractive_phase}
-                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <span style={{ fontSize: 10, color: phaseColor, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                    {selectedNode.extractive_phase}
+                  </span>
+                  {activeFilters.length > 0 && (
+                    <button
+                      onClick={() => setActiveFilters([])}
+                      title="Clear all active filters"
+                      style={{
+                        fontSize: 8, padding: '1px 5px', borderRadius: 2,
+                        background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)',
+                        color: '#f0ece6', cursor: 'pointer', fontFamily: 'monospace',
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      {activeFilters.length} filter{activeFilters.length > 1 ? 's' : ''} ×
+                    </button>
+                  )}
+                </div>
                 <button
                   aria-label="Close detail panel"
                   onClick={() => { setSelectedNode(null); setLightboxOpen(false); }}
@@ -761,14 +818,35 @@ export default function ArchiveNetwork() {
               <div style={{ padding: '12px 14px', borderBottom: `1px solid rgba(255,255,255,0.06)`, flexShrink: 0 }}>
                 <SidebarRow label="Date" value={selectedNode.date_estimate || '—'} />
                 <SidebarRow label="Location" value={selectedNode.location || '—'} />
-                <SidebarRow
-                  label="People present"
-                  value={selectedNode.people_present ? 'Yes' : 'No'}
-                  valueColor={selectedNode.people_present ? '#a07040' : 'rgba(240,236,230,0.35)'}
-                />
-                <SidebarTagRow label="Equipment" tags={selectedNode.equipment_and_infrastructure} color={phaseColor} />
-                <SidebarTagRow label="Substances" tags={selectedNode.substances_and_residues} color="#c45c3a" />
-                <SidebarTagRow label="Ecology" tags={selectedNode.ecology_and_landscape} color="#3a7d5c" />
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 6, alignItems: 'baseline' }}>
+                  <span style={{ fontSize: 9, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(240,236,230,0.3)', flexShrink: 0 }}>
+                    People present
+                  </span>
+                  <button
+                    onClick={() => selectedNode.people_present && toggleFilter('people_present', 'true')}
+                    title={selectedNode.people_present ? (activeFilters.some(f => f.field === 'people_present') ? 'Remove filter' : 'Filter: images with people present') : undefined}
+                    aria-pressed={activeFilters.some(f => f.field === 'people_present')}
+                    style={{
+                      fontSize: 11, textAlign: 'right', lineHeight: 1.4,
+                      background: 'none', border: 'none', padding: 0, fontFamily: 'monospace',
+                      cursor: selectedNode.people_present ? 'pointer' : 'default',
+                      color: selectedNode.people_present
+                        ? (activeFilters.some(f => f.field === 'people_present') ? '#0a0e0d' : '#a07040')
+                        : 'rgba(240,236,230,0.35)',
+                      ...(selectedNode.people_present && activeFilters.some(f => f.field === 'people_present')
+                        ? { background: '#a07040', borderRadius: 2, padding: '1px 5px' }
+                        : {}),
+                    }}
+                  >
+                    {selectedNode.people_present ? 'Yes' : 'No'}
+                  </button>
+                </div>
+                <SidebarTagRow label="Equipment" tags={selectedNode.equipment_and_infrastructure} color={phaseColor}
+                  field="equipment_and_infrastructure" activeFilters={activeFilters} onToggleFilter={toggleFilter} />
+                <SidebarTagRow label="Substances" tags={selectedNode.substances_and_residues} color="#c45c3a"
+                  field="substances_and_residues" activeFilters={activeFilters} onToggleFilter={toggleFilter} />
+                <SidebarTagRow label="Ecology" tags={selectedNode.ecology_and_landscape} color="#3a7d5c"
+                  field="ecology_and_landscape" activeFilters={activeFilters} onToggleFilter={toggleFilter} />
               </div>
 
               {/* Relational description */}
