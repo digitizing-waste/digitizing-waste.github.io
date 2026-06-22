@@ -60,6 +60,33 @@ export function getVerticalBias(image) {
   return (heavy - light) / total;
 }
 
+/**
+ * Computes all pairwise edges above `minScore`.
+ * `weights` = { substances, ecology, equipment } multipliers.
+ */
+export function computeAllEdges(images, weights, minScore = 1) {
+  const edges = [];
+  for (let i = 0; i < images.length; i++) {
+    for (let j = i + 1; j < images.length; j++) {
+      const a = images[i];
+      const b = images[j];
+      const score =
+        intersectCount(a.substances_and_residues,      b.substances_and_residues)      * weights.substances +
+        intersectCount(a.ecology_and_landscape,        b.ecology_and_landscape)        * weights.ecology +
+        intersectCount(a.equipment_and_infrastructure, b.equipment_and_infrastructure) * weights.equipment;
+      if (score >= minScore) {
+        edges.push({
+          source: a.image_path,
+          target: b.image_path,
+          score,
+          key: `${a.image_path}|${b.image_path}`,
+        });
+      }
+    }
+  }
+  return edges;
+}
+
 /** Returns 'subsurface' or 'surface' based on extractive phase. */
 export function getPhaseZone(extractive_phase) {
   if (
