@@ -528,6 +528,9 @@ export default function ArchiveNetwork() {
             style={splitActive ? BTN_ACTIVE : BTN}
             aria-pressed={splitActive}
             aria-label={splitActive ? 'Collapse material split' : 'Split by material type'}
+            title={splitActive
+              ? 'Currently: nodes are positioned vertically by substance type — heavy residues (drilling mud, wastewater) sink toward the bottom; volatile matter (smoke, flames) rises to the top. Click to switch to phase-zone layout.'
+              : 'Currently: nodes are grouped by extractive phase — drilling operations anchor near the bottom, surface and topographic work near the top. Click to switch to material-split layout.'}
             onClick={() => setSplitActive(v => !v)}
           >
             {splitActive ? '▲▼ Material split' : '▲▼ Phase zones'}
