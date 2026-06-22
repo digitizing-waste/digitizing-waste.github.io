@@ -9,7 +9,7 @@ import {
 } from 'd3-force';
 import gsap from 'gsap';
 import {
-  computeAffinityScores,
+  computeAllEdges,
   getPhaseZone,
   getVerticalBias,
 } from '../utils/archiveAffinity.js';
@@ -116,7 +116,6 @@ export default function ArchiveNetwork() {
   const nodeScaleGroupsRef = useRef({});
   const linkElemsRef       = useRef({});
   const dimsRef            = useRef({ w: 800, h: 600 });
-  const mountedRef         = useRef(false);
   const tooltipRef         = useRef(null);
 
   const panGroupRef        = useRef(null);
@@ -125,13 +124,13 @@ export default function ArchiveNetwork() {
   const panStartRef        = useRef({ mx: 0, my: 0, ox: 0, oy: 0 });
   const [grabbing, setGrabbing] = useState(false);
 
-  const [dims, setDims]             = useState({ w: 0, h: 0 });
-  const [seedId, setSeedId]         = useState(null);
-  const [splitActive, setSplitActive] = useState(false);
-  const [links, setLinks]           = useState([]);
+  const [dims, setDims]               = useState({ w: 0, h: 0 });
+  const [splitActive, setSplitActive] = useState(true);
+  const [edgeWeights, setEdgeWeights] = useState({ substances: 3, ecology: 2, equipment: 2 });
+  const [links, setLinks]             = useState([]);
   const [hoveredNode, setHoveredNode] = useState(null);
-  const [mousePos, setMousePos]     = useState({ x: 0, y: 0 });
-  const [infoOpen, setInfoOpen]     = useState(true);
+  const [mousePos, setMousePos]       = useState({ x: 0, y: 0 });
+  const [infoOpen, setInfoOpen]       = useState(true);
   const [selectedNode, setSelectedNode] = useState(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
@@ -187,104 +186,51 @@ export default function ArchiveNetwork() {
     return () => { sim.stop(); };
   }, []);
 
-  // ── Respond to seed changes ──────────────────────────────────────────
-  useEffect(() => {
-    if (!mountedRef.current) { mountedRef.current = true; return; }
-
-    const sim = simRef.current;
-    if (!sim) return;
-    const { h } = dimsRef.current;
-
-    if (!seedId) {
-      setLinks([]);
-      sim.force('link').links([]);
-      sim.force('y').y(d => phaseZoneY(d.data.extractive_phase, h)).strength(0.07);
-      sim.alpha(0.45).restart();
-      return;
-    }
-
-    const seed = DATA.find(d => d.image_path === seedId);
-    if (!seed) return;
-
-    const scores    = computeAffinityScores(seed, DATA);
-    const maxScore  = scores[0]?.score || 1;
-    const topScores = scores.filter(s => s.score > 0).slice(0, TOP_N);
-
-    const stateLinks = topScores.map(s => ({
-      source: seedId,
-      target: s.target,
-      score:  s.score,
-      key:    `${seedId}|${s.target}`,
-    }));
-    setLinks(stateLinks);
-
-    const d3Links = topScores.map(s => ({
-      source:   seedId,
-      target:   s.target,
-      strength: (s.score / maxScore) * 0.65,
-      distance: 80 - (s.score / maxScore) * 50,
-    }));
-    sim.force('link')
-      .links(d3Links)
-      .strength(d => d.strength)
-      .distance(d => d.distance);
-    sim.alpha(0.55).restart();
-
-    const seedInner = nodeScaleGroupsRef.current[seedId];
-    if (seedInner) {
-      gsap.fromTo(seedInner,
-        { scale: 1 },
-        { scale: 1.18, duration: 0.3, ease: 'back.out(1.7)', transformOrigin: '50% 50%' }
-      );
-    }
-
-    const linkedIds = new Set(topScores.map(s => s.target));
-    linkedIds.add(seedId);
-    DATA.forEach(img => {
-      const el = nodeGroupsRef.current[img.image_path];
-      if (!el) return;
-      gsap.to(el, { opacity: linkedIds.has(img.image_path) ? 1 : 0.28, duration: 0.35 });
-    });
-  }, [seedId]);
-
-  // ── Respond to split toggle ──────────────────────────────────────────
+  // ── Apply split / phase-zone forceY ────────────────────────────────
   useEffect(() => {
     const sim = simRef.current;
     if (!sim) return;
     const { h } = dimsRef.current;
-
     const fy = sim.force('y');
     if (splitActive) {
       fy.y(d => materialSplitY(d.data, h)).strength(0.20);
     } else {
       fy.y(d => phaseZoneY(d.data.extractive_phase, h)).strength(0.07);
     }
-    sim.alpha(0.5).restart();
+    sim.alpha(0.4).restart();
   }, [splitActive]);
+
+  // ── Recompute all edges when weights change ─────────────────────────
+  useEffect(() => {
+    const sim = simRef.current;
+    if (!sim) return;
+
+    const allEdges = computeAllEdges(DATA, edgeWeights, 1);
+    const maxScore = allEdges.length > 0 ? Math.max(...allEdges.map(e => e.score)) : 1;
+    setLinks(allEdges);
+
+    const d3Links = allEdges.map(e => ({
+      source:   e.source,
+      target:   e.target,
+      strength: (e.score / maxScore) * 0.18,
+      distance: 100 - (e.score / maxScore) * 55,
+    }));
+    sim.force('link')
+      .links(d3Links)
+      .strength(d => d.strength)
+      .distance(d => d.distance);
+    sim.alpha(0.5).restart();
+  }, [edgeWeights]);
 
   // ── Event handlers ───────────────────────────────────────────────────
   const handleNodeClick = useCallback((id) => {
     const img = DATA.find(d => d.image_path === id);
-    setSelectedNode(img ?? null);
+    setSelectedNode(prev => (prev?.image_path === id ? null : img ?? null));
     setLightboxOpen(false);
-    setSeedId(prev => {
-      if (prev && prev !== id) {
-        const prevInner = nodeScaleGroupsRef.current[prev];
-        if (prevInner) gsap.to(prevInner, { scale: 1, duration: 0.2, transformOrigin: '50% 50%' });
-      }
-      return id;
-    });
   }, []);
 
   const handleReset = useCallback(() => {
-    DATA.forEach(img => {
-      const outer = nodeGroupsRef.current[img.image_path];
-      const inner = nodeScaleGroupsRef.current[img.image_path];
-      if (outer) gsap.to(outer, { opacity: 1, duration: 0.3 });
-      if (inner) gsap.to(inner, { scale: 1, duration: 0.25, transformOrigin: '50% 50%' });
-    });
-    setSeedId(null);
-    setSplitActive(false);
+    setEdgeWeights({ substances: 3, ecology: 2, equipment: 2 });
     setSelectedNode(null);
     setLightboxOpen(false);
     panOffsetRef.current = { x: 0, y: 0 };
@@ -340,19 +286,22 @@ export default function ArchiveNetwork() {
       onMouseUp={() => { isPanningRef.current = false; setGrabbing(false); }}
       onMouseLeave={() => { isPanningRef.current = false; setGrabbing(false); }}
     >
-      {/* Zone overlays when Split is active */}
-      {splitActive && (
-        <>
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '30%', background: 'linear-gradient(to bottom, rgba(74,170,122,0.08), transparent)', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '30%', background: 'linear-gradient(to top, rgba(196,92,58,0.12), transparent)', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', top: 28, left: '50%', transform: 'translateX(-50%)', fontSize: 9, color: 'rgba(74,170,122,0.65)', fontFamily: 'monospace', letterSpacing: '0.1em', pointerEvents: 'none' }}>
-            ▲ VOLATILE / SURFACE WASTE
-          </div>
-          <div style={{ position: 'absolute', bottom: 18, left: '50%', transform: 'translateX(-50%)', fontSize: 9, color: 'rgba(196,92,58,0.65)', fontFamily: 'monospace', letterSpacing: '0.1em', pointerEvents: 'none' }}>
-            ▼ HEAVY WASTE / SUBSURFACE RESIDUES
-          </div>
-        </>
-      )}
+      {/* Zone overlays — always visible */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '33%', background: 'linear-gradient(to bottom, rgba(74,170,122,0.10), transparent)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '33%', background: 'linear-gradient(to top, rgba(196,92,58,0.14), transparent)', pointerEvents: 'none' }} />
+
+      {/* Zone labels — left rail */}
+      <div style={{ position: 'absolute', top: '8%', left: 14, display: 'flex', flexDirection: 'column', gap: 3, pointerEvents: 'none' }}>
+        <span style={{ fontSize: 8, color: 'rgba(74,170,122,0.70)', fontFamily: 'monospace', letterSpacing: '0.10em', textTransform: 'uppercase' }}>▲ Volatile</span>
+        <span style={{ fontSize: 8, color: 'rgba(74,170,122,0.50)', fontFamily: 'monospace', letterSpacing: '0.08em' }}>Airborne · Smoke · Fumes</span>
+      </div>
+      <div style={{ position: 'absolute', top: '47%', left: 14, transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', gap: 3, pointerEvents: 'none' }}>
+        <span style={{ fontSize: 8, color: 'rgba(240,236,230,0.28)', fontFamily: 'monospace', letterSpacing: '0.10em', textTransform: 'uppercase' }}>◈ Mixed / Contextual</span>
+      </div>
+      <div style={{ position: 'absolute', bottom: '8%', left: 14, display: 'flex', flexDirection: 'column', gap: 3, pointerEvents: 'none' }}>
+        <span style={{ fontSize: 8, color: 'rgba(196,92,58,0.70)', fontFamily: 'monospace', letterSpacing: '0.10em', textTransform: 'uppercase' }}>▼ Heavy Residues</span>
+        <span style={{ fontSize: 8, color: 'rgba(196,92,58,0.50)', fontFamily: 'monospace', letterSpacing: '0.08em' }}>Drilling Mud · Wastewater</span>
+      </div>
 
       <svg ref={svgRef} style={{ width: '100%', height: '100%', display: 'block', cursor: grabbing ? 'grabbing' : 'grab' }}>
         <defs>
@@ -380,12 +329,16 @@ export default function ArchiveNetwork() {
         />
         <g ref={panGroupRef}>
 
-        {/* Dashed midline */}
+        {/* Dashed midline + zone separators */}
         {dims.h > 0 && (
-          <line
-            x1={0} y1={dims.h * 0.5} x2={dims.w} y2={dims.h * 0.5}
-            stroke="rgba(255,255,255,0.04)" strokeWidth={1} strokeDasharray="3 8"
-          />
+          <>
+            <line x1={0} y1={dims.h * 0.33} x2={dims.w} y2={dims.h * 0.33}
+              stroke="rgba(74,170,122,0.12)" strokeWidth={1} strokeDasharray="4 10" />
+            <line x1={0} y1={dims.h * 0.50} x2={dims.w} y2={dims.h * 0.50}
+              stroke="rgba(255,255,255,0.04)" strokeWidth={1} strokeDasharray="2 8" />
+            <line x1={0} y1={dims.h * 0.67} x2={dims.w} y2={dims.h * 0.67}
+              stroke="rgba(196,92,58,0.14)" strokeWidth={1} strokeDasharray="4 10" />
+          </>
         )}
 
         {/* Top anchor */}
@@ -439,7 +392,7 @@ export default function ArchiveNetwork() {
         <g>
           {DATA.map(img => {
             const phaseColor = PHASE_COLORS[img.extractive_phase] || '#888';
-            const isSeed     = img.image_path === seedId;
+            const isSelected = img.image_path === selectedNode?.image_path;
             return (
               <g
                 key={img.image_path}
@@ -449,8 +402,8 @@ export default function ArchiveNetwork() {
                   ref={el => { nodeScaleGroupsRef.current[img.image_path] = el; }}
                   role="button"
                   tabIndex={0}
-                  aria-pressed={isSeed}
-                  aria-label={`${img.extractive_phase} photograph${isSeed ? ', selected as seed' : ''}`}
+                  aria-pressed={isSelected}
+                  aria-label={`${img.extractive_phase} photograph${isSelected ? ', selected' : ''}`}
                   style={{ cursor: 'pointer' }}
                   onClick={() => handleNodeClick(img.image_path)}
                   onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleNodeClick(img.image_path)}
@@ -461,9 +414,9 @@ export default function ArchiveNetwork() {
                   <rect
                     x={-HALF_W} y={-HALF_H} width={NODE_W} height={NODE_H} rx={3}
                     fill="#0c0c0c"
-                    stroke={isSeed ? '#ffffff' : phaseColor}
-                    strokeWidth={isSeed ? 2.5 : 2}
-                    strokeOpacity={isSeed ? 1 : 0.85}
+                    stroke={isSelected ? '#ffffff' : phaseColor}
+                    strokeWidth={isSelected ? 2.5 : 2}
+                    strokeOpacity={isSelected ? 1 : 0.85}
                   />
                   {/* Photo thumbnail */}
                   <image
@@ -477,7 +430,7 @@ export default function ArchiveNetwork() {
                   <rect
                     x={-HALF_W} y={-HALF_H} width={NODE_W} height={4} rx={3}
                     fill={phaseColor}
-                    fillOpacity={isSeed ? 1 : 0.9}
+                    fillOpacity={isSelected ? 1 : 0.9}
                   />
                   {/* Label band — phase-tinted */}
                   <rect
@@ -510,26 +463,77 @@ export default function ArchiveNetwork() {
         </g>{/* end panGroup */}
       </svg>
 
-      {/* Control bar */}
-      {seedId && (
-        <div
-          role="toolbar"
-          aria-label="Visualization controls"
-          aria-live="polite"
-          style={{ position: 'absolute', top: 8, right: 8, display: 'flex', gap: 6, zIndex: 20 }}
-        >
+      {/* Affinity weights panel — top right, always visible */}
+      <div
+        role="region"
+        aria-label="Affinity weight controls"
+        style={{
+          position: 'absolute', top: 8, right: 8,
+          width: 230,
+          background: 'rgba(8,8,8,0.90)',
+          border: '1px solid rgba(255,255,255,0.10)',
+          borderRadius: 4,
+          padding: '10px 12px',
+          fontFamily: 'monospace',
+          zIndex: 20,
+          backdropFilter: 'blur(10px)',
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+          <span style={{ fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,236,230,0.38)' }}>
+            Affinity weights
+          </span>
           <button
-            style={splitActive ? BTN_ACTIVE : BTN}
-            aria-pressed={splitActive}
-            onClick={() => setSplitActive(v => !v)}
+            style={BTN}
+            aria-label="Reset affinity weights to defaults"
+            onClick={handleReset}
           >
-            {splitActive ? '▲▼ Collapse Split' : '▲▼ Split by Material'}
-          </button>
-          <button style={BTN} aria-label="Reset graph to default layout" onClick={handleReset}>
             Reset
           </button>
         </div>
-      )}
+
+        {[
+          { key: 'substances', label: 'Substances', color: '#c45c3a' },
+          { key: 'ecology',    label: 'Ecology',    color: '#3a7d5c' },
+          { key: 'equipment',  label: 'Equipment',  color: '#a07040' },
+        ].map(({ key, label, color }) => (
+          <div key={key} style={{ marginBottom: 9 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
+              <label
+                htmlFor={`weight-${key}`}
+                style={{ fontSize: 10, color, letterSpacing: '0.04em', cursor: 'pointer' }}
+              >
+                {label}
+              </label>
+              <span style={{ fontSize: 10, color: 'rgba(240,236,230,0.40)', minWidth: 10, textAlign: 'right' }}>
+                {edgeWeights[key]}
+              </span>
+            </div>
+            <input
+              id={`weight-${key}`}
+              type="range" min={0} max={5} step={1}
+              value={edgeWeights[key]}
+              onChange={e => setEdgeWeights(prev => ({ ...prev, [key]: Number(e.target.value) }))}
+              style={{ width: '100%', accentColor: color, cursor: 'pointer', display: 'block' }}
+              aria-label={`${label} weight: ${edgeWeights[key]}`}
+            />
+          </div>
+        ))}
+
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 4, paddingTop: 8, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+          <span style={{ fontSize: 9, color: 'rgba(240,236,230,0.28)', letterSpacing: '0.04em' }}>
+            {links.length} connections
+          </span>
+          <button
+            style={splitActive ? BTN_ACTIVE : BTN}
+            aria-pressed={splitActive}
+            aria-label={splitActive ? 'Collapse material split' : 'Split by material type'}
+            onClick={() => setSplitActive(v => !v)}
+          >
+            {splitActive ? '▲▼ Material split' : '▲▼ Phase zones'}
+          </button>
+        </div>
+      </div>
 
       {/* Instruction panel — bottom left */}
       <aside
@@ -590,49 +594,36 @@ export default function ArchiveNetwork() {
 
           <ol
             aria-label="Interaction steps"
-            style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 9, margin: 0, listStyle: 'none', padding: 0, paddingTop: 9 }}
+            style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 9, margin: 0, listStyle: 'none', padding: '9px 0 0' }}
           >
             {/* Step 1 */}
-            <li
-              aria-current={!seedId ? 'step' : undefined}
-              style={{
-                display: 'flex', gap: 7, marginBottom: 8,
-                opacity: !seedId ? 1 : 0.38,
-                transition: 'opacity 0.3s',
-              }}
-            >
-              <span aria-hidden="true" style={{ fontSize: 12, color: !seedId ? '#f0ece6' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>1</span>
+            <li style={{ display: 'flex', gap: 7, marginBottom: 8 }}>
+              <span aria-hidden="true" style={{ fontSize: 12, color: '#f0ece6', fontWeight: 'bold', flexShrink: 0 }}>1</span>
               <span style={{ fontSize: 12, color: 'rgba(240,236,230,0.65)', lineHeight: 1.6 }}>
-                Click any photograph to set it as a <strong style={{ color: '#f0ece6', fontWeight: 'normal' }}>seed</strong>. The 15 most materially similar images cluster around it.
+                The network shows <strong style={{ color: '#f0ece6', fontWeight: 'normal' }}>all material connections</strong> between the 54 archival photographs. Edge thickness = affinity strength.
               </span>
             </li>
             {/* Step 2 */}
-            <li
-              aria-current={seedId && !splitActive ? 'step' : undefined}
-              style={{
-                display: 'flex', gap: 7, marginBottom: 8,
-                opacity: seedId && !splitActive ? 1 : 0.38,
-                transition: 'opacity 0.3s',
-              }}
-            >
-              <span aria-hidden="true" style={{ fontSize: 12, color: seedId && !splitActive ? '#f0ece6' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>2</span>
+            <li style={{ display: 'flex', gap: 7, marginBottom: 8 }}>
+              <span aria-hidden="true" style={{ fontSize: 12, color: '#f0ece6', fontWeight: 'bold', flexShrink: 0 }}>2</span>
               <span style={{ fontSize: 12, color: 'rgba(240,236,230,0.65)', lineHeight: 1.6 }}>
-                Press <strong style={{ color: '#f0ece6', fontWeight: 'normal' }}>Split by Material</strong> to separate the cluster by substance type.
+                Vertical position reflects <strong style={{ color: '#f0ece6', fontWeight: 'normal' }}>substance type</strong> —{' '}
+                <strong style={{ color: '#c45c3a', fontWeight: 'normal' }}>heavy residues</strong> sink,{' '}
+                <strong style={{ color: '#4aaa7a', fontWeight: 'normal' }}>volatile matter</strong> rises.
               </span>
             </li>
             {/* Step 3 */}
-            <li
-              aria-current={splitActive ? 'step' : undefined}
-              style={{
-                display: 'flex', gap: 7, marginBottom: 8,
-                opacity: splitActive ? 1 : 0.38,
-                transition: 'opacity 0.3s',
-              }}
-            >
-              <span aria-hidden="true" style={{ fontSize: 12, color: splitActive ? '#4aaa7a' : 'rgba(240,236,230,0.4)', fontWeight: 'bold', flexShrink: 0 }}>3</span>
+            <li style={{ display: 'flex', gap: 7, marginBottom: 8 }}>
+              <span aria-hidden="true" style={{ fontSize: 12, color: '#f0ece6', fontWeight: 'bold', flexShrink: 0 }}>3</span>
               <span style={{ fontSize: 12, color: 'rgba(240,236,230,0.65)', lineHeight: 1.6 }}>
-                <strong style={{ color: '#c45c3a', fontWeight: 'normal' }}>Heavy residues</strong> (drilling mud, wastewater) sink.{' '}
-                <strong style={{ color: '#4aaa7a', fontWeight: 'normal' }}>Volatile matter</strong> (smoke, flames) rises.
+                Click any photograph to inspect its metadata and neighbors in the sidebar.
+              </span>
+            </li>
+            {/* Step 4 */}
+            <li style={{ display: 'flex', gap: 7, marginBottom: 8 }}>
+              <span aria-hidden="true" style={{ fontSize: 12, color: '#f0ece6', fontWeight: 'bold', flexShrink: 0 }}>4</span>
+              <span style={{ fontSize: 12, color: 'rgba(240,236,230,0.65)', lineHeight: 1.6 }}>
+                Use the <strong style={{ color: '#f0ece6', fontWeight: 'normal' }}>weight sliders</strong> (top right) to emphasize different types of material relationships.
               </span>
             </li>
             {/* Hover tip */}
@@ -790,7 +781,7 @@ export default function ArchiveNetwork() {
               {/* Affinity neighbors */}
               <div style={{ padding: '12px 14px', flexShrink: 0 }}>
                 <p style={{ fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(240,236,230,0.3)', marginBottom: 10 }}>
-                  {neighbors.length > 0 ? `Affinity neighbors (${neighbors.length})` : 'No neighbors — click a node to set it as seed first'}
+                  {neighbors.length > 0 ? `Affinity neighbors (${neighbors.length})` : 'No strong connections found for this image'}
                 </p>
                 {neighbors.map(({ img: n, score }) => {
                   const nc = PHASE_COLORS[n.extractive_phase] || '#888';
