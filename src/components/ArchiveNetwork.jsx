@@ -38,6 +38,10 @@ const PHASE_SHORT = {
   'Testing':                         'Testing',
 };
 
+/** Replace original extension with .webp and point to thumbs folder. */
+const toThumb = (imagePath) =>
+  `/sources/eni/thumbs/${imagePath.replace(/\.[^.]+$/, '.webp')}`;
+
 function phaseZoneY(extractive_phase, h) {
   return getPhaseZone(extractive_phase) === 'subsurface' ? h * 0.72 : h * 0.28;
 }
@@ -232,25 +236,45 @@ export default function ArchiveNetwork() {
   }, [activeFilters]);
 
   // ── Recompute all edges when weights change ─────────────────────────
+  // On the first run (initial mount) we defer via requestIdleCallback / setTimeout
+  // so the node cards paint first, then edges appear — this cuts Total Blocking Time.
+  const isFirstEdgeCompute = useRef(true);
   useEffect(() => {
-    const sim = simRef.current;
-    if (!sim) return;
+    const doCompute = () => {
+      const sim = simRef.current;
+      if (!sim) return;
 
-    const allEdges = computeAllEdges(DATA, edgeWeights, 1);
-    const maxScore = allEdges.length > 0 ? Math.max(...allEdges.map(e => e.score)) : 1;
-    setLinks(allEdges);
+      const allEdges = computeAllEdges(DATA, edgeWeights, 1);
+      const maxScore = allEdges.length > 0 ? Math.max(...allEdges.map(e => e.score)) : 1;
+      setLinks(allEdges);
 
-    const d3Links = allEdges.map(e => ({
-      source:   e.source,
-      target:   e.target,
-      strength: (e.score / maxScore) * 0.18,
-      distance: 100 - (e.score / maxScore) * 55,
-    }));
-    sim.force('link')
-      .links(d3Links)
-      .strength(d => d.strength)
-      .distance(d => d.distance);
-    sim.alpha(0.5).restart();
+      const d3Links = allEdges.map(e => ({
+        source:   e.source,
+        target:   e.target,
+        strength: (e.score / maxScore) * 0.18,
+        distance: 100 - (e.score / maxScore) * 55,
+      }));
+      sim.force('link')
+        .links(d3Links)
+        .strength(d => d.strength)
+        .distance(d => d.distance);
+      sim.alpha(0.5).restart();
+    };
+
+    if (isFirstEdgeCompute.current) {
+      isFirstEdgeCompute.current = false;
+      // Defer to after first paint to reduce Total Blocking Time
+      const id = typeof requestIdleCallback !== 'undefined'
+        ? requestIdleCallback(doCompute, { timeout: 1500 })
+        : setTimeout(doCompute, 60);
+      return () => {
+        typeof cancelIdleCallback !== 'undefined'
+          ? cancelIdleCallback(id)
+          : clearTimeout(id);
+      };
+    }
+
+    doCompute();
   }, [edgeWeights]);
 
   // ── Event handlers ───────────────────────────────────────────────────
@@ -459,9 +483,9 @@ export default function ArchiveNetwork() {
                     strokeWidth={isSelected ? 2.5 : 2}
                     strokeOpacity={isSelected ? 1 : 0.85}
                   />
-                  {/* Photo thumbnail */}
+                  {/* Photo thumbnail — uses WebP thumb, original kept for lightbox */}
                   <image
-                    href={`/sources/eni/${img.image_path}`}
+                    href={toThumb(img.image_path)}
                     x={-HALF_W} y={-HALF_H + 4}
                     width={NODE_W} height={NODE_H - 22}
                     preserveAspectRatio="xMidYMid slice"
@@ -790,11 +814,12 @@ export default function ArchiveNetwork() {
                 </button>
               </div>
 
-              {/* Image preview */}
+              {/* Image preview — uses WebP thumb; 🔍 opens full-res original */}
               <div style={{ position: 'relative', flexShrink: 0 }}>
                 <img
-                  src={`/sources/eni/${selectedNode.image_path}`}
+                  src={toThumb(selectedNode.image_path)}
                   alt={`Archival photograph: ${selectedNode.extractive_phase}`}
+                  decoding="async"
                   style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
                 />
                 {/* Magnify button */}
