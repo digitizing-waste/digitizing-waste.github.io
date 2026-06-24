@@ -29,15 +29,21 @@ const TRUE_DEPTHS = { A: -2340, B: -2370, C: -2390, D: -2410, E: -2430 };
 // We linearly map the true proportions onto a larger visual range so the
 // layer cake is clearly distinguishable without distorting inter-layer ratios.
 //
+// IMPORTANT: deck.gl’s MapView is built for above-surface Z coordinates;
+// negative Z causes frustum-culling and clipping bugs at certain camera angles.
+// We therefore use POSITIVE Z (higher = shallower stratum), with the satellite
+// basemap placed at SLAB_TOP (= VISUAL_DEPTH_A + slab thickness) as the
+// “surface lid” on top of the stack. TRUE_DEPTHS are preserved for display.
+//
 //   VISUAL_DEPTH_A  visual Z (m) for the shallowest stratum (Livello A)
 //   VISUAL_SPREAD   total visual extent from A down to E
 //
 //   LIVELLO_Z[lv] = VISUAL_DEPTH_A
 //                 − ( (TRUE[lv]−TRUE[A]) / (TRUE[E]−TRUE[A]) ) × VISUAL_SPREAD
 //
-// Resulting Z values (m, negative = below surface):
-//   A: −20 000   B: −26 667   C: −31 111   D: −35 556   E: −40 000
-const VISUAL_DEPTH_A = -20000;
+// Resulting Z values (m, positive = higher in 3D scene = shallower in reality):
+//   A: 20 000   B: 13 333   C:  8 889   D:  4 444   E:  0
+const VISUAL_DEPTH_A = 20000;
 const VISUAL_SPREAD  = 20000;
 
 const _DEPTH_RANGE = TRUE_DEPTHS.E - TRUE_DEPTHS.A; // = −90
@@ -59,18 +65,14 @@ const LIVELLO_HUE = {
 
 const INITIAL_VIEW_STATE = {
   longitude: 9.12,
-  // Offset south of centroid (31.6566): underground features at negative Z
-  // project into the foreground of a pitched view, so we offset SOUTH —
-  // opposite to the above-ground case — so the mid-stack (Z≈−30 000 m)
-  // appears near screen centre.
-  latitude: 31.4,
-  zoom: 10.0,
+  // Offset north of the feature centroid (31.6566) so that with pitch 65°
+  // the mid-point of the Z stack appears near screen centre.
+  latitude: 31.885,
+  zoom: 10.2,
   pitch: 65,
-  bearing: -1,
-  minPitch: 20,   // keep enough tilt to see underground layers
+  bearing: -20,
+  minPitch: 0,
   maxPitch: 85,
-  maxZoom: 13,    // beyond this the camera is at ground level and underground
-                  // features fall below the pitch-65° horizon
 };
 
 // ─── Well constants ─────────────────────────────────────────────────────────
@@ -253,7 +255,7 @@ export default function IsopayMap() {
   }
 
   const layers = useMemo(() => {
-    const SLAB_TOP = 0; // ground surface (Z = 0); satellite basemap sits here
+    const SLAB_TOP = LIVELLO_Z['A'] + 1500; // visual surface = top of shallowest slab
     const MAX_SPESSORE = 55; // cap for radius scaling
 
     const basemapLayer = new TileLayer({
@@ -266,7 +268,7 @@ export default function IsopayMap() {
       visible: visible.basemap,
       renderSubLayers: props => {
         const { bbox: { west, south, east, north } } = props.tile;
-        const z = SLAB_TOP; // top surface of Livello A = LIVELLO_Z['A'] + 1500
+        const z = SLAB_TOP; // visual surface lid, above the shallowest geological slab
         return new BitmapLayer(props, {
           data: null,
           image: props.data,
