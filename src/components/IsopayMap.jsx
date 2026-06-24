@@ -750,6 +750,10 @@ export default function IsopayMap() {
             {/* About */}
             <Section label="About">
               This visualization maps the net pay of the El Burma oil camp, a petroleum concession in the Ghadames Basin of southwest Tunisia operated under Tunisian-Italian license agreements during the 1960s–70s. The source data are <em>isopay maps</em> — a type of isopach map that records only the thickness of reservoir rock that is porous, permeable, and contains extractable hydrocarbons. Five stratigraphic layers (Livelli A–E) in the Ordovician reservoir are modelled, each representing a distinct net pay zone.
+              <br /><br />
+              <strong style={{ color: '#ffc84b', opacity: 0.9 }}>⚠ Vertical exaggeration</strong>
+              <br />
+              The five layers sit between <strong>−2,340 m and −2,430 m</strong> below the surface — a real vertical span of only <strong>90 m</strong>. The field is roughly 20–30 km wide, so at true scale all five layers would collapse into a sheet thinner than a pixel on screen. To make the stratigraphy legible, the vertical axis is exaggerated <strong>~222×</strong>: each visual "slab" is rendered 1,500 m thick and the A→E stack spans 20,000 m. This is standard practice in subsurface geology — seismic sections and reservoir models routinely apply 10×–1,000× vertical exaggeration for the same reason.
             </Section>
 
             {/* Geological Layers */}
