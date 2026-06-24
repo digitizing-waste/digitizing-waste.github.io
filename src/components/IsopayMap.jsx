@@ -21,10 +21,32 @@ const LAYER_FOCUS = {
   E: { pitch: 35, latitude: 31.67,  zoom: 13, longitude: 9.21  },
 };
 
-// Z base elevation (metres) for each geological layer.
-// The field spans ~10 km; layers are spaced 5 km apart so the stack
-// is visually prominent at the ~10-zoom view.
-const LIVELLO_Z = { A: 20000, B: 15000, C: 10000, D: 5000, E: 0 };
+// "true" geological depths
+const TRUE_DEPTHS = { A: -2340, B: -2370, C: -2390, D: -2410, E: -2430 };
+
+// ── Visual depth mapping ─────────────────────────────────────────────────────
+// The real A→E separation is only ~90 m, which is invisible at map scale.
+// We linearly map the true proportions onto a larger visual range so the
+// layer cake is clearly distinguishable without distorting inter-layer ratios.
+//
+//   VISUAL_DEPTH_A  visual Z (m) for the shallowest stratum (Livello A)
+//   VISUAL_SPREAD   total visual extent from A down to E
+//
+//   LIVELLO_Z[lv] = VISUAL_DEPTH_A
+//                 − ( (TRUE[lv]−TRUE[A]) / (TRUE[E]−TRUE[A]) ) × VISUAL_SPREAD
+//
+// Resulting Z values (m, negative = below surface):
+//   A: −20 000   B: −26 667   C: −31 111   D: −35 556   E: −40 000
+const VISUAL_DEPTH_A = -20000;
+const VISUAL_SPREAD  = 20000;
+
+const _DEPTH_RANGE = TRUE_DEPTHS.E - TRUE_DEPTHS.A; // = −90
+const LIVELLO_Z = Object.fromEntries(
+  Object.entries(TRUE_DEPTHS).map(([lv, d]) => [
+    lv,
+    VISUAL_DEPTH_A - ((d - TRUE_DEPTHS.A) / _DEPTH_RANGE) * VISUAL_SPREAD,
+  ])
+);
 
 // Colours assigned to each Livello for the toggle UI badges.
 const LIVELLO_HUE = {
@@ -37,15 +59,18 @@ const LIVELLO_HUE = {
 
 const INITIAL_VIEW_STATE = {
   longitude: 9.12,
-  // Offset north of the feature centroid (31.6566) so that with pitch 65°
-  // the mid-point of the Z stack (Z≈10 km) appears at screen centre rather
-  // than the top layers projecting above the viewport.
-  latitude: 31.885,
-  zoom: 10.2,
+  // Offset south of centroid (31.6566): underground features at negative Z
+  // project into the foreground of a pitched view, so we offset SOUTH —
+  // opposite to the above-ground case — so the mid-stack (Z≈−30 000 m)
+  // appears near screen centre.
+  latitude: 31.4,
+  zoom: 10.0,
   pitch: 65,
-  bearing: -20,
-  minPitch: 0,
+  bearing: -1,
+  minPitch: 20,   // keep enough tilt to see underground layers
   maxPitch: 85,
+  maxZoom: 13,    // beyond this the camera is at ground level and underground
+                  // features fall below the pitch-65° horizon
 };
 
 // ─── Well constants ─────────────────────────────────────────────────────────
@@ -228,7 +253,7 @@ export default function IsopayMap() {
   }
 
   const layers = useMemo(() => {
-    const SLAB_TOP = LIVELLO_Z['A'] + 1500; // top of the uppermost slab
+    const SLAB_TOP = 0; // ground surface (Z = 0); satellite basemap sits here
     const MAX_SPESSORE = 55; // cap for radius scaling
 
     const basemapLayer = new TileLayer({
