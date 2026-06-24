@@ -216,6 +216,27 @@ function getTooltip({ object }) {
   };
 }
 
+// ─── Info modal section helper ───────────────────────────────────────────────
+
+function Section({ label, children, last }) {
+  return (
+    <div style={{ marginBottom: last ? 0 : '18px' }}>
+      <div style={{
+        fontSize: '10px',
+        textTransform: 'uppercase',
+        letterSpacing: '0.1em',
+        opacity: 0.35,
+        marginBottom: '8px',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        paddingBottom: '5px',
+      }}>
+        {label}
+      </div>
+      <div style={{ opacity: 0.8 }}>{children}</div>
+    </div>
+  );
+}
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function IsopayMap() {
@@ -225,6 +246,7 @@ export default function IsopayMap() {
     basemap: false,
   });
   const [panelOpen, setPanelOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [focusedLayer, setFocusedLayer] = useState(null);
   const [trueDepth, setTrueDepth] = useState(false);
@@ -375,7 +397,12 @@ export default function IsopayMap() {
       lineWidthUnits: 'pixels',
       lineWidthMinPixels: 1,
       pickable: true,
-      updateTriggers: { getFillColor: [focusedLayer, trueDepth], visible: visible.wells },
+      updateTriggers: {
+        getPosition:  trueDepth,
+        getElevation: trueDepth,
+        getFillColor: [focusedLayer, trueDepth],
+        visible:      visible.wells,
+      },
     });
 
     return [basemapLayer, ...geoLayers, wellLayer];
@@ -640,6 +667,162 @@ export default function IsopayMap() {
         </svg>
         {panelOpen ? 'Hide sources' : 'Source maps'}
       </button>
+
+      {/* ── Info button ──────────────────────────────────────────────────── */}
+      <button
+        onClick={() => setInfoOpen(p => !p)}
+        style={{
+          position: 'absolute',
+          top: '64px',
+          right: panelOpen ? '360px' : '20px',
+          transition: 'right 0.3s ease',
+          background: infoOpen ? 'rgba(100,160,220,0.12)' : 'rgba(10,10,10,0.85)',
+          border: `1px solid ${infoOpen ? 'rgba(100,160,220,0.45)' : 'rgba(255,255,255,0.12)'}`,
+          borderRadius: '8px',
+          padding: '8px 14px',
+          color: '#f0ece6',
+          fontFamily: 'monospace',
+          fontSize: '11px',
+          letterSpacing: '0.06em',
+          cursor: 'pointer',
+          backdropFilter: 'blur(12px)',
+          zIndex: 3,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '7px',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
+          <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.5"/>
+          <line x1="8" y1="7" x2="8" y2="11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="8" cy="4.5" r="0.8" fill="currentColor"/>
+        </svg>
+        {infoOpen ? 'Close' : 'How to use'}
+      </button>
+
+      {/* ── Info modal overlay ───────────────────────────────────────────── */}
+      {infoOpen && (
+        <div
+          onClick={() => setInfoOpen(false)}
+          style={{
+            position: 'absolute',
+            top: 0, left: 0, right: 0, bottom: 0,
+            background: 'rgba(0,0,0,0.55)',
+            backdropFilter: 'blur(5px)',
+            zIndex: 20,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: 'rgba(10,10,12,0.97)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '12px',
+              padding: '28px 32px',
+              maxWidth: '520px',
+              width: '90%',
+              maxHeight: '80vh',
+              overflowY: 'auto',
+              color: '#f0ece6',
+              fontFamily: 'monospace',
+              fontSize: '12px',
+              lineHeight: 1.7,
+              position: 'relative',
+            }}
+          >
+            {/* Close */}
+            <button
+              onClick={() => setInfoOpen(false)}
+              style={{ position: 'absolute', top: '16px', right: '16px', background: 'transparent', border: 'none', color: '#f0ece6', cursor: 'pointer', opacity: 0.45, fontSize: '20px', lineHeight: 1, padding: '2px 6px' }}
+            >×</button>
+
+            {/* Title */}
+            <div style={{ marginBottom: '22px' }}>
+              <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.12em', opacity: 0.35, marginBottom: '4px' }}>Digitizing Waste</div>
+              <div style={{ fontSize: '15px', fontWeight: 'bold', letterSpacing: '0.02em', marginBottom: '5px' }}>El Burma — Net Pay Stratigraphy</div>
+              <div style={{ opacity: 0.5, fontSize: '11px' }}>Interactive 3D stratigraphic model · Ghadames Basin, Tunisia</div>
+            </div>
+
+            {/* About */}
+            <Section label="About">
+              This visualization maps the net pay of the El Burma oil camp, a petroleum concession in the Ghadames Basin of southwest Tunisia operated under Tunisian-Italian license agreements during the 1960s–70s. The source data are <em>isopay maps</em> — a type of isopach map that records only the thickness of reservoir rock that is porous, permeable, and contains extractable hydrocarbons. Five stratigraphic layers (Livelli A–E) in the Ordovician reservoir are modelled, each representing a distinct net pay zone.
+            </Section>
+
+            {/* Geological Layers */}
+            <Section label="Geological layers">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '9px' }}>
+                {[['A', '−2,340 m', 'shallowest'], ['B', '−2,370 m', ''], ['C', '−2,390 m', ''], ['D', '−2,410 m', ''], ['E', '−2,430 m', 'deepest']].map(([lv, depth, note]) => (
+                  <div key={lv} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ width: '9px', height: '9px', borderRadius: '2px', background: LIVELLO_HUE[lv], display: 'inline-block', flexShrink: 0 }} />
+                    <span style={{ opacity: 0.85 }}>Livello {lv}</span>
+                    <span style={{ opacity: 0.4, fontSize: '11px' }}>{depth}</span>
+                    {note && <span style={{ opacity: 0.3, fontSize: '10px' }}>({note})</span>}
+                  </div>
+                ))}
+              </div>
+              <div style={{ opacity: 0.5, fontSize: '11px' }}>
+                Color intensity encodes <strong style={{ opacity: 0.9 }}>net pay thickness</strong>: pale amber = thin (0 m), deep crimson = thick (25 m). Toggle individual layers using the panel on the left.
+              </div>
+            </Section>
+
+            {/* Wells */}
+            <Section label="Oil wells (19 boreholes)">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '9px' }}>
+                {[
+                  { rgb: [255,200,75],  label: 'Productive' },
+                  { rgb: [80,185,255],  label: 'In drilling' },
+                  { rgb: [145,205,145], label: 'Planned' },
+                  { rgb: [255,80,80],   label: 'Damaged / accidental' },
+                  { rgb: [130,130,130], label: 'Sterile (dry)' },
+                ].map(({ rgb, label }) => (
+                  <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: `rgb(${rgb.join(',')})`, display: 'inline-block', flexShrink: 0 }} />
+                    <span style={{ opacity: 0.8 }}>{label}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ opacity: 0.5, fontSize: '11px' }}>
+                Each cylinder extends from the deepest penetrated layer to the surface. Cylinder opacity scales with net pay thickness. Hover for details.
+              </div>
+            </Section>
+
+            {/* Source maps */}
+            <Section label="Archival source maps">
+              <div style={{ opacity: 0.8 }}>Five original geological maps — one per layer — digitized from AGIP survey documents. Open the <strong style={{ opacity: 0.95 }}>Source maps →</strong> panel (top-right) to compare the 3D model with the archival cartography. Click any map image to fly the camera to that stratum.
+              </div>
+            </Section>
+
+            {/* Navigation */}
+            <Section label="Navigation" last>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                {[
+                  ['Left-drag',              'Rotate the 3D view'],
+                  ['Right-drag / two-finger','Pan the map'],
+                  ['Scroll / pinch',         'Zoom in and out'],
+                  ['Click layer label',      'Show or hide that stratum'],
+                  ['Click source map image', 'Focus camera on that layer'],
+                  ['Click compass',          'Reset bearing to north'],
+                  ['OVERVIEW button',        'Return to initial view'],
+                ].map(([key, val]) => (
+                  <div key={key} style={{ display: 'flex', gap: '10px' }}>
+                    <span style={{ opacity: 0.4, minWidth: '165px', fontSize: '11px', flexShrink: 0 }}>{key}</span>
+                    <span style={{ opacity: 0.8 }}>{val}</span>
+                  </div>
+                ))}
+              </div>
+            </Section>
+
+            {/* Footer */}
+            <div style={{ marginTop: '18px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.06)', opacity: 0.3, fontSize: '10px' }}>
+              Source data: AGIP geological surveys, 1960s–70s · Ghadames Basin concession records
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Source maps panel ─────────────────────────────────────────────── */}
       <div
