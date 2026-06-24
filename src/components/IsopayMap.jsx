@@ -54,6 +54,16 @@ const LIVELLO_Z = Object.fromEntries(
   ])
 );
 
+// True-depth variant: physically correct negative Z values.
+// WARNING: deck.gl MapView may cull or clip at high zoom / certain pitches.
+//   A: −20 000   B: −26 667   C: −31 111   D: −35 556   E: −40 000
+const LIVELLO_Z_TRUE = Object.fromEntries(
+  Object.entries(TRUE_DEPTHS).map(([lv, d]) => [
+    lv,
+    -20000 - ((d - TRUE_DEPTHS.A) / _DEPTH_RANGE) * 20000,
+  ])
+);
+
 // Colours assigned to each Livello for the toggle UI badges.
 const LIVELLO_HUE = {
   A: '#e07b54',
@@ -71,6 +81,17 @@ const INITIAL_VIEW_STATE = {
   zoom: 10.2,
   pitch: 65,
   bearing: -20,
+  minPitch: 0,
+  maxPitch: 85,
+};
+
+// Camera position suited to the true-depth (negative-Z) viewing geometry.
+const TRUE_DEPTH_VIEW_STATE = {
+  longitude: 9.12,
+  latitude: 31.4,
+  zoom: 10.0,
+  pitch: 65,
+  bearing: -1,
   minPitch: 0,
   maxPitch: 85,
 };
@@ -117,8 +138,8 @@ function thicknessToColor(thickness) {
  * Transforms a MultiPolygon feature by appending a Z coordinate (in metres)
  * to every position, placing each Livello at a distinct elevation.
  */
-function elevateFeature(feature) {
-  const z = LIVELLO_Z[feature.properties.Livello] ?? 0;
+function elevateFeature(feature, livelloZ) {
+  const z = livelloZ[feature.properties.Livello] ?? 0;
   const transformed = feature.geometry.coordinates.map(polygon =>
     polygon.map(ring =>
       ring.map(([lng, lat]) => [lng, lat, z])
@@ -129,14 +150,6 @@ function elevateFeature(feature) {
     geometry: { ...feature.geometry, coordinates: transformed },
   };
 }
-
-// Pre-process once: split features by Livello and add Z coordinates.
-const featuresByLivello = LIVELLI.reduce((acc, lv) => {
-  acc[lv] = issopayData.features
-    .filter(f => f.properties.Livello === lv)
-    .map(elevateFeature);
-  return acc;
-}, {});
 
 // ─── Tooltip ─────────────────────────────────────────────────────────────────
 
@@ -214,6 +227,7 @@ export default function IsopayMap() {
   const [panelOpen, setPanelOpen] = useState(false);
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [focusedLayer, setFocusedLayer] = useState(null);
+  const [trueDepth, setTrueDepth] = useState(false);
 
   function flyTo(target) {
     setViewState({
@@ -254,8 +268,27 @@ export default function IsopayMap() {
     }));
   }
 
+  function handleToggleTrueDepth() {
+    const next = !trueDepth;
+    setTrueDepth(next);
+    setFocusedLayer(null);
+    flyTo(next ? TRUE_DEPTH_VIEW_STATE : INITIAL_VIEW_STATE);
+  }
+
   const layers = useMemo(() => {
-    const SLAB_TOP = LIVELLO_Z['A'] + 1500; // visual surface = top of shallowest slab
+    // Switch between the display-optimised (positive Z) and physically-correct
+    // (negative Z) coordinate systems depending on the trueDepth toggle.
+    const lz       = trueDepth ? LIVELLO_Z_TRUE : LIVELLO_Z;
+    const SLAB_TOP = trueDepth ? 0 : lz['A'] + 1500;
+
+    // Re-elevate features with the active Z values.
+    const featuresByLivello = LIVELLI.reduce((acc, lv) => {
+      acc[lv] = issopayData.features
+        .filter(f => f.properties.Livello === lv)
+        .map(f => elevateFeature(f, lz));
+      return acc;
+    }, {});
+
     const MAX_SPESSORE = 55; // cap for radius scaling
 
     const basemapLayer = new TileLayer({
@@ -305,8 +338,8 @@ export default function IsopayMap() {
         lineWidthMinPixels: 1,
         // Hide layers with higher Z than the focused one so they don't
         // block the top-down view of the selected layer.
-        visible: visible[lv] && !(focusedLayer !== null && LIVELLO_Z[lv] > LIVELLO_Z[focusedLayer]),
-        updateTriggers: { visible: visible[lv], focusedLayer },
+        visible: visible[lv] && !(focusedLayer !== null && lz[lv] > lz[focusedLayer]),
+        updateTriggers: { visible: visible[lv], focusedLayer, trueDepth },
       })
     );
 
@@ -319,19 +352,19 @@ export default function IsopayMap() {
       // Cylinder base sits at the bottom of the target Livello; it extrudes
       // upward to the top of Livello A — punching through the whole stack.
       getPosition: d => {
-        const depth = LIVELLO_Z[WELL_DEPTH[d.properties.id] ?? WELL_DEPTH_DEFAULT];
+        const depth = lz[WELL_DEPTH[d.properties.id] ?? WELL_DEPTH_DEFAULT];
         return [d.geometry.coordinates[0], d.geometry.coordinates[1], depth];
       },
       getElevation: d => {
-        const depth = LIVELLO_Z[WELL_DEPTH[d.properties.id] ?? WELL_DEPTH_DEFAULT];
+        const depth = lz[WELL_DEPTH[d.properties.id] ?? WELL_DEPTH_DEFAULT];
         return SLAB_TOP - depth;
       },
       // Spessore_m encodes into alpha: higher net pay → more opaque cylinder.
       getFillColor: d => {
         const base = WELL_STATUS_COLOR[d.properties.status] ?? [150, 150, 150];
-        const wellDepthZ = LIVELLO_Z[WELL_DEPTH[d.properties.id] ?? WELL_DEPTH_DEFAULT];
-        // Dim wells that don't reach the currently-focused layer
-        const dimmed = focusedLayer !== null && wellDepthZ > LIVELLO_Z[focusedLayer];
+        const wellDepthZ = lz[WELL_DEPTH[d.properties.id] ?? WELL_DEPTH_DEFAULT];
+        // Dim wells that don’t reach the currently-focused layer
+        const dimmed = focusedLayer !== null && wellDepthZ > lz[focusedLayer];
         const s = d.properties.Spessore_m;
         // productive wells: alpha scales 140–255 with net pay; others fixed at 180
         const alpha = dimmed ? 40 : (s != null ? Math.round(140 + (Math.min(s, 55) / 55) * 115) : 180);
@@ -342,11 +375,11 @@ export default function IsopayMap() {
       lineWidthUnits: 'pixels',
       lineWidthMinPixels: 1,
       pickable: true,
-      updateTriggers: { getFillColor: focusedLayer, visible: visible.wells },
+      updateTriggers: { getFillColor: [focusedLayer, trueDepth], visible: visible.wells },
     });
 
     return [basemapLayer, ...geoLayers, wellLayer];
-  }, [visible, focusedLayer]);
+  }, [visible, focusedLayer, trueDepth]);
 
   function toggleLayer(lv) {
     setVisible(prev => ({ ...prev, [lv]: !prev[lv] }));
@@ -514,6 +547,64 @@ export default function IsopayMap() {
           lineHeight: 1.5,
         }}>
           Drag to rotate<br />Right-drag to pan<br />Scroll to zoom
+        </div>
+
+        {/* ── True depth mode toggle ──────────────────────────────────── */}
+        <div style={{
+          marginTop: '10px',
+          paddingTop: '10px',
+          borderTop: `1px solid ${trueDepth ? 'rgba(255,200,75,0.35)' : 'rgba(255,255,255,0.08)'}`,
+        }}>
+          <div style={{
+            opacity: 0.5,
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em',
+            fontSize: '10px',
+            marginBottom: '8px',
+            color: trueDepth ? '#ffc84b' : 'inherit',
+          }}>Experimental</div>
+          <label style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '9px',
+            cursor: 'pointer',
+            opacity: 1,
+            transition: 'opacity 0.2s',
+          }}>
+            <span
+              onClick={handleToggleTrueDepth}
+              style={{
+                width: '14px',
+                height: '14px',
+                borderRadius: '3px',
+                border: '2px solid #ffc84b',
+                background: trueDepth ? '#ffc84b' : 'transparent',
+                display: 'inline-block',
+                flexShrink: 0,
+                transition: 'background 0.15s',
+              }}
+            />
+            <span onClick={handleToggleTrueDepth} style={{ lineHeight: 1 }}>
+              True depth
+            </span>
+          </label>
+          {trueDepth && (
+            <div style={{
+              marginTop: '8px',
+              padding: '7px 8px',
+              background: 'rgba(255,200,75,0.07)',
+              border: '1px solid rgba(255,200,75,0.2)',
+              borderRadius: '4px',
+              fontSize: '9px',
+              lineHeight: 1.55,
+              color: '#ffc84b',
+              opacity: 0.85,
+            }}>
+              ⚠ A: {TRUE_DEPTHS.A} m<br />
+              ⚠ E: {TRUE_DEPTHS.E} m<br />
+              Rendering may degrade<br />at high zoom or low pitch.
+            </div>
+          )}
         </div>
       </div>
 
